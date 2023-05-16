@@ -96,16 +96,16 @@ body {
     margin-bottom: 1rem;
 }
 
-.mini-image>img {
+.mini-image>a>img {
     border-radius: 20px;
     margin-bottom: 0.5rem;
 }
 
-.mini-image>h4 {
+.mini-image>a>h4 {
     font-weight: 400;
 }
 
-.mini-image>p {
+.mini-image>a>p {
     font-weight: 300;
 }
 
@@ -312,28 +312,28 @@ body {
 
 
 .information-container {
-    background-image: url(static/images/info_banner_small.svg);
+    /* background-image: url(static/images/info_banner_small.svg); */
     background-repeat: no-repeat;
 }
 
 .question-container {
-    background-image: url(static/images/question_banner_small.svg);
+    /* background-image: url(static/images/question_banner_small.svg); */
     background-repeat: no-repeat;
 }
 
 .profile-container {
-    background-image: url(static/images/profile_banner_small.svg);
+    /* background-image: url(static/images/profile_banner_small.svg); */
     background-repeat: no-repeat;
 }
 
 .calendar-container {
-    background-image: url(static/images/calendar_banner_small.svg);
+    /* background-image: url(static/images/calendar_banner_small.svg); */
     background-repeat: no-repeat;
 }
 
 
 .updates-container {
-    background-image: url(static/images/updates_banner_small.svg);
+    /* background-image: url(static/images/updates_banner_small.svg); */
     background-repeat: no-repeat;
     background-position: 100%;
 }
