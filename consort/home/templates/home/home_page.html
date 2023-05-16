@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load wagtailimages_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -8,14 +9,252 @@
 {% comment %}
 Delete the line below if you're just getting started and want to remove the welcome screen!
 {% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/default.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+  {% image page.banner_background_image fill-1600x750 as bg_img %}
+  {% image page.residents_large_item1_image fill-400x240 as res_1_img %}
+  {% image page.residents_large_item2_image fill-400x240 as res_2_img %}
+
+ <div class="p-5 mb-5 bg-body-tertiary jumbotron d-flex align-items-center" style="background-size: cover !important; background: center no-repeat linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('{{ bg_img.url }}');">
+    <span class="container-fluid py-5 rounded-3 jumbotron-container">
+      <h1 class="display-1 fc-white mb-5">{{page.banner_title}}</h1>
+      <p class="col-lg-8 display-6 mb-5">{{page.banner_subtitle}}</p>
+      <div class="row pt-1">
+        <div class="col-lg-2">
+          <div class="d-flex mb-3">
+            <a class="flex-fill btn btn-warning btn-primary btn-lg" type="button" href="{{page.banner_button1_link}}">{{page.banner_button1_text}}</a>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <div class="d-flex mb-3">
+            <a class="flex-fill btn btn-warning btn-primary btn-lg" type="button" href="{{page.banner_button2_link}}">{{page.banner_button2_text}}</a>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <div class="d-flex mb-3">
+            <a class="flex-fill btn btn-warning btn-primary btn-lg" type="button" href="{{page.banner_button3_link}}">{{page.banner_button3_text}}</a>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div class="container-fluid information-container">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-lg-4 my-5 text-center">
+        <h2 class="display-6 mb-5">{{page.information_title}}</h2>
+        <div class="row nav nav-pills" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
+          <div class="col-3 col-lg-12 nav-item my-3 mx-auto px-0">
+            <button class="btn btn-warning nav-link active mx-auto" id="v-tabs-residents-tab" data-bs-toggle="pill"
+              data-bs-target="#v-tabs-residents" aria-controls="v-tabs-residents"
+              aria-selected="true">{{page.residents_button_text}}</button>
+          </div>
+          <div class="col-3 col-lg-12 nav-item my-3 mx-auto px-0">
+            <button class="btn btn-warning nav-link mx-auto" id="v-tabs-businesses-tab" data-bs-toggle="pill"
+              data-bs-target="#v-tabs-businesses" aria-controls="v-tabs-businesses"
+              aria-selected="false">{{page.businesses_button_text}}</button>
+          </div>
+          <div class="col-3 col-lg-12 nav-item my-3 mx-auto px-0">
+            <button class="btn btn-warning nav-link mx-auto" id="v-tabs-visitors-tab" data-bs-toggle="pill"
+              data-bs-target="#v-tabs-visitors" aria-controls="v-tabs-visitors" aria-selected="false">{{page.visitors_button_text}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 my-3">
+        <div class="tab-content" id="v-tabs-tabContent">
+          <div class="tab-pane fade show active" id="v-tabs-residents" role="tabpanel"
+            aria-labelledby="v-tabs-residents-tab">
+            <div class="container">
+              <div class="row mb-4">
+<div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.residents_small_item1_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.residents_small_item1_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.residents_small_item1_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.residents_small_item2_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.residents_small_item2_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.residents_small_item2_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.residents_small_item3_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.residents_small_item3_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.residents_small_item3_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.residents_small_item4_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.residents_small_item4_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.residents_small_item4_text}}</h4>
+                    </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-6 text-center mb-3 mini-image">
+                  <a href="{{page.residents_large_item1_link}}" style="color: black; text-decoration: none">
+                  <img class="img-fluid" src="{{res_1_img.url}}" alt="placeholder" />
+                  <h4>{{page.residents_large_item1_text}}</h4>
+                  <p>{{page.residents_large_item1_subtext}}</p>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 text-center mb-3 mini-image">
+                 <a href="{{page.residents_large_item2_link}}" style="color: black; text-decoration: none">
+                  <img class="img-fluid" src="{{res_2_img.url}}" alt="placeholder" />
+                  <h4>{{page.residents_large_item2_text}}</h4>
+                  <p>{{page.residents_large_item2_subtext}}</p>
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-tabs-businesses" role="tabpanel" aria-labelledby="v-tabs-businesses-tab">
+            <div class="container">
+              <div class="row mb-4">
+              <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.businesses_small_item1_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.businesses_small_item1_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.businesses_small_item1_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.businesses_small_item2_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.businesses_small_item2_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.businesses_small_item2_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.businesses_small_item3_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.businesses_small_item3_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.businesses_small_item3_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.businesses_small_item4_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.businesses_small_item4_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.businesses_small_item4_text}}</h4>
+                    </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-6 text-center mb-3 mini-image">
+                  <a href="{{page.businesses_large_item1_link}}" style="color: black; text-decoration: none">
+                  <img class="img-fluid" src="{{res_1_img.url}}" alt="placeholder" />
+                  <h4>{{page.businesses_large_item1_text}}</h4>
+                  <p>{{page.businesses_large_item1_subtext}}</p>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 text-center mb-3 mini-image">
+                 <a href="{{page.businesses_large_item2_link}}" style="color: black; text-decoration: none">
+                  <img class="img-fluid" src="{{res_2_img.url}}" alt="placeholder" />
+                  <h4>{{page.businesses_large_item2_text}}</h4>
+                  <p>{{page.businesses_large_item2_subtext}}</p>
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-tabs-visitors" role="tabpanel" aria-labelledby="v-tabs-visitors-tab">
+            <div class="container">
+              <div class="row mb-4">
+              <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.visitors_small_item1_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.visitors_small_item1_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.visitors_small_item1_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.visitors_small_item2_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.visitors_small_item2_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.visitors_small_item2_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.visitors_small_item3_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.visitors_small_item3_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.visitors_small_item3_text}}</h4>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 text-center mb-3">
+                  <a href="{{page.visitors_small_item4_link}}" style="color: black; text-decoration: none">
+                  <i class="fa-solid {{page.visitors_small_item4_icon}} bg-dark-subtle website-icon"></i>
+                  <h4>{{page.visitors_small_item4_text}}</h4>
+                    </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-6 text-center mb-3 mini-image">
+                  <a href="{{page.visitors_large_item1_link}}" style="color: black; text-decoration: none">
+                  <img class="img-fluid" src="{{res_1_img.url}}" alt="placeholder" />
+                  <h4>{{page.visitors_large_item1_text}}</h4>
+                  <p>{{page.visitors_large_item1_subtext}}</p>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 text-center mb-3 mini-image">
+                 <a href="{{page.visitors_large_item2_link}}" style="color: black; text-decoration: none">
+                  <img class="img-fluid" src="{{res_2_img.url}}" alt="placeholder" />
+                  <h4>{{page.visitors_large_item2_text}}</h4>
+                  <p>{{page.visitors_large_item2_subtext}}</p>
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="container-fluid popular-services">
+    <div class="container my-5">
+      <div class="row py-5">
+        <div class="col-12 col-lg-4 text-center my-2 order-lg-5 d-flex">
+          <h2 class="display-6 mb-5 m-auto">{{page.popular_pages_title}}</h2>
+        </div>
+        <div class="col-6 col-lg-2 text-center my-2">
+             <a href="{{page.popular_pages_item1_link}}" style="color: black; text-decoration: none">
+          <i class="fa-solid {{page.popular_pages_item1_icon}} bg-dark-subtle website-icon website-icon-invert"></i>
+          <h4>{{page.popular_pages_item1_text}}</h4>
+             </a>
+        </div>
+        <div class="col-6 col-lg-2 text-center my-2">
+             <a href="{{page.popular_pages_item2_link}}" style="color: black; text-decoration: none">
+          <i class="fa-solid {{page.popular_pages_item2_icon}} bg-dark-subtle website-icon website-icon-invert"></i>
+          <h4>{{page.popular_pages_item2_text}}</h4>
+             </a>
+        </div>
+        <div class="col-6 col-lg-2 text-center my-2">
+             <a href="{{page.popular_pages_item3_link}}" style="color: black; text-decoration: none">
+          <i class="fa-solid {{page.popular_pages_item3_icon}} bg-dark-subtle website-icon website-icon-invert"></i>
+          <h4>{{page.popular_pages_item3_text}}</h4>
+             </a>
+        </div>
+        <div class="col-6 col-lg-2 text-center my-2">
+             <a href="{{page.popular_pages_item4_link}}" style="color: black; text-decoration: none">
+          <i class="fa-solid {{page.popular_pages_item4_icon}} bg-dark-subtle website-icon website-icon-invert"></i>
+          <h4>{{page.popular_pages_item4_text}}</h4>
+             </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid updates-container">
+  <div class="container my-5">
+    <div class="col-12 col-lg-10 my-2 latest-updates">
+      <h2 class="display-6 mb-5 text-center">Latest Updates</h2>
+      <h3>Headline 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis mauris eu ultrices sollicitudin. Donec
+        sodales interdum sodales. Nullam commodo odio et lacus congue congue.</p>
+      <h3>Headline 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed convallis mauris eu ultrices sollicitudin. Donec
+        sodales interdum sodales. Nullam commodo odio et lacus congue congue.</p>
+    </div>
+  </div>
+  </div>
 
 {% endblock content %}

@@ -1,0 +1,1009 @@
+.top-nav-list>li,
+.top-nav-search-bar,
+.top-nav-search-button {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+
+.top-nav-list>li {
+    background: none;
+    border: none;
+}
+
+.top-nav-search-bar {
+    border-color: black;
+}
+
+.btn {
+    background-color: darkorange;
+    border-color: darkorange;
+    color: white;
+}
+
+.top-nav-search-button {
+    border: none;
+}
+
+.main-navbar {
+    /* height: 8rem !important; */
+    /* padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important; */
+    background-color: white !important;
+}
+
+.main-navbar-nav>li {
+    font-size: larger;
+    text-align: center;
+    font-weight: 450;
+    line-height: 1.2;
+}
+
+.navbar-logo {
+    height: 3.5rem;
+}
+
+.jumbotron {
+    min-height: 500px;
+    color: white;
+}
+
+.jumbotron-container {
+    /* background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)); */
+}
+
+.website-icon {
+    background: #eeeeee !important;
+    border-radius: 25px;
+    padding: 1rem;
+    font-size: 50px;
+    margin-bottom: 0.5rem;
+}
+
+.menu-icon {
+    border-radius: 20px;
+    padding: 1rem;
+    font-size: 40px;
+    margin-bottom: 0.5rem;
+    width: 66px;
+}
+
+.menu-text > h5 {
+    /* font-size: 25px; */
+}
+
+.menu-text > p {
+    /* font-size: 20px; */
+}
+
+body {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.btn-warning {
+    color: white;
+}
+
+.btn-warning:hover {
+    color: white;
+}
+
+.nav-pills .nav-link.active {
+    color: white;
+    background-color: darkgoldenrod !important;
+}
+
+.mini-image {
+    margin-bottom: 1rem;
+}
+
+.mini-image>img {
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+}
+
+.mini-image>h4 {
+    font-weight: 400;
+}
+
+.mini-image>p {
+    font-weight: 300;
+}
+
+@media screen and (min-width: 1200px) {
+
+.dropdown-menu-center {
+    right: auto;
+    left: 50% !important;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.dropdown-menu-center-right {
+    right: auto;
+    left: 75% !important;
+    -webkit-transform: translate(-75%, 0);
+    -o-transform: translate(-75%, 0);
+    transform: translate(-75%, 0);
+}
+
+.dropdown-menu-right {
+    left: auto;
+    right: 0 !important;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
+}
+
+}
+/* .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
+/*} */
+
+@media screen and (max-width: 375px) {
+    .nav-pills>.nav-item {
+        /* margin-left: 0.005rem !important;
+        margin-right: 0.005rem !important;
+        padding-left: 0.005rem !important;
+        padding-right: 0.005rem !important; */
+    }
+
+    .nav-pills>.nav-item>.nav-link {
+        padding: 0.5rem;
+        font-size: small;
+    }
+
+    .menu-icon {
+        background: #eeeeee;
+        border-radius: 25px;
+        padding: 1rem;
+        font-size: 25px;
+        margin-bottom: 0.5rem;
+    }
+
+    .menu-text > h5 {
+        font-size: 16px;
+    }
+
+    .menu-text > p {
+        font-size: 12px;
+    }
+}
+
+.dropdown-menu > .row > div > a {
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 0.25rem;
+    border: transparent 3px dashed;
+}
+
+@keyframes fadeBackground {
+    from { background-color: #ffffff; }
+    to { background-color: #eeeeee; }
+  }
+
+.dropdown-menu > .row > div > a:hover {
+    background-color: #eeeeee;
+    /* animation: fadeBackground 1s;
+    animation-fill-mode: forwards; */
+}
+
+.dropdown-menu > .row > div > a:active {
+    background-color: #cccccc;
+    border: black 3px dashed;
+}
+
+@media screen and (max-width: 1200px) {
+    .offcanvas {
+        width: 300px !important;
+    }
+
+    .offcanvas-body {
+        padding: 0;
+    }
+
+    .dropdown-menu {
+        border: none;
+        margin: none;
+    }
+
+    .dropdown-menu > .row {
+        margin: 0;
+    }
+
+    .dropdown-menu > .row > div > a {
+        background-color: white;
+        border-radius: 0px;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+        max-width: 300px;
+    }
+
+    .navbar-nav .dropdown-menu {
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .main-navbar-nav > li > div > div > div {
+        background: white;
+    }
+
+    .menu-icon {
+        background: #eeeeee;
+        padding: 1rem;
+        font-size: 25px;
+        margin-bottom: 0.5rem;
+        width: 60px;
+    }
+
+    .menu-text > h5 {
+        font-size: 16px;
+    }
+
+    .menu-text > p {
+        font-size: 12px;
+    }
+
+    .main-navbar-nav>li>a {
+        margin-left: 0.5rem !important;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: larger;
+        font-weight: 300;
+    }
+}
+
+@media screen and (max-width: 1605px) {
+
+    .main-navbar-nav>li {
+        font-size: large;
+        text-align: left;
+        font-weight: 450;
+        line-height: 1.2;
+        background: white;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .main-navbar-nav>li>a {
+        margin-left: 0.5rem !important;
+    }
+
+    .navbar-brand>img {
+        max-width: 150px;
+        height: auto;
+    }
+}
+
+.dropdown-menu-med {
+    width: 350px;
+    padding: 1rem;
+}
+
+.dropdown-menu-wide {
+    width: 725px;
+    padding: 1rem;
+}
+
+.dropdown-menu-icons-only > li
+{
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    font-size: 16px;
+}
+
+.dropdown-menu-icons-only > li > a > i
+{
+    font-size: 25px;
+    width: 32px;
+}
+
+.dropdown-menu-icons-only > li > a > div
+{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.information-container {
+    background-image: url(static/images/info_banner_small.svg);
+    background-repeat: no-repeat;
+}
+
+.question-container {
+    background-image: url(static/images/question_banner_small.svg);
+    background-repeat: no-repeat;
+}
+
+.profile-container {
+    background-image: url(static/images/profile_banner_small.svg);
+    background-repeat: no-repeat;
+}
+
+.calendar-container {
+    background-image: url(static/images/calendar_banner_small.svg);
+    background-repeat: no-repeat;
+}
+
+
+.updates-container {
+    background-image: url(static/images/updates_banner_small.svg);
+    background-repeat: no-repeat;
+    background-position: 100%;
+}
+
+
+
+@media screen and (max-width: 991px) {
+    .jumbotron-container>h1 {
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        width: auto;
+    }
+}
+
+.popular-services {
+    background-color: #eeeeee !important;
+}
+
+.placeholder-image {
+    min-height: 250px;
+    border: 3px solid black;
+    border-radius: 20px;
+    font-size: 50px;
+    margin: auto;
+}
+
+.placeholder-image>i {
+    background-color: transparent !important;
+}
+
+.website-icon-invert {
+    background: white !important;
+}
+
+.latest-updates>h3,
+.latest-updates>p {
+    font-weight: 300;
+}
+
+.footer {
+    background: #333333;
+    color: white;
+}
+
+.tab-content {
+    display: flex;
+}
+
+.tab-content>.tab-pane {
+    display: block;
+    /* undo Bootstrap's "display: none;" */
+    visibility: hidden;
+    margin-right: -100%;
+    width: 100%;
+}
+
+.tab-content>.active {
+    visibility: visible;
+}
+
+@media (min-width: 1200px) {
+    .animate {
+      animation-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+
+
+  @keyframes slideInCenter {
+    0% {
+      transform: translateY(-1rem) translateX(-50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(00) translateX(-50%);
+      opacity: 1;
+    }
+    0% {
+      transform: translateY(-1rem) translateX(-50%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideInCenterRight {
+    0% {
+      transform: translateY(-1rem) translateX(-75%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(00) translateX(-75%);
+      opacity: 1;
+    }
+    0% {
+      transform: translateY(-1rem) translateX(-75%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      transform: translateY(-1rem) translateX(0%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(00) translateX(0%);
+      opacity: 1;
+    }
+    0% {
+      transform: translateY(-1rem) translateX(0%);
+      opacity: 0;
+    }
+  }
+
+  @-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
+    }
+    0% {
+      -webkit-transform: translateY(-1rem);
+      -webkit-opacity: 0;
+    }
+  }
+
+  .slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+  }
+
+  .dropdown-menu-center.slideIn {
+    -webkit-animation-name: slideInCenter;
+    animation-name: slideInCenter;
+  }
+
+  .dropdown-menu-center-right.slideIn {
+    -webkit-animation-name: slideInCenterRight;
+    animation-name: slideInCenterRight;
+  }
+
+  .dropdown-menu-right.slideIn {
+    -webkit-animation-name: slideInRight;
+    animation-name: slideInRight;
+  }
+}
+
+@media (min-width: 200px) {
+    .animate {
+      animation-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+
+  @-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
+    }
+    0% {
+      -webkit-transform: translateY(-1rem);
+      -webkit-opacity: 0;
+    }
+  }
+
+  .slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+  }
+
+}
+
+
+
+/*-----------------------------------------------------------------------*/
+/* Joyous Calendar */
+/*-----------------------------------------------------------------------*/
+
+.joy-view-choices {
+    float:                 right;
+    text-align:            right;
+}
+
+.joy-view-choices__link {
+}
+
+.joy-cal {
+    table-layout:          fixed;
+    border-spacing:        0;
+    border-collapse:       separate;
+    width:                 100%;
+    border-collapse:       collapse;
+}
+
+.joy-cal__head {
+}
+
+.joy-cal__heading {
+    border:                1px solid #aaa;
+}
+
+.joy-cal__period-heading {
+    display:               inline-block;
+    padding:               0 4ex;
+}
+
+a.joy-cal__period-ctrl {
+}
+
+.joy-cal__month-name {
+    display:               inline-block;
+    width:                 10ex;
+}
+
+.joy-cal__week-name {
+    display:               inline-block;
+    width:                 10ex;
+}
+
+.joy-cal__year-number {
+    display:               inline-block;
+    width:                 6ex;
+}
+
+.joy-cal__weekday {
+    border:                1px solid #aaa;
+}
+
+.joy-cal__body {
+}
+
+.joy-cal__no-day,
+.joy-cal__day {
+    width:                 14.285%;
+    position:              relative;
+    overflow:              hidden;
+    vertical-align:        top;
+    border:                1px solid #aaa;
+    height:150px;
+}
+
+.joy-cal__day--yesterday {
+}
+
+.joy-cal__day--lastweek {
+}
+
+.joy-cal__day--today {
+}
+
+.joy-cal__heading:last-child,
+.joy-cal__weekday:last-child,
+.joy-cal__day:last-child {
+}
+
+.joy-cal__week:last-child .joy-cal__day {
+}
+
+.joy-cal__week:last-child .joy-cal__day:first-child {
+}
+
+.joy-cal__week:last-child .joy-cal__day:last-child {
+}
+
+.joy-cal__day-title {
+    min-height:            25px;
+    margin:                0;
+    padding:               2px 0px 0px 0px;
+}
+
+.joy-cal__holiday-name {
+    margin:                0;
+    padding:               2px 0 1px 30px;
+}
+
+.joy-cal--weekly .joy-cal__holiday-name {
+    padding-left:          0px;
+}
+
+.joy-cal__date {
+    padding:               0px 0 1px 2px;
+    float:                 left;
+}
+
+.joy-cal--weekly .joy-cal__date {
+    float:                 none;
+}
+
+.joy-cal__weekday--sun,
+.joy-cal__date--holiday,
+.joy-cal__date--sun {
+}
+
+.joy-days-events {
+    clear:                 both;
+    min-width:             8ex;
+}
+.joy-cal--weekly .joy-days-events {
+    min-height:            64ex;
+}
+.joy-days-events__event {
+    display:               block;
+    line-height:           16px;
+    padding-left:          3ex;
+    text-indent:          -3ex;
+}
+a.joy-days-events__event {
+    text-decoration: none;
+    font-weight: 300;
+    font-size: large;
+    color: blue;
+}
+
+a.joy-days-events__event:active {
+}
+
+.joy-days-events__event-time {
+    padding:               0 1ex 0 0;
+}
+
+.joy-days-events__event-title {
+}
+
+.joy-days-events__event-text {
+}
+
+a.joy-cal__read-more {
+    position:              absolute;
+    bottom:                0;
+    right:                 0;
+    text-align:            right;
+    margin:                0px;
+    padding:               5px;
+}
+
+.joy-overlay {
+    position:              fixed;
+    top:                   0;
+    left:                  0;
+    width:                 100%;
+    height:                100%;
+    z-index:               2;
+    display:               none;
+}
+
+.joy-popup__outer {
+    position:              absolute;
+    top:                   0;
+    left:                  0;
+    width:                 100%;
+    z-index:               3;
+    display:               none;
+}
+
+.joy-popup__content {
+    position:              relative;
+    padding:               20px;
+    max-width:             500px;
+    width:                 90%;
+    height:                auto;
+    margin:                10px auto 10px auto;
+    overflow:              auto;
+    background:            white;
+    border:                1px solid #aaa;
+}
+
+a.joy-popup__close {
+    position:              absolute;
+    top:                   5px;
+    right:                 20px;
+}
+
+.joy-export {
+    padding-top:           22px;
+}
+
+/*-----------------------------------------------------------------------*/
+/* Joyous MiniCalendar */
+/*-----------------------------------------------------------------------*/
+
+.joy-minical {
+    border-collapse:       collapse;
+}
+
+.joy-minical__heading {
+    padding:               5px;
+    font-weight:           bold;
+    text-align:            center;
+}
+
+.joy-minical__month-heading {
+    display:               inline-block;
+    padding:               0 0 0 4ex;
+    text-align:            left;
+}
+
+.joy-minical__month-name {
+    display:               inline-block;
+    width:                 10ex;
+}
+
+.joy-minical__year-number {
+    display:               inline-block;
+    width:                 6ex;
+}
+
+.joy-minical__month-nav {
+    display:               inline-block;
+    padding:               0 4ex 0 0;
+    float:                 right;
+}
+
+.joy-minical__weekday {
+    padding:               5px;
+    font-weight:           bold;
+}
+
+.joy-minical__weekday--sun, {
+}
+
+.joy-minical__day {
+}
+
+.joy-minical__no-day {
+}
+
+.joy-minical__day-title {
+    margin:                0;
+    padding:               8px 8px 9px 8px;
+    float:                 right;
+}
+
+.joy-minical__day-title--today {
+}
+
+.joy-minical__date--event {
+    font-weight:           bold;
+}
+
+a.joy-minical__date--event-link {
+    font-weight:           bold;
+}
+
+a.joy-minical__date--event-link:hover {
+}
+
+.joy-minical__date--holiday,
+.joy-minical__date--sun {
+
+}
+
+a.joy-minical__date--holiday,
+a.joy-minical__date--sun {
+}
+
+a.joy-minical__date--holiday:hover,
+a.joy-minical__date--sun:hover {
+}
+
+/*-----------------------------------------------------------------------*/
+/* Joyous Events */
+/*-----------------------------------------------------------------------*/
+
+.joy-ev-status {
+    float:                 right;
+}
+
+.joy-ev-item {
+}
+
+.joy-field {
+    display:               block;
+}
+
+a.joy-img-link {
+    background-color:      transparent;
+    text-decoration:       none;
+    outline:               0;
+}
+
+.joy-img-link__img {
+}
+
+.joy-img__img {
+}
+
+.joy-ev-who {
+}
+
+.joy-ev-when,
+.joy-ev-next-on,
+.joy-ev-where {
+}
+
+.joy-ev-from-when {
+}
+
+.joy-ev-extra {
+}
+
+.joy-ev-related {
+}
+
+.joy-ev-related__item {
+}
+
+.joy-ev-related__link {
+}
+
+.joy-ev-related__overrides {
+}
+
+.joy-ev-details {
+}
+
+/*-----------------------------------------------------------------------*/
+/* Events This Week*/
+/*-----------------------------------------------------------------------*/
+
+.joy-this-week {
+    float:                 right;
+    margin:                30px 50px 10px 20px;
+    overflow:              hidden;
+}
+
+.joy-this-week__title {
+    padding:               5px;
+}
+
+.joy-this-week__day {
+    margin:                0;
+    padding:               4px 10px 4px 20px;
+}
+
+.joy-this-week__day--in-past {
+}
+
+.joy-this-week__day--today {
+    padding:               8px 10px 6px 20px;
+}
+
+.joy-this-week__day-title {
+    display:               inline-block;
+    vertical-align:        top;
+    width:                 110px;
+}
+
+.joy-this-week__weekday {
+    margin:                0;
+    padding:               0;
+}
+
+.joy-this-week__date {
+}
+
+.joy-this-week__days-events {
+    display:               inline-block;
+    width:                 200px;
+    padding:               3px 0 0 0;
+}
+
+.joy-this-week__holiday-name {
+    display:               block;
+    font-size:             12px;
+    line-height:           16px;
+}
+
+.joy-this-week__cal {
+    display:               block;
+    text-align:            center;
+    padding:               2px 1px 4px 1px;
+}
+
+/*-----------------------------------------------------------------------*/
+/* Pagination */
+/*-----------------------------------------------------------------------*/
+
+.joy-pg {
+  display:                 inline-block;
+  padding-left:            0;
+}
+
+.joy-pg__page {
+    display:               inline;
+}
+
+.joy-pg__ctrl,
+.joy-pg__num {
+      position:            relative;
+      float:               left;
+      padding:             10px;
+      text-decoration:     none;
+      border:              1px solid #aaa;
+      margin-left:         -1px;
+}
+
+.joy-pg__ctrl--disabled {
+}
+
+.joy-pg__num--active {
+}
+
+.information-column
+{
+    text-decoration: none;
+    font-weight: 300;
+    font-size: large;
+}
+
+.information-column > h2
+{
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.profile > div {
+    background-color: #eeeeee; border-radius: 20px;
+    margin: 1rem;
+}
+
+@media screen and (max-width: 991px) {
+    .profile > div
+    {
+        padding: 0;
+        width: 270px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container {
+        padding-left:0; padding-right:0;
+    }
+}
+
+@media print and (max-width: 600px){
+    .main-navbar {
+        display: none;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .joy-export{
+        display: none;
+    }
+
+    .joy-cal__no-day,
+    .joy-cal__day {
+    width:                 14.285%;
+    position:              relative;
+    overflow:              hidden;
+    vertical-align:        top;
+    border:                1px solid #aaa;
+    height:100px;
+    }
+a.joy-days-events__event {
+    text-decoration: none;
+    font-weight: 300;
+    font-size: xx-small !important;
+    color: blue;
+}
+    }
