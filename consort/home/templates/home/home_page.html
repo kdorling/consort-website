@@ -17,6 +17,10 @@ Delete the line below if you're just getting started and want to remove the welc
   {% image page.banner_background_image fill-1600x750 as bg_img %}
   {% image page.residents_large_item1_image fill-400x240 as res_1_img %}
   {% image page.residents_large_item2_image fill-400x240 as res_2_img %}
+  {% image page.businesses_large_item1_image fill-400x240 as bus_1_img %}
+  {% image page.businesses_large_item2_image fill-400x240 as bus_2_img %}
+  {% image page.visitors_large_item1_image fill-400x240 as vis_1_img %}
+  {% image page.visitors_large_item2_image fill-400x240 as vis_2_img %}
 
  <div class="p-5 mb-5 bg-body-tertiary jumbotron d-flex align-items-center" style="background-size: cover !important; background: center no-repeat linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('{{ bg_img.url }}');">
     <span class="container-fluid py-5 rounded-3 jumbotron-container">
@@ -143,14 +147,14 @@ Delete the line below if you're just getting started and want to remove the welc
               <div class="row">
                 <div class="col-12 col-sm-6 text-center mb-3 mini-image">
                   <a href="{{page.businesses_large_item1_link}}" style="color: black; text-decoration: none">
-                  <img class="img-fluid" src="{{res_1_img.url}}" alt="placeholder" />
+                  <img class="img-fluid" src="{{bus_1_img.url}}" alt="placeholder" />
                   <h4>{{page.businesses_large_item1_text}}</h4>
                   <p>{{page.businesses_large_item1_subtext}}</p>
                     </a>
                 </div>
                 <div class="col-12 col-sm-6 text-center mb-3 mini-image">
                  <a href="{{page.businesses_large_item2_link}}" style="color: black; text-decoration: none">
-                  <img class="img-fluid" src="{{res_2_img.url}}" alt="placeholder" />
+                  <img class="img-fluid" src="{{bus_2_img.url}}" alt="placeholder" />
                   <h4>{{page.businesses_large_item2_text}}</h4>
                   <p>{{page.businesses_large_item2_subtext}}</p>
                     </a>
@@ -189,14 +193,14 @@ Delete the line below if you're just getting started and want to remove the welc
               <div class="row">
                 <div class="col-12 col-sm-6 text-center mb-3 mini-image">
                   <a href="{{page.visitors_large_item1_link}}" style="color: black; text-decoration: none">
-                  <img class="img-fluid" src="{{res_1_img.url}}" alt="placeholder" />
+                  <img class="img-fluid" src="{{vis_1_img.url}}" alt="placeholder" />
                   <h4>{{page.visitors_large_item1_text}}</h4>
                   <p>{{page.visitors_large_item1_subtext}}</p>
                     </a>
                 </div>
                 <div class="col-12 col-sm-6 text-center mb-3 mini-image">
                  <a href="{{page.visitors_large_item2_link}}" style="color: black; text-decoration: none">
-                  <img class="img-fluid" src="{{res_2_img.url}}" alt="placeholder" />
+                  <img class="img-fluid" src="{{vis_2_img.url}}" alt="placeholder" />
                   <h4>{{page.visitors_large_item2_text}}</h4>
                   <p>{{page.visitors_large_item2_subtext}}</p>
                     </a>
