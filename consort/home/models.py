@@ -68,7 +68,7 @@ def create_large_information_link(description):
 
     return item_text, item_subtext, item_image, item_link
 
-
+# From: https://www.yellowduck.be/posts/creating-redirector-page-wagtail
 class RedirectorPage(Page):
     redirect_to = models.URLField(
         help_text='The URL to redirect to',
