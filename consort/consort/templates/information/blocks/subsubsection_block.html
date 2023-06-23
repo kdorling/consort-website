@@ -1,0 +1,16 @@
+{% load wagtailcore_tags %}
+
+<!-- Subsubsection Block -->
+<div class="row">
+    <div class="col">
+        <h4 id="{{ value.anchor }}" class="cc-header">
+            {{ value.header }}
+        </h4>
+        {{value.content}}
+    </div>
+</div>
+
+{% for block in value.subcontent %}
+    {% include_block block %}
+{% endfor %}
+<!-- End Subsubsection Block -->
