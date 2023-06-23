@@ -3,7 +3,7 @@ from wagtail.admin.panels import FieldPanel, PageChooserPanel, MultiFieldPanel
 from django.shortcuts import redirect
 from django.utils.html import format_html
 
-from wagtail.models import Page
+from base.models import BasePage
 
 
 def create_small_information_link(description):
@@ -69,13 +69,13 @@ def create_large_information_link(description):
     return item_text, item_subtext, item_image, item_link
 
 # From: https://www.yellowduck.be/posts/creating-redirector-page-wagtail
-class RedirectorPage(Page):
+class RedirectorPage(BasePage):
     redirect_to = models.URLField(
         help_text='The URL to redirect to',
         blank=False,
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = BasePage.content_panels + [
         FieldPanel('redirect_to', classname="full"),
     ]
 
@@ -98,7 +98,7 @@ class RedirectorPage(Page):
         return redirect(self.redirect_to)
 
 
-class HomePage(Page):
+class HomePage(BasePage):
     # Banner section
 
     banner_title = models.CharField(
@@ -283,7 +283,7 @@ class HomePage(Page):
     popular_pages_item4_text, popular_pages_item4_icon, popular_pages_item4_link = \
         create_small_information_link("fourth popular page")
 
-    content_panels = Page.content_panels + [
+    content_panels = BasePage.content_panels + [
         MultiFieldPanel([
             FieldPanel("banner_title"),
             FieldPanel("banner_subtitle"),

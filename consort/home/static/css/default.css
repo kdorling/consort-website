@@ -312,32 +312,25 @@ body {
 
 
 .information-container {
-    /* background-image: url(static/images/info_banner_small.svg); */
     background-repeat: no-repeat;
 }
 
 .question-container {
-    /* background-image: url(static/images/question_banner_small.svg); */
     background-repeat: no-repeat;
 }
 
 .profile-container {
-    /* background-image: url(static/images/profile_banner_small.svg); */
     background-repeat: no-repeat;
 }
 
 .calendar-container {
-    /* background-image: url(static/images/calendar_banner_small.svg); */
     background-repeat: no-repeat;
 }
 
-
 .updates-container {
-    /* background-image: url(static/images/updates_banner_small.svg); */
     background-repeat: no-repeat;
     background-position: 100%;
 }
-
 
 
 @media screen and (max-width: 991px) {
