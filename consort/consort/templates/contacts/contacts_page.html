@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+  <div class="container">
+    <h1>Profiles</h1>
+
+    <div class="row">
+      {% for contact in page.contacts %}
+        <div class="col-md-3">
+            {% include_block contact %}
+        </div>
+      {% empty %}
+        <p>No profiles found.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
