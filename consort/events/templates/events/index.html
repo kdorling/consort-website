@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags format_date create_id %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Upcoming Events</h1>
+    <div class="container my-5">
+        {% if event_list %}
+        {% for event in event_list %}
+        <div class="modal fade" id="{% create_id event.name %}"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-theme="dark">
+            <div class="modal-dialog modal-dialog-image modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header" style="border-bottom: none">
+                        <div style="color: lightgray">{{event.name }}</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-1">
+                        {% image event.image original as original_image%}
+                        <img src="{{ original_image.url }}" class="img-fluid" alt="{{ original_image.alt }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-4 mb-4" style="background-color: #eeeeee; border-radius: 20px;">
+            <div class="col-lg-3 col-sm-5 d-flex">
+                {% if event.image %}
+
+                <div class="m-auto">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#{% create_id event.name %}">
+                        {% image event.image width-200 as small_image %}
+                        <img src="{{ small_image.url }}" class="img-fluid" alt="{{ small_image.alt }}">
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-9 col-sm-7">
+                <div class="d-lg-flex">
+
+                    <h2 class="my-4">{{event.name}}</h2>
+                    <div style="margin-left: auto; margin-right: 0; text-align: right;" class="my-4">
+                        <div style="font-weight: 400; font-size: 20px;">
+                            From {% format_date event.start_time '%Y-%m-%d %H:%M' %}
+                        </div>
+                        <div style="font-weight: 400; font-size: 20px;">
+                            to {% format_date event.end_time '%Y-%m-%d %H:%M' %}
+                        </div>
+                    </div>
+                </div>
+                {% if event.schedule %}
+                <div class="d-flex mb-4">
+                    <i class="fa-solid fa-file-lines fa-xl my-auto"></i><a href="{{event.schedule.url}}"
+                        style="color:black; text-decoration: none; font-weight: 400; font-size: 22px"
+                        class="mx-3 my-auto">Learn more</a>
+                </div>
+                {% endif %}
+                {{ event.description | richtext}}
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+    <p>No upcoming events.</p>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
