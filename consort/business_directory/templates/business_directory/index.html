@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags format_date create_id %}
+
+{% block content %}
+<div class="container mx-auto my-5">
+    <h1 class="my-5">Business Directory</h1>
+    <div class="row my-5">
+        <div class="col-xl-6">
+            <input id="search" class="form-control" type="text" placeholder="Search..."/>
+        </div>
+        <div class="col-xl-6">
+            <select id="category" class="form-select">
+                <option value="all">All</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+    <div id="business-container" class="container">
+
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+
+document.addEventListener('DOMContentLoaded', init, false);
+document.getElementById("search").addEventListener("keyup", function(event) {
+    render_businesses(document.getElementById("search").value);
+});
+document.getElementById("category").addEventListener("mouseup", function(event) {
+    render_businesses(document.getElementById("search").value);
+});
+
+let parsed_data = [];
+let tag_dictionary = {};
+let sorted_categories = [];
+
+const getKeyByValue = (obj, value) => 
+        Object.keys(obj).find(key => obj[key] === value);
+
+function not_in_search(search, c)
+{
+    return search
+             && !c["name"].toLowerCase().includes(search.toLowerCase())
+             && !c["description"].toLowerCase().includes(search.toLowerCase())
+             && !c["contact_name"].toLowerCase().includes(search.toLowerCase())
+}
+
+function render_businesses(search)
+{
+    let result = "";
+    let category_empty = {};
+    console.log(search);
+
+    let container = document.getElementById("business-container");
+
+    for(let k in tag_dictionary) {
+
+       category_empty[k] = true;
+
+        parsed_data.forEach((c,i) => {
+
+        console.log(tag_dictionary[k], c["tags"]);
+
+        if (c["tags"].includes(k) && !not_in_search(search, c)) {
+            
+            category_empty[k] = false;
+        }
+    });
+
+    }
+
+    for (let category_value in sorted_categories) {
+        let k = getKeyByValue(tag_dictionary, sorted_categories[category_value]);
+
+        if (document.getElementById("category").value != "-1" && k != document.getElementById("category").value) {
+            continue;
+        }
+
+        if (category_empty[k] === true) {
+            continue;
+        }
+
+        result += `<h2 class="mt-4">${tag_dictionary[k]}</h2><hr/><div class="row">`;
+
+    parsed_data.forEach((c,i) => {
+
+    console.log(tag_dictionary[k], c["tags"]);
+
+    if (c["tags"].includes(k)) {
+
+        if (not_in_search(search, c)) {
+            return;
+        }
+
+        result += `
+            <div class="col-lg-6">
+                <h3 class="my-4">
+                    ${c["name"]}
+                </h3>
+        `;
+        if (c.contact_name) {
+            result += `<p><b>Contact Name:</b> ${c.contact_name}</p>`;
+        }
+        result += `
+                <p>
+                    <b>Address:</b>
+                    <p>
+                        ${c.address.replace("\n", "<br/>")}
+                    </p>
+                </p>`;
+        if (c.website) {
+            result += `<p><b>Website:</b> ${c.website}</p>`;
+        }
+        if (c.phone_number) {
+            result += `<p><b>Phone Number:</b> ${c.phone_number}</p>`;
+        }
+        if (c.fax_number) {
+            result += `<p><b>Fax Number:</b> ${c.fax_number}</p>`;
+        }
+        if (c.description) {
+            result += `<p> ${c.description}</p>`;
+        }
+        result += `</div>`;
+    }
+    });
+    result += `</div>`;
+}
+
+    container.innerHTML = result;
+}
+
+// TODO: Add way to refresh business data
+async function init() {
+    let response = await fetch("/directory/tags/", {cache: "no-store"});
+    let data = await response.json();
+    tag_dictionary = data.tags;
+
+    // get array of tag_dictionary values
+    sorted_categories = Object.values(tag_dictionary).sort();
+
+    response = await fetch("/directory/businesses/?&limit=100", {cache: "no-store"});
+    data = await response.json();
+    parsed_data = data.businesses.map((c) => JSON.parse(c));
+
+    parsed_data.forEach((c,i) => {
+        c["tags"] = c["tags"].map((t) => String(t.tag));
+    });
+
+    let select = document.getElementById("category");
+    for (a in select.options) {
+        select.options.remove(0);
+    }
+    select.innerHTML += `<option value="-1">All</option>`;
+    for (let category_value in sorted_categories) {
+        let k = getKeyByValue(tag_dictionary, sorted_categories[category_value]);
+        select.innerHTML += `<option value="${k}">${tag_dictionary[k]}</option>`;
+    }
+
+    render_businesses();
+}
+
+</script>
+{% endblock %}
