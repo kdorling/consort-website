@@ -1,0 +1,16 @@
+<div class="dropdown">
+    <button class="btn btn-lg btn-bd-primary dropdown-toggle rounded-top:focus" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {% if value.title %}
+        {{ value.title }}
+        {% else %}
+        {% block title %}Dropdown Title{% endblock %}
+        {% endif %}
+    </button>
+    <div class="dropdown-menu bd-dropdown-menu p-4 mt-0 rounded-0 rounded-bottom rounded-end bg-white border-gray-400">
+        {% if items %}
+        {% include "components/menu_item_card.html" %}      
+        {% else %}
+        {% block content %}Dropdown Content{% endblock %}
+        {% endif %}
+    </div>
+</div>
