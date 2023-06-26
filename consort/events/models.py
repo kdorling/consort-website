@@ -28,6 +28,8 @@ class EventBase(WorkflowMixin, DraftStateMixin, LockableMixin, RevisionMixin, mo
     )
 
     description = RichTextField(
+        blank=True,
+        null=True,
         help_text="The description of the event"
     )
 

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "contacts",
     "flex",
     "information",
+    "business_directory",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",

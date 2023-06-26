@@ -6,4 +6,5 @@ from . import views
 urlpatterns = [
     # /events/
     path("", views.index, name="index"),
+    path("calendar", views.calendar, name="calendar"),
 ]

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div id="modal-content" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="container">
+    <h1 class="my-5">Calendar</h1>
+    <div id='calendar'></div>
+    <!-- <div>{{event_list}}</div> -->
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script>
+
+        function renderModal(event) {
+            let modal = document.getElementById('modal-content');
+            let result = `
+            <div class="modal-header">
+            <h5 class="modal-title">${event.title}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><b>Start:</b> ${new Date(event.start).toLocaleString()}</p>
+        <p><b>End:</b> ${new Date(event.end).toLocaleString()}</p>`;
+        
+        if (event.extendedProps.description) {
+         result+=`<hr/>${event.extendedProps.description}`;
+        }
+      result += `</div>`;
+
+            modal.innerHTML = result;
+
+            const bootstrap_modal = new bootstrap.Modal(document.getElementById('modal'));
+            bootstrap_modal.show();
+        }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var parameters = {{event_list|safe}};
+        parameters["eventClick"] = (info) => {
+            renderModal(info.event);
+        }
+        parameters["themeSystem"] = "bootstrap5";
+        parameters["headerToolbar"] = {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
+        }
+        var calendar = new FullCalendar.Calendar(calendarEl, parameters);
+        calendar.render();
+      });
+
+    </script>
+{% endblock %}
+
+{% block extra_css %}
+<style type="text/css">
+    a:hover {
+     cursor:pointer;
+    }
+   </style>
+{% endblock %}
