@@ -1,23 +1,47 @@
 {% load static menu_tags %}
 {% get_menu as menu_items %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <div class="navbar nav">
-            {% include "components/weather_dropdown.html" %}
-            {% include "components/air_quality_dropdown.html" %}
-            {% include "components/electric_vehicle_dropdown.html" %}
-        </div>
-        <div class="navbar nav">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
-            <a href="https://www.facebook.com/villageofconsort" target="_blank" rel="noopener noreferrer"
-                class="mt-auto mb-auto btn btn-lg btn-bd-primary px-2">
-                <i class="fa-brands fa-square-facebook mt-auto mb-auto fa-2xl flex-fill bd-highlight"></i>
-            </a>
-        </div>
+<!-- Main navigation container -->
+<nav
+  class="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 shadow-lg dark:bg-neutral-600 lg:py-4"
+  data-te-navbar-ref>
+  <div class="flex w-full flex-wrap items-center justify-between px-3">
+    <button
+    class="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
+    type="button"
+    data-te-sidenav-toggle-ref
+  data-te-target="#sidenav-1"
+  aria-controls="#sidenav-1"
+  aria-haspopup="true">
+    <!-- Hamburger icon -->
+    <span class="[&>svg]:w-7">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="h-7 w-7">
+        <path
+          fill-rule="evenodd"
+          d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+  </button>
+  <!-- class="!visible mt-2 hidden flex-grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto" -->
+    <div
+    class="lg:!relative lg:visible lg:!h-auto lg:!w-auto lg:!bg-transparent lg:!shadow-none lg:overflow-visible lg:!translate-x-0 fixed left-0 top-0 z-[1035] h-full w-60 -translate-x-full bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+
+    id="sidenav-1"
+    data-te-sidenav-init
+  data-te-sidenav-hidden="true"
+  data-te-sidenav-position="fixed">
+    <div class="list-style-none mr-auto flex flex-col pl-0 lg:mt-1 lg:flex-row">
+      {% include "components/weather_dropdown.html" %}
+      {% include "components/air_quality_dropdown.html" %}
+      {% include "components/electric_vehicle_dropdown.html" %}
     </div>
+    </div>
+  </div>
 </nav>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

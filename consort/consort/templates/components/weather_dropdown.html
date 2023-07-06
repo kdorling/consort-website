@@ -1,17 +1,21 @@
 {% extends "components/dropdown.html" %}
 
+{% block id %}
+weather-dropdown
+{% endblock %}
+
+{% block labelledby %}
+weather-dropdown
+{% endblock %}
+
 {% block title %}
 <i class="fa-solid fa-sun me-2"></i>12°C
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Weather Forecast</h1>
-        </div>
-    </div>
-    <div class="row py-3">
+<div class="px-3 py-3">
+    <div class="text-3xl font-semibold mb-5">Weather Forecast</div>
+    <div class="columns-5 mb-5"> 
         <div class="col">
             <p class="text-body-secondary">Sunny</p>
         </div>
@@ -28,6 +32,6 @@
             <p class="text-body-secondary">Sunny</p>
         </div>
     </div>
-    <div class="text-body-secondary">Weather data from openweather</div>
+    <div>Weather data from openweather</div>
 </div>
 {% endblock %}

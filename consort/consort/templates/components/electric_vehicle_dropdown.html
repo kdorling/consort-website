@@ -1,16 +1,20 @@
 {% extends "components/dropdown.html" %}
 
+{% block id %}
+electric-vehicle-dropdown
+{% endblock %}
+
+{% block labelledby %}
+electric-vehicle-dropdown
+{% endblock %}
+
 {% block title %}
-<i class="fa-solid fa-charging-station fa-xl"></i>
+<i class="fa-solid fa-charging-station fa-xl"></i>&nbsp;
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Electric Vehicle Charging Information</h1>
-        </div>
-    </div>
-    <div class="text-body-secondary">Electric vehicle charging information goes here</div>
+<div class="px-3 py-3">
+    <div class="text-3xl font-semibold mb-5">Electric Vehicle Charging Information</div>
+    <div>Charging information goes here</div>
 </div>
 {% endblock %}

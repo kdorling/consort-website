@@ -1,16 +1,39 @@
+<div class="relative mr-5" data-te-dropdown-ref>
 <div class="dropdown">
-    <button class="btn btn-lg btn-bd-primary dropdown-toggle rounded-top:focus" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <button
+          class="flex items-center whitespace-nowrap rounded-lg bg-neutral-50 px-6 pb-3 pt-3.5 text-xl font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-500 ease-in-out hover:bg-neutral-300 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus-visible:bg-neutral-200 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
+          type="button"
+          id="{% block id %}{{value.id}}{% endblock %}"
+          data-te-dropdown-toggle-ref
+          aria-expanded="false"
+          data-te-ripple-init>
         {% if value.title %}
         {{ value.title }}
         {% else %}
         {% block title %}Dropdown Title{% endblock %}
         {% endif %}
+        <span class="ml-2 w-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="h-5 w-5">
+              <path
+                fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
     </button>
-    <div class="dropdown-menu bd-dropdown-menu p-4 mt-0 rounded-0 rounded-bottom rounded-end bg-white border-gray-400">
+    <div class="absolute z-[1000] mt-1 p-6 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-neutral-200 bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
+          aria-labelledby="{% block labelledby %}{{value.id}}{% endblock %}"
+          data-te-dropdown-menu-ref
+         >
         {% if items %}
         {% include "components/menu_item_card.html" %}      
         {% else %}
         {% block content %}Dropdown Content{% endblock %}
         {% endif %}
     </div>
+</div>
 </div>

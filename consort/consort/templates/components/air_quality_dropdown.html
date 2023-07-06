@@ -1,16 +1,20 @@
 {% extends "components/dropdown.html" %}
 
+{% block id %}
+air-quality-dropdown
+{% endblock %}
+
+{% block labelledby %}
+air-quality-dropdown
+{% endblock %}
+
 {% block title %}
 <b>PM2.5: </b>12ppm
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Air Quality</h1>
-        </div>
-    </div>
-    <div class="text-body-secondary">Air quality data from PurpleAir</div>
+<div class="px-3 py-3">
+        <div class="text-3xl font-semibold mb-5">Air Quality</div>
+        <div>Air quality data from PurpleAir</div>
 </div>
 {% endblock %}
