@@ -1,8 +1,10 @@
 {% load menu_tags %}
 
 <a class="flex rounded-lg bg-transparent hover:text-orange-400 hover:bg-neutral-100 p-5" href="{{page.url}}">
-    <div class="p-0.5 w-12 flex">
-        <i class="fa-solid fa-2x m-auto {{page.icon}}"></i>
+    <div class="flex">
+        <div class="flex bg-neutral-100 rounded-lg w-16 h-16 m-auto">
+            <i class="fa-solid fa-2x m-auto {{page.icon}}"></i>
+        </div>
     </div>
     <div class="ml-6 grid grid-cols-1">
         {% is_none_or_empty page.description as no_page %}

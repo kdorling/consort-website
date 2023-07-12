@@ -1,9 +1,9 @@
 {% load menu_tags %}
 
-<div class="relative mr-5" data-te-dropdown-ref>
+<div class="relative" data-te-dropdown-ref>
     <div class="dropdown">
         <button
-              class="flex items-center whitespace-nowrap rounded-lg bg-neutral-50 px-6 pb-3 pt-3.5 text-xl font-light leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-100 hover:bg-neutral-200 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus-visible:bg-neutral-200 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
+              class="flex items-center whitespace-nowrap rounded-lg bg-neutral-50 px-6 pb-3 pt-3.5 text-normal min-[1500px]:text-xl font-light leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-100 hover:bg-neutral-200 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus-visible:bg-neutral-200 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
               type="button"
               data-te-collapse-init
               data-te-target="#{{menu_item.page.slug}}"
@@ -30,7 +30,7 @@
         <div class="{% alignment_classes menu_item.alignment %} bg-clip-padding bg-white absolute z-[1000] mt-1 p-0 float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg text-left text-base shadow-lg dark:bg-neutral-700 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
               id="{{menu_item.page.slug}}""
               data-te-collapse-item>
-              <div class="max-w-3xl grid grid-cols-2 gap-4 p-5">
+              <div class="max-w-3xl grid grid-cols-2 auto-rows-fr gap-1 p-5">
             {% if menu_item.submenu_items %}
                 {% for item in menu_item.submenu_items.all %}
                     {% include "components/menu_item_card.html" with page=item.page %}
