@@ -25,20 +25,24 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend">
-        <link
+        <!-- <link
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
-        rel="stylesheet" />
+        rel="stylesheet" /> -->
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
       <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+      <link
+  rel="stylesheet"
+  href="https://unpkg.com/@tailwindcss/typography@0.2.x/dist/typography.min.css"
+/>
       <script>
         tailwind.config = {
           darkMode: "class",
           theme: {
             fontFamily: {
-              sans: ["Roboto", "sans-serif"],
-              body: ["Roboto", "sans-serif"],
+              sans: ["Lexend", "sans-serif"],
+              body: ["Lexend", "sans-serif"],
               mono: ["ui-monospace", "monospace"],
             },
           },
@@ -55,7 +59,7 @@
         {% endblock %}
     </head>
 
-    <main class="{% block body_class %}{% endblock %}">
+    <main class="{% block body_class %}font-['Lexend']{% endblock %}">
         {% wagtailuserbar %}
         {% block header %}
         {% include "includes/header.html" %}
@@ -67,6 +71,10 @@
         <script type="text/javascript" src="{% static 'js/consort.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         <script src="https://kit.fontawesome.com/72084523ad.js" crossorigin="anonymous"></script>
+        <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.2.x/dist/typography.min.css"
+/>
 
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}

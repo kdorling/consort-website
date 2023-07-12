@@ -2,14 +2,8 @@
 
 <!-- Section Block -->
 <section>
-<div class="row">
-    <div class="col">
-        <h2 id="{{ value.anchor }}" class="cc-header">
-            {{ value.header }}
-        </h2>
-        {{value.content}}
-    </div>
-</div>
+<h2>{{ value.header }}</h2>
+{{value.content}}
 
 {% for block in value.subcontent %}
     {% include_block block %}

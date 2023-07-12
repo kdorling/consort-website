@@ -1,5 +1,6 @@
 {% load static menu_tags %}
-{% get_menu as menu_items %}
+
+{% get_menu "navigation" as navigation_menu %}
 
 <!-- Main navigation container -->
 <nav
@@ -43,17 +44,24 @@
     </div>
   </div>
 </nav>
+<nav
+class="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 shadow-lg dark:bg-neutral-600 lg:py-4"
+data-te-navbar-ref>
+  <div class="flex w-full flex-wrap items-center justify-between px-3">
+    <div class="flex items-center justify-between px-3">
+      {% for item in navigation_menu.menu_items.all %}
+        <div>
+          {% include "components/menu_dropdown.html" with menu_item=item %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
     <div class="navbar-nav">
         {% for item in menu_items %}
-        {% is_empty item as no_child_items %}
-        {% if no_child_items %}
-        <!-- <a class="nav-item btn btn-lg btn-bd-primary py-3" href="{{ item.url }}">{{ item.title }}</a> -->
-        {% include "components/dropdown.html" with items="ok" %}
-        {% else %}
-        <a class="nav-item " href="{{ item.url }}">{{ item.title }}*</a>
-        {% endif %}
+        {{item}}
         {% endfor %}
     </div>
 </nav>

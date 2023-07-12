@@ -8,14 +8,14 @@ class BasePage(Page):
     icon = models.CharField(
         max_length=25,
         default="",
-        blank=False,
+        blank=True,
         help_text=f"The page's icon",
     )
 
     description = models.CharField(
         max_length=50,
         default="",
-        blank=False,
+        blank=True,
         help_text=f"The page's description. Used in the menu and on cards",
     )
 

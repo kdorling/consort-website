@@ -2,54 +2,10 @@
 {% load wagtailimages_tags wagtailcore_tags %}
 
 {% block content %}
-    <div class="container-fluid cc-information-container px-5">
-        <div class="row">
-            <div class="offset-md-3 col-md-9 mt-5 mb-3">
-                <h1>{{page.title}}</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-3">
-                <nav id="scrollspy-content" class="flex-column align-items-stretch ms-4 pe-4 mb-4 scrollspy sticky-top">
-                    <p class="pt-1" style="font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"">On this page</p>
-                    <hr class="d-none d-md-block my-2" />
-                    <nav class="nav nav-pills flex-column">
-                        {% for block in page.body %}
-                            {% if block.block_type == "section" %}
-                            {% with section=block.value %}
-                                <a class="nav-link scrollspy-nav-link my-1" href="#{{ section.anchor }}">{{ section.header }}</a>
-                                <nav class="nav nav-pills flex-column">
-                                {% for subblock in section.child_blocks %}
-                                    {% if subblock.block_type == "subsection" %}
-                                    {% with subsection=subblock.value %}
-                                        <a class="nav-link scrollspy-nav-link ms-2 my-1" href="#{{ subsection.anchor }}">{{ subsection.header }}</a>
-                                        <nav class="nav nav-pills flex-column">
-                                        {% for subsubblock in subsection.child_blocks %}
-                                            {% if subsubblock.block_type == "subsubsection" %}
-                                            {% with subsubsection=subsubblock.value %}
-                                                <a class="nav-link scrollspy-nav-link ms-3 my-1" href="#{{ subsubsection.anchor }}">{{ subsubsection.header }}</a>
-                                            {% endwith %}
-                                            {% endif %}
-                                        {% endfor %}
-                                    </nav>
-                                    {% endwith %}
-                                    {% endif %}
-                                {% endfor %}
-                            </nav>
-                            {% endwith %}
-                            {% endif %}
-                        {% endfor %}
-                      </nav>
-                    </nav>
-            </div>
-            <div class="col-xl-9">                   
-                <div data-bs-spy="scroll" data-bs-target="#navbar-content" data-bs-smooth-scroll="true" class="cc-content" tabindex="0">
-                        {% for block in page.body %}
-                            {% include_block block %}
-                        {% endfor %}
-                    </div>
-                </div>
-            
-        </div>
+    <div class="prose ms-5">
+        <h1>{{page.title}}</h1>
+        {% for block in page.body %}
+            {% include_block block %}
+        {% endfor %}
     </div>
 {% endblock content %}
