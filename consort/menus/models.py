@@ -27,6 +27,12 @@ class SubMenuItem(Orderable):
 
 
 class MenuItem(Orderable, ClusterableModel):
+
+    class Alignment(models.IntegerChoices):
+        LEFT = 0, "Left"
+        CENTER = 1, "Center"
+        RIGHT = 2, "Right"
+
     page = models.ForeignKey(
         "base.BasePage",
         null=True,
@@ -35,6 +41,8 @@ class MenuItem(Orderable, ClusterableModel):
         on_delete=models.CASCADE,
     )
 
+    alignment = models.IntegerField(choices=Alignment.choices, blank=True, default=0)
+
     open_in_new_tab = models.BooleanField(default=False, blank=True)
 
     menu = ParentalKey("Menu", related_name="menu_items")
@@ -42,6 +50,7 @@ class MenuItem(Orderable, ClusterableModel):
     panels = [
         PageChooserPanel("page"),
         FieldPanel("open_in_new_tab"),
+        FieldPanel("alignment"),
         InlinePanel("submenu_items", heading="Submenu Items"),
     ]
 

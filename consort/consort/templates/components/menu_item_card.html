@@ -1,10 +1,14 @@
-<a class="flex rounded-lg bg-transparent hover:bg-neutral-100 p-5" href="{{page.url}}">
-    <div class="p-0.5 flex">
-        <i class="fa-solid fa-2x my-auto {{page.icon}}"></i>
+{% load menu_tags %}
+
+<a class="flex rounded-lg bg-transparent hover:text-orange-400 hover:bg-neutral-100 p-5" href="{{page.url}}">
+    <div class="p-0.5 w-12 flex">
+        <i class="fa-solid fa-2x m-auto {{page.icon}}"></i>
     </div>
-    <div class="ml-6">
-        <h2 class="text-lg font-semibold leading-6 text-slate-900">{{page.title}}</h2>
-        {% if page.description %}
+    <div class="ml-6 grid grid-cols-1">
+        {% is_none_or_empty page.description as no_page %}
+        <h2 class="text-lg font-semibold leading-6 text-slate-900 my-auto w-full">{{page.title}}</h2>
+        {% if not no_page %}
+        
         <p class="mt-2 text-sm leading-6 text-slate-700">{{page.description}}</p>
         {% endif %}
     </div>

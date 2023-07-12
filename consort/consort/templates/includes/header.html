@@ -4,7 +4,7 @@
 
 <!-- Main navigation container -->
 <nav
-  class="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 shadow-lg dark:bg-neutral-600 lg:py-4"
+  class="relative flex w-full flex-wrap items-center justify-between py-2 bg-neutral-100 dark:bg-neutral-600"
   data-te-navbar-ref>
   <div class="flex w-full flex-wrap items-center justify-between px-3">
     <button
@@ -47,8 +47,13 @@
 <nav
 class="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 shadow-lg dark:bg-neutral-600 lg:py-4"
 data-te-navbar-ref>
-  <div class="flex w-full flex-wrap items-center justify-between px-3">
-    <div class="flex items-center justify-between px-3">
+<div class="mx-7">
+  <a href="#">
+    <img class="w-64 mx-4" src="http://138.197.131.37/static/images/logo.png">
+  </a>
+</div>
+  <div class="flex grow items-center justify-between px-3">
+    <div class="flex mx-auto">
       {% for item in navigation_menu.menu_items.all %}
         <div>
           {% include "components/menu_dropdown.html" with menu_item=item %}
