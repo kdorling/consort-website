@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "flex",
     "information",
     "business_directory",
+    "common",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.modeladmin",

@@ -8,13 +8,17 @@ electric-vehicle-dropdown
 electric-vehicle-dropdown
 {% endblock %}
 
+{% block visibility %}
+hidden min-[320px]:inline
+{% endblock %}
+
 {% block title %}
 <i class="fa-solid fa-charging-station fa-xl"></i>&nbsp;
 {% endblock %}
 
 {% block content %}
 <div class="px-3 py-3">
-    <div class="text-3xl font-semibold mb-5">Electric Vehicle Charging Information</div>
+    <div class="text-3xl font-semibold mb-5">EV Charging Information</div>
     <div>Charging information goes here</div>
 </div>
 {% endblock %}

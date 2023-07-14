@@ -7,7 +7,8 @@ from wagtail.blocks import RichTextBlock
 
 from base.models import BasePage
 
-from information import blocks
+from common import blocks
+
 
 class InformationPage(BasePage):
     body = StreamField([

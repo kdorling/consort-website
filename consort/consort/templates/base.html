@@ -65,7 +65,11 @@
         {% include "includes/header.html" %}
         {% endblock %}
 
+        {% block banner %}{%endblock%}
+
+        <div class="{% block content_class %}font-['Lexend'] lg:w-[80%] mx-auto my-12{% endblock %}">
         {% block content %}{% endblock %}
+        </div>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/consort.js' %}"></script>

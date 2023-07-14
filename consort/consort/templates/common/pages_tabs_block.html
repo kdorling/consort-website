@@ -1,0 +1,10 @@
+{% load wagtailcore_tags %}
+
+{% for tab in value.tab_blocks %}
+<div class="float text-center">
+    <div>{{tab.value.name}}</div>
+    {% for page in tab.value.page_blocks %}
+        {% include_block page %}
+    {% endfor %}
+</div>
+{% endfor %}

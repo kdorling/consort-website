@@ -1,0 +1,6 @@
+<div class="float text-center">
+    <div>{{value.name}}</div>
+    {% for page in block.value.page_blocks %}
+        {% include_block page %}    
+    {% endfor %}
+</div>
