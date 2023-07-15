@@ -1,10 +1,51 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags common_tags %}
+
+<div class="mt-10 mb-10 sm:w-[80%] mx-auto">
+<div class="flex mb-10">
+<ul
+class="flex list-none flex-row flex-wrap border-b-0 pl-0 mx-auto"
+id="tabs-tab3"
+role="tablist"
+data-te-nav-ref>
+{% for tab in value.tab_blocks %}
+    <!--Tabs navigation-->
+
+<li class="mx-auto" role="presentation">
+  <a
+    href="#{% to_id tab.value.name %}"
+    class="mb-3 sm:mb-0 sm:mx-5 block border-2 rounded-xl px-7 pb-3.5 pt-4 text-xl font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-orange-500 data-[te-nav-active]:text-orange-500 dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+    id="tabs-{% to_id tab.value.name %}-tab"
+    data-te-toggle="pill"
+    data-te-target="#tabs-{% to_id tab.value.name %}"
+    role="tab"
+    aria-controls="tabs-{% to_id tab.value.name %}"
+    {% if forloop.first %}
+        aria-selected="true"
+        data-te-nav-active
+    {% else %}
+        aria-selected="false"
+    {% endif %}
+    >{{tab.value.name}}</a
+  >
+</li>
+{% endfor %}
+</ul>
+</div>
 
 {% for tab in value.tab_blocks %}
+<div
+class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+id="tabs-{% to_id tab.value.name %}"
+role="tabpanel"
+{% if forloop.first %}
+    data-te-tab-active
+{% endif %}
+aria-labelledby="tabs-{% to_id tab.value.name %}-tab">
 <div class="float text-center">
-    <div>{{tab.value.name}}</div>
     {% for page in tab.value.page_blocks %}
         {% include_block page %}
     {% endfor %}
 </div>
+</div>
 {% endfor %}
+</div>

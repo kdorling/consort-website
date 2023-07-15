@@ -1,0 +1,43 @@
+{% load wagtailcore_tags %}
+
+<div class="overflow-hidden w-full">
+    <div class="bg-neutral-100 dark:bg-neutral-900 w-full pb-10">
+        <div class="w-full mt-5 bg-white text-white dark:text-neutral-800 md:mt-4 lg:mt-6 xl:mt-10 h-[5px] lg:h-[17px] scale-[2] origin-[top_center] overflow-hidden">
+            <svg viewBox="0 0 2880 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 0 48 L 1437.5 48 L 2880 48 L 2880 0 L 2160 0 C 1453.324 60.118 726.013 4.51 720 0 L 0 0 L 0 48 Z"
+                fill="rgb(245,245,245)"></path>
+            </svg>
+        </div>
+
+        <div class="mt-20 my-15 sm:w-[80%] mx-auto text-center">
+        <h1 class="my-10">Announcements</h1>
+
+        <div class="flex flex-wrap justify-center">
+        {% for card in value.updates %}
+        <div class="px-3 sm:px-5 lg:px-10">
+        <div class="mx-auto w-[280px] sm:min-h-[12rem] sm:w-[560px] my-5 text-center rounded-lg shadow-lg overflow-hidden transition duration-300 ease-in-out hover:scale-110">
+            <div class="flex full-w bg-neutral-200">
+                <div class="flex text-orange-500 full-h w-[64px] text-center">
+                    <i class="fa {{card.icon}} fa-2x fa-fw py-3 m-auto"></i>
+                </div>
+                <div class="flex p-2 full-h my-auto grow">
+                    <div class="text-left font-semibold grow">
+                        {{card.title}}
+                    </div>
+                    <div class="text-left sm:text-right grow">
+                        {{card.date}}
+                    </div>
+                </div>
+            </div>
+            <div class="text-normal text-left">
+                {% if card.text %}
+                    <div class="p-5">{{ card.text|richtext }}</div>
+                {% endif %}                     
+            </div>
+        </div> 
+    </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+</div>

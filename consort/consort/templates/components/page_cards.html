@@ -1,0 +1,5 @@
+<div class="flex flex-wrap noprose mx-auto">
+    {% for link in links %}
+        {% include "components/page_card.html" with url=link.page.url description=link.page.description title=link.page.title %}
+    {% endfor %}
+</div>

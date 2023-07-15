@@ -1,9 +1,7 @@
 <div class="flex">
 <div class="flex flex-wrap text-center mx-auto">
     {% for link in value.links %}
-        <a class="mx-auto mb-2 inline-block rounded-full border-2 border-neutral-50 px-[46px] pt-[14px] pb-[12px] text-normal font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-orange-400 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 md:mr-4 md:mb-0" data-te-ripple-init data-te-ripple-color="light" href="{{link.page.url}}" role="button">{{link.link_text}}</a>
+        <a class="mx-auto mb-2 inline-block rounded-full border-2 border-neutral-50 px-[46px] pt-[14px] pb-[12px] text-normal font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-orange-500 hover:bg-orange-400 hover:bg-opacity-10 hover:text-orange-500 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 md:mr-4 md:mb-0" data-te-ripple-init data-te-ripple-color="light" href="{{link.page.url}}" role="button">{{link.link_text}}</a>
     {% endfor %}
 </div>
 </div>
-{% comment %} <a class="inline-block rounded-full px-12 pt-4 pb-3.5 text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:bg-neutral-500 hover:bg-opacity-20 hover:text-neutral-200 focus:text-neutral-200 focus:outline-none focus:ring-0 active:text-neutral-300"
-data-te-ripple-init data-te-ripple-color="light" href="#!" role="button">Learn more</a> {% endcomment %}

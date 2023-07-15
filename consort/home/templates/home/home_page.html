@@ -11,7 +11,7 @@
 <div
     class="relative bg-cover bg-no-repeat bg-[50%] bg-[url('{{bbimg.url}}')]">
     <div
-      class="relative py-12 top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.45)]">
+      class="relative py-20 top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.45)]">
       <div class="flex h-full items-center justify-center">
         <div class="my-auto">
         <div class="px-6 text-center text-white md:px-12">
@@ -46,6 +46,8 @@
 </div>
 
   {% endblock banner %}
+
+  {% block content_class %}font-['Lexend'] mx-auto mt-20{% endblock %}
 
   {% block content %}
   {% for block in page.body %}

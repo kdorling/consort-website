@@ -1,0 +1,41 @@
+<div class="overflow-hidden w-full mb-20">
+<div class="bg-neutral-100 dark:bg-neutral-900 w-full">
+    <div class="w-full mt-5 bg-white text-white dark:text-neutral-800 md:mt-4 lg:mt-6 xl:mt-10 h-[5px] lg:h-[17px] scale-[2] origin-[top_center] overflow-hidden">
+        <svg viewBox="0 0 2880 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 48 L 1437.5 48 L 2880 48 L 2880 0 L 2160 0 C 1453.324 60.118 726.013 4.51 720 0 L 0 0 L 0 48 Z"
+            fill="rgb(245,245,245)"></path>
+        </svg>
+    </div>
+    <div class="flex mt-10 mb-20">
+        <div class="mx-auto text-center sm:w-[80%]">
+            <h1 class="mb-5">Popular Pages</h1>
+            {% comment %} {% include "components/page_cards.html" with links=value.links %} {% endcomment %}
+            <div class="flex flex-wrap noprose mx-auto">
+                {% for link in value.links %}
+                    <a href="{{link.page.url}}" class="mx-auto px-3 transition duration-500 ease-in-out hover:scale-[1.1] hover:text-orange-500 mt-5 sm:mt-10 xl:mt-20">
+                        <div class="flex p-3 ml-auto my-auto w-[150px]">
+                            <div class="flex mx-auto my-auto">
+                                <i class="fa fa-solid {{ link.page.icon }} fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="p-3 ml-auto my-auto w-[150px]">
+                            <div class="my-auto mx-auto text-lg font-semibold">
+                                {{ link.page.title }}
+                            </div>
+                        </div> 
+                    </a>        
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+<div
+class="-mt-5 text-white dark:text-neutral-800 md:-mt-4 lg:-mt-6 xl:-mt-10 h-[10px] sm:h-[20px] md:h-[25px] xl:h-[40px] scale-[2] origin-[top_center] overflow-hidden">
+<svg viewBox="0 0 2880 48" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 0 48 L 1437.5 48 L 2880 48 L 2880 0 L 2160 0 C 1453.324 60.118 726.013 4.51 720 0 L 0 0 L 0 48 Z"
+    fill="currentColor"></path>
+</svg>
+</div>
+</div>
+</div>

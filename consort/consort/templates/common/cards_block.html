@@ -1,6 +1,6 @@
 {% load wagtailimages_tags %}
 
-<div class="flex flex-wrap text-center mx-auto">
+<div class="flex flex-wrap text-center mx-auto w-[80%]">
 {% for card in value.cards %}
 <a href="
         {% if card.link.page %}
@@ -8,12 +8,12 @@
         {% endif %}
         "
     class="mx-auto my-5">
-    <div class="text-center rounded-lg shadow-lg overflow-hidden transition duration-300 ease-in-out hover:scale-110 hover:bg-orange-300">
+    <div class="text-center rounded-lg shadow-lg overflow-hidden transition duration-300 ease-in-out hover:scale-110">
         {% image card.image max-300x500 as img %}
         <img src="{{ img.url }}" alt="{{ card.title }}" class="mx-auto w-[300px] h-[450px]"/>
         <div class="text-2xl py-3">{{ card.title }}</div>
             {% if card.text %}
-                <p class="my-3">{{ card.text }}</p>
+                <div class="py-3 bg-neutral-200">{{ card.text }}</div>
             {% endif %}                     
     </div>
 </a>    

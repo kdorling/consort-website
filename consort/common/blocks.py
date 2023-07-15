@@ -82,6 +82,19 @@ class PagesBlock(blocks.StructBlock):
         help_text = "A set of pages"
 
 
+class PopularPagesBlock(blocks.StructBlock):
+
+    links = blocks.ListBlock(
+        Link()
+    )
+
+    class Meta:
+        template = "common/popular_pages_block.html"
+        icon = "image"
+        label = "Pages"
+        help_text = "A set of pages"
+
+
 class PagesTabBlock(blocks.StructBlock):
     name = blocks.CharBlock(
         max_length=50,
@@ -215,3 +228,35 @@ class SectionBlock(GenericSectionBlock):
         template = "common/section_block.html"
         label = "Section"
         help_text = "A section of the document"
+
+
+class UpdateBlock(blocks.StructBlock):
+    title = blocks.CharBlock(
+        max_length=150,
+        help_text="The title of the update",
+    )
+
+    icon = blocks.CharBlock(
+        max_length=50,
+        help_text="The icon associated with this announcement",
+        default="fa-regular fa-bell"
+    )
+
+    date = blocks.DateBlock(
+        help_text="The date of this announcement"
+    )
+
+    text = blocks.RichTextBlock(
+        help_text="A description of the update"
+    )
+
+
+class UpdatesBlock(blocks.StructBlock):
+    updates = blocks.ListBlock(
+        UpdateBlock()
+    )
+
+    class Meta:
+        template = "common/updates_block.html"
+        label = "Updates"
+        help_text = "A set of update cards"

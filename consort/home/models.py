@@ -72,6 +72,8 @@ class HomePage(BasePage):
         ("title", blocks.TitleBlock()),
         ("cards", blocks.CardsBlock()),
         ("tabs", blocks.PagesTabsBlock()),
+        ("popular", blocks.PopularPagesBlock()),
+        ("updates", blocks.UpdatesBlock()),
     ], use_json_field=True)
 
     content_panels = BasePage.content_panels + [

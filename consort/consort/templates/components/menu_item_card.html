@@ -1,9 +1,9 @@
 {% load menu_tags %}
 
-<a class="w-[300px] lg:w-auto flex rounded-lg bg-transparent hover:text-orange-400 hover:bg-neutral-100 p-3" href="{{page.url}}">
+<a class="group w-[300px] lg:w-auto flex rounded-lg bg-transparent hover:text-orange-400 hover:bg-neutral-100 p-3" href="{{page.url}}">
     <div class="flex">
-        <div class="flex bg-neutral-100 rounded-lg w-16 h-16 m-auto">
-            <i class="fa-solid fa-2x m-auto {{page.icon}}"></i>
+        <div class="flex bg-transparent border-0 border-black rounded-lg w-16 h-16 m-auto group-hover:border-orange-400">
+            <i class="fa-solid text-4xl fa-fw m-auto {{page.icon}}"></i>
         </div>
     </div>
     <div class="ml-6 grid grid-cols-1">

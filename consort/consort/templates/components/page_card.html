@@ -1,0 +1,25 @@
+<a href="{{ url }}" class="mx-auto my-5 sm:px-2 xl:px-5 mt-5 sm:mt-10">
+    <div class="sticky flex rounded-lg shadow-lg overflow-hidden w-[280px] h-[120px]">
+        <div class="flex bg-orange-400 w-full">
+            <div class="flex rounded-lg">
+                <i class="fa fa-solid {{link.page.icon}} fa-3x text-black p-3 my-auto w-[100px]"></i>
+            </div>
+            <div class="p-3 pl-0 mr-3 text-right text-normal ml-auto my-auto">
+                {% if description %}
+                <p class="text-normal my-3">{{ description }}</p>
+                {% else %}
+                Click to visit page
+                 {% endif %}
+            </div>           
+      </div>
+      <div class="absolute w-[280px] h-[120px]">
+        <div class="flex transition duration-500 ease-in-out translate-x-[-280px] h-[120px] hover:translate-x-[0px] w-[560px]">
+            <div class="flex p-3 ml-auto my-auto bg-neutral-50 w-[180px] h-[120px]">
+                <div class="my-auto mx-auto text-lg font-semibold">
+                    {{ title }}
+                </div>
+            </div>
+        </div>           
+    </div>
+    </div>
+</a>
