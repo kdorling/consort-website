@@ -3,6 +3,8 @@ from django.db.models import Max, Min
 from django.http import HttpResponse
 from django.template import loader
 
+from wagtail.images.views.serve import generate_image_url
+
 from .models import SingleEvent
 import json
 
@@ -22,9 +24,17 @@ def calendar(request):
     calendar_events = []
 
     for event in event_list:
+        image_url = event.image
+        print(image_url)
+        image_url = image_url.get_rendition('width-300|jpegquality-90')
+        print(dir(image_url))
+        image_url = image_url.url
+        print(image_url)
+
         new_event = {
-            "id": event.pk,
+            "id": event.pk,            
             "title": event.name,
+            "image_url": image_url,
             "start": event.start_time.strftime("%Y-%m-%dT%H:%M:%S"),
             "end": event.end_time.strftime("%Y-%m-%dT%H:%M:%S"),
             "description": event.description,
