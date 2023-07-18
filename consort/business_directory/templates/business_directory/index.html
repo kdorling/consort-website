@@ -2,26 +2,16 @@
 {% load wagtailimages_tags wagtailcore_tags format_date create_id %}
 
 {% block content %}
-<div class="container mx-auto my-5">
-    <h1 class="my-5">Business Directory</h1>
-    <div class="row my-5">
-        <div class="col-xl-6">
-            <input id="search" class="form-control" type="text" placeholder="Search..."/>
-        </div>
-        <div class="col-xl-6">
-            <select id="category" class="form-select">
-                <option value="all">All</option>
-            </select>
+<div class="w-[80%] text-center mx-auto">
+    <div class="text-3xl sm:text-5xl font-bold mb-16">Business Directory</div>
+</div>
+    <div class="flex flex-wrap xl:grid xl:grid-cols-2 mb-12">
+            <div class="mx-auto w-full sm:w-[500px] md:w-auto"><input id="search" class="mb-5 p-4 bg-neutral-200 rounded-lg w-full md:w-[300px] xl:w-[500px]" type="text" placeholder="Search..."/></div>
+            <div class="mx-auto w-full sm:w-[500px] md:w-auto"><select id="category" class="mb-5 p-4 bg-neutral-200 rounded-lg  w-full md:w-[300px] xl:w-[500px]"><option value="all">All</option></select></div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-12">
-    <div id="business-container" class="container">
-
+    <div id="business-container">
     </div>
-</div>
-</div>
-</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -65,14 +55,17 @@ function render_businesses(search)
         parsed_data.forEach((c,i) => {
 
         console.log(tag_dictionary[k], c["tags"]);
+        console.log(`--> ${tag_dictionary[k]}`);
 
-        if (c["tags"].includes(k) && !not_in_search(search, c)) {
+        if (c["tags"].includes(k) && ((search && tag_dictionary[k].toLowerCase().includes(search.toLowerCase())) || !not_in_search(search, c))) {
             
             category_empty[k] = false;
         }
     });
 
     }
+
+    //shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]
 
     for (let category_value in sorted_categories) {
         let k = getKeyByValue(tag_dictionary, sorted_categories[category_value]);
@@ -85,7 +78,7 @@ function render_businesses(search)
             continue;
         }
 
-        result += `<h2 class="mt-4">${tag_dictionary[k]}</h2><hr/><div class="row">`;
+        result += `<div class="text-2xl my-4">${tag_dictionary[k]}</div><hr/><div class="grid grid-cols-1 xl:grid-cols-2">`;
 
     parsed_data.forEach((c,i) => {
 
@@ -93,39 +86,35 @@ function render_businesses(search)
 
     if (c["tags"].includes(k)) {
 
-        if (not_in_search(search, c)) {
+        if (not_in_search(search, c) && (search && !tag_dictionary[k].toLowerCase().includes(search.toLowerCase()))) {
             return;
         }
 
         result += `
-            <div class="col-lg-6">
-                <h3 class="my-4">
-                    ${c["name"]}
-                </h3>
+            <div class="mx-auto w-full my-8 sm:w-[500px] shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-lg bg-white dark:bg-neutral-700">
+                <div class="text-3xl bg-neutral-200 p-0 rounded-t-lg p-4">${c["name"]}</div>
+                <div class="flex flex-wrap"><div class="me-8 p-4">
         `;
         if (c.contact_name) {
-            result += `<p><b>Contact Name:</b> ${c.contact_name}</p>`;
+            result += `<div class="mb-4"><b>Contact Name:</b> ${c.contact_name} </div>`;
         }
         result += `
-                <p>
-                    <b>Address:</b>
-                    <p>
-                        ${c.address.replace("\n", "<br/>")}
-                    </p>
-                </p>`;
+                <div class="flex mb-4">
+                    <div class="font-bold me-1 "mb-4">Address:</div><div>${c.address.replace("\n", "<br/>")}</div>
+                </div>`;
         if (c.website) {
-            result += `<p><b>Website:</b> ${c.website}</p>`;
+            result += `<div class="mb-4"><b>Website:</b> ${c.website}</div>`;
         }
         if (c.phone_number) {
-            result += `<p><b>Phone Number:</b> ${c.phone_number}</p>`;
+            result += `<div class="mb-4"><b>Phone Number:</b> ${c.phone_number}</div>`;
         }
         if (c.fax_number) {
-            result += `<p><b>Fax Number:</b> ${c.fax_number}</p>`;
+            result += `<div class="mb-4"><b>Fax Number:</b> ${c.fax_number}</div>`;
         }
         if (c.description) {
-            result += `<p> ${c.description}</p>`;
+            result += `</div><div class="sm: border-l sm:p-4 pb-4"><div class="ps-4 mb-4 w-full"><b>About</b></div><div class="ps-4"> ${c.description}</div>`;
         }
-        result += `</div>`;
+        result += `</div></div></div>`;
     }
     });
     result += `</div>`;
@@ -156,6 +145,7 @@ async function init() {
         select.options.remove(0);
     }
     select.innerHTML += `<option value="-1">All</option>`;
+    console.log(sorted_categories)
     for (let category_value in sorted_categories) {
         let k = getKeyByValue(tag_dictionary, sorted_categories[category_value]);
         select.innerHTML += `<option value="${k}">${tag_dictionary[k]}</option>`;
