@@ -59,7 +59,7 @@
         {% endblock %}
     </head>
 
-    <main class="{% block body_class %}font-['Lexend']{% endblock %}">
+    <body class="{% block body_class %}font-['Lexend']{% endblock %}">
         {% wagtailuserbar %}
         {% block header %}
         {% include "includes/header.html" %}
@@ -67,9 +67,9 @@
 
         {% block banner %}{%endblock%}
 
-        <div class="{% block content_class %}font-['Lexend'] lg:w-[80%] mx-auto mt-12{% endblock %}">
+        <main class="{% block content_class %}font-['Lexend'] lg:w-[80%] mx-auto mt-12{% endblock %}">
         {% block content %}{% endblock %}
-        </div>
+        </main>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/consort.js' %}"></script>
@@ -86,4 +86,5 @@
 
 
 </main>
+</body>
 </html>
