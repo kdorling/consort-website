@@ -2,8 +2,10 @@
 
 <!-- Section Block -->
 <section>
+<div class="prose">
 <h2>{{ value.header }}</h2>
 {{value.content}}
+</div>
 
 {% for block in value.subcontent %}
     {% include_block block %}

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "flex",
     "information",
     "business_directory",
+    "profiles",
     "common",
 
     "wagtail.contrib.forms",

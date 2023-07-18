@@ -14,6 +14,7 @@ class InformationPage(BasePage):
     body = StreamField([
         ("section", blocks.SectionBlock()),
         ("text", RichTextBlock()),
+        ("profiles", blocks.ProfilesBlock())
     ], null=True, blank=True, use_json_field=True)
 
     content_panels = BasePage.content_panels + [

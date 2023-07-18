@@ -1,8 +1,10 @@
 from wagtail import blocks
 from wagtail.admin import widgets
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 from base.models import BasePage
+from profiles.models import Profile
 
 
 class TitleBlock(blocks.StructBlock):
@@ -160,6 +162,21 @@ class ImageAndTextBlock(blocks.StructBlock):
         label = "Image & Text"
 
 
+class ProfileBlock(blocks.StructBlock):
+    profile = SnippetChooserBlock(Profile)
+
+
+class ProfilesBlock(blocks.StructBlock):
+    profiles = blocks.ListBlock(
+        ProfileBlock()
+    )
+
+    class Meta:
+        template = "common/profiles_block.html"
+        label = "Profiles"
+        help_text = "A set of user profiles"
+
+
 class GenericSectionValue(blocks.StructValue):
     def anchor(self):
         header = self.get("header")
@@ -171,6 +188,7 @@ class GenericSectionBlock(blocks.StructBlock):
         ("cards", CardsBlock()),
         ("image_and_text", ImageAndTextBlock()),
         ("text", blocks.RichTextBlock()),
+        ("profiles", ProfilesBlock())
     ]
 
     header = blocks.CharBlock(
