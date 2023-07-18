@@ -1,7 +1,9 @@
-{% load menu_tags %}
+{% load wagtailcore_tags menu_tags %}
 
 <div class="lg:relative" data-te-dropdown-ref>
     <div class="dropdown">
+      {% has_children menu_item.submenu_items.all as has_items %}
+      {% if has_items %}
         <button
               class="ps-2 w-full lg:w-auto flex items-center whitespace-nowrap lg:rounded-lg bg-transparent lg:px-3 xl:px-6 pb-3 pt-3.5 text-normal min-[1500px]:text-xl font-light leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-100 hover:bg-neutral-200 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus-visible:bg-neutral-200 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
               type="button"
@@ -12,9 +14,7 @@
             {% if menu_item.page and menu_item.page.title %}
             {{ menu_item.page.title }}
             {% endif %}
-            {% has_children menu_item.submenu_items.all as has_items %}
-            {% if has_items %}
-        </span>
+            </span>
               <span class="ml-2 w-2 absolute right-0 mr-5 lg:relative lg:mr-0 lg:right-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,6 @@
                     clip-rule="evenodd" />
                 </svg>
               </span>
-            {% endif %}
         </button>
         <div class="relative {% alignment_classes menu_item.alignment %} bg-clip-padding bg-white lg:z-[1500] lg:absolute mt-1 p-0 float-left m-0 hidden min-w-max list-none overflow-hidden lg:rounded-lg text-left text-base lg:shadow-lg dark:bg-neutral-700 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
               id="{{menu_item.page.slug}}""
@@ -39,6 +38,16 @@
                 {% endfor %}
             {% endif %}
         </div>
-        </div>
+      </div>
+        {% else %}
+        <a
+        class="ps-2 w-full lg:w-auto flex items-center whitespace-nowrap lg:rounded-lg bg-transparent lg:px-3 xl:px-6 pb-3 pt-3.5 text-normal min-[1500px]:text-xl font-light leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-100 hover:bg-neutral-200 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus-visible:bg-neutral-200 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
+        href="{% pageurl menu_item.page %}">
+        {% if menu_item.page and menu_item.page.title %}
+            {{ menu_item.page.title }}
+            {% endif %}
+        </a>
+        {% endif %}
+        
     </div>
     </div>
