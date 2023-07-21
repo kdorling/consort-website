@@ -133,3 +133,4 @@ dmypy.json
 
 consort/frontend
 consort/media
+*.7z
