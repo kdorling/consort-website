@@ -48,7 +48,8 @@ data-te-sidenav-position="fixed"
 data-te-sidenav-width="300">
 <div class="flex mx-0 lg:mx-7">
   <a href="#" class="mx-auto">
-    <img class="my-5 w-[250px] inline md:hidden lg:inline lg:w-10 xl:w-28 min-[1600px]:w-64 xl:mx-4 xl:my-0" src="http://138.197.131.37/static/images/logo.png">
+    <img class="my-5 w-[250px] hidden lg:inline lg:w-10 min-[1600px]:hidden" src="{% static 'images/logo_small.png' %}">
+    <img class="my-5 inline md:hidden min-[1600px]:inline w-64 mx-4 my-0" src="{% static 'images/logo.png' %}">
   </a>
 </div>
   <div class="px-0 lg:grow xl:px-3">

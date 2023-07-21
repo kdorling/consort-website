@@ -13,11 +13,16 @@
             </div>           
       </div>
       <div class="absolute w-[280px] h-[120px]">
-        <div class="flex transition duration-500 ease-in-out translate-x-[-280px] h-[120px] hover:translate-x-[0px] w-[560px]">
-            <div class="flex p-3 ml-auto my-auto bg-neutral-50 w-[180px] h-[120px]">
-                <div class="my-auto mx-auto text-lg font-semibold">
+        <div class="flex transition duration-500 ease-in-out translate-x-[-280px] h-[120px] xl:hover:translate-x-[0px] w-[560px]">
+            <div class="flex p-1 xl:p-3 ml-auto my-auto bg-neutral-50 w-[180px] h-[120px]">
+                <div class="my-auto mx-auto text-base xl:text-lg font-semibold">
                     {{ title }}
+                <div class="xl:hidden">
+                    {% if description %}
+                <p class="text-xs mt-3 font-normal">{{ description }}</p>
+                {% endif %}
                 </div>
+            </div>
             </div>
         </div>           
     </div>
