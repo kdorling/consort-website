@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./website
+    command: ./start_dev.sh
+    volumes:
+      - ./website:/website
+    ports:
+      - 8009:8000
+    env_file:
+      - ./website/.env.dev
+
+  #   depends_on:
+  #     - db
+  # db:
+  #   image: postgres:10.5-alpine
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data/
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #     - POSTGRES_DB=postgres
+  

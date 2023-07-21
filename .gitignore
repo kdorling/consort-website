@@ -131,6 +131,6 @@ dmypy.json
 # Static folders
 *static/
 
-consort/frontend
-consort/media
+**/frontend
+**/media
 *.7z

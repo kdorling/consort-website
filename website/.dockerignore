@@ -37,3 +37,6 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.dockerignore
+Dockerfile
+Dockerfile.prod
