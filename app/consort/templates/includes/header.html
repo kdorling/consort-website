@@ -1,4 +1,4 @@
-{% load static menu_tags %}
+{% load static menu_tags weather_tags %}
 
 {% get_menu "navigation" as navigation_menu %}
 
@@ -7,8 +7,14 @@
   class="relative md:flex w-full py-2 bg-neutral-100 dark:bg-neutral-600"
   data-te-navbar-ref>
     <div class="list-style-none mr-auto flex pl-0 lg:mt-1 flex-row flex-wrap items-center justify-between">
-      {% include "components/weather_dropdown.html" %}
-      {% include "components/air_quality_dropdown.html" %}
+      {% any_weather as have_weather %}
+      {% if have_weather %}
+        {% include "components/weather_dropdown.html" %}
+      {% endif %}
+      {% any_airquality as have_airquality %}
+      {% if have_airquality %}
+        {% include "components/air_quality_dropdown.html" %}
+      {% endif %}
       {% include "components/electric_vehicle_dropdown.html" %}
     </div>
   </div>
@@ -48,8 +54,8 @@ data-te-sidenav-position="fixed"
 data-te-sidenav-width="300">
 <div class="flex mx-0 lg:mx-7">
   <a href="#" class="mx-auto">
-    <img class="my-5 w-[250px] hidden lg:inline lg:w-10 min-[1600px]:hidden" src="{% static 'images/logo_small.png' %}">
-    <img class="my-5 inline md:hidden min-[1600px]:inline w-64 mx-4 my-0" src="{% static 'images/logo.png' %}">
+    <img class="my-5 w-[250px] hidden lg:inline lg:w-10 min-[1600px]:hidden" src="{% static 'images/logo_small.webp' %}">
+    <img class="my-5 inline md:hidden min-[1600px]:inline w-64 mx-4 my-0" src="{% static 'images/logo.webp' %}">
   </a>
 </div>
   <div class="px-0 lg:grow xl:px-3">

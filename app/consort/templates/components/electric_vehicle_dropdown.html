@@ -1,5 +1,7 @@
 {% extends "components/dropdown.html" %}
 
+{% load static %}
+
 {% block id %}
 electric-vehicle-dropdown
 {% endblock %}
@@ -17,8 +19,36 @@ hidden min-[320px]:inline
 {% endblock %}
 
 {% block content %}
-<div class="px-3 py-3">
-    <div class="text-3xl font-semibold mb-5">EV Charging Information</div>
-    <div>Charging information goes here</div>
+<div>
+    <div class="text-2xl font-semibold mb-4">Electric Vehicle Charging</div>
+    <div class="flex flex-wrap mb-3 md:max-w-[60vw] lg:w-full">
+        <div class="flex lg:mr-5 mx-auto ">
+        <div class="md: p-3 text-center mb-3">
+            <div class="mb-2"><img src="{% static 'images/Plug-Icon-J1772.webp' %}" alt="CCS_CHAdeMO" class="w-24 h-24 mx-auto"></div>
+            <div class="font-semibold">J1772</div>
+            <div>Level 2</div>
+            <div>2 Plugs</div>
+        </div>
+        <div class="md: p-3 m-auto">
+            <div class="text-xl mb-2"><a href="https://chargehub.com/en/charging-stations-map.html?lat=52.008243&lon=-110.774318&locId=129471" class="text-orange-600" target="_blank">Village Office</a></div>
+            <div>4901 50 Avenue</div>
+            <div>24 hours</div>
+        </div>
+    </div>
+    <div class="flex  mx-auto">
+        <div class="p-3 text-center ">
+            <div class="mb-2"><img src="{% static 'images/Plug-Icon-CCS_CHAdeMO.webp' %}" alt="CCS_CHAdeMO" class="w-24 h-24 mx-auto"></div>
+            <div class="font-semibold">CCS/CHAdeMO</div>
+            <div>Level 3</div>
+            <div>2 Plugs</div>
+        </div>
+        <div class="p-3 m-auto">
+            <div class="text-xl mb-2"><a href="https://chargehub.com/en/charging-stations-map.html?lat=52.009346&lon=-110.769308&locId=129472" class="text-orange-600" target="_blank">Consort Sportex</a></div>
+            <div>4602 50 Avenue</div>
+            <div>24 hours</div>
+        </div>
+    </div>
+</div>
+    <div class="text-right">Charging station information from <a href="https://chargehub.com" class="text-orange-600" target="_blank">ChargeHub</a></div>
 </div>
 {% endblock %}

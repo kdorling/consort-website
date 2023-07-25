@@ -1,5 +1,7 @@
 {% extends "components/dropdown.html" %}
 
+{% load weather_tags %}
+
 {% block id %}
 air-quality-dropdown
 {% endblock %}
@@ -9,12 +11,67 @@ air-quality-dropdown
 {% endblock %}
 
 {% block title %}
-<b>PM2.5: </b>12ppm
+  {% any_airquality as have_airquality %}
+  {% if have_airquality %}
+    {% get_airquality as airquality %}
+    AQI: {{ airquality.current }}
+  {% endif %}
 {% endblock %}
 
 {% block content %}
-<div class="px-3 py-3">
-        <div class="text-3xl font-semibold mb-5">Air Quality</div>
-        <div>Air quality data from PurpleAir</div>
-</div>
+  {% any_airquality as have_airquality %}
+
+  {% if have_airquality %}
+    {% get_airquality as airquality %}
+    <div class="max-w-[90vw] md:max-w-[82vw]">
+        <div class="text-2xl font-semibold mb-4">Air Quality</div>
+      <div class="overflow-x-scroll min-[1500px]:overflow-hidden">
+        <div class="columns-7 mb-5 w-[1200px]">
+          <div class="col text-center p-1 border-r-2">
+            <div>Current</div>
+            <div class="text-2xl {% airquality_color airquality.current %}">{{ airquality.current }}</div>
+            <div class="{% airquality_color airquality.current %}">{% airquality_description airquality.current %}</div>
+          </div>
+          <div class="col text-center p-1">
+                <div>10 minute</div>
+                <div class="text-2xl {% airquality_color airquality.avg_10minute %}">{{ airquality.avg_10minute }}</div>
+                <div class="{% airquality_color airquality.avg_10minute %}">{% airquality_description airquality.avg_10minute %}</div>
+          </div>
+          <div class="col text-center p-1">
+                <div>30 minute</div>
+                <div class="text-2xl {% airquality_color airquality.avg_30minute %}">{{ airquality.avg_30minute }}</div>
+                <div class="{% airquality_color airquality.avg_30minute %}">{% airquality_description airquality.avg_30minute %}</div>
+          </div>
+          <div class="col text-center p-1">
+                <div>1 hour</div>
+                <div class="text-2xl {% airquality_color airquality.avg_60minute %}">{{ airquality.avg_60minute }}</div>
+                <div class="{% airquality_color airquality.avg_60minute %}">{% airquality_description airquality.avg_60minute %}</div>
+          </div>
+          <div class="col text-center p-1">
+                <div>6 hours</div>
+                <div class="text-2xl {% airquality_color airquality.avg_6hour %}">{{ airquality.avg_6hour }}</div>
+                <div class="{% airquality_color airquality.avg_6hour %}">{% airquality_description airquality.avg_6hour %}</div>
+          </div>
+          <div class="col text-center p-1">
+                <div>1 day</div>
+                <div class="text-2xl {% airquality_color airquality.avg_24hour %}">{{ airquality.avg_24hour }}</div>
+                <div class="{% airquality_color airquality.avg_24hour %}">{% airquality_description airquality.avg_24hour %}</div>
+          </div>
+          <div class="col text-center p-1">
+                <div>1 week</div>
+                <div class="text-2xl {% airquality_color airquality.avg_week %}">{{ airquality.avg_week }}</div>
+                <div class="{% airquality_color airquality.avg_week %}">{% airquality_description airquality.avg_week %}</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full">
+      <div class="flex-grow p-1">
+        <a href="https://map.purpleair.com/1/mAQI/a10/p604800/cC0?select=122099#11/52.0202/-110.7719" class="text-orange-600" target="_blank">Detailed Air Quality Informatoin</a>
+      </div>
+      <div class="p-1 text-right">
+        Air quality data from <a href="https://www2.purpleair.com" class="text-orange-600" target="_blank">purpleair</a>
+      </div>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

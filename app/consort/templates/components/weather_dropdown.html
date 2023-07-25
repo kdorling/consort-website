@@ -1,37 +1,60 @@
-{% extends "components/dropdown.html" %}
+{% extends 'components/dropdown.html' %}
+
+{% load weather_tags format_date %}
 
 {% block id %}
-weather-dropdown
+  weather-dropdown
 {% endblock %}
 
 {% block labelledby %}
-weather-dropdown
+  weather-dropdown
 {% endblock %}
 
 {% block title %}
-<i class="fa-solid fa-sun me-2"></i>12°C
+  {% any_weather as have_weather %}
+  {% if have_weather %}
+    {% current_weather as weather_current %}
+    <img src="https://openweathermap.org/img/wn/{{ weather_current.icon_id }}.png" class="h-[2rem]" /> {{ weather_current.current_temperature }}°C
+  {% endif %}
 {% endblock %}
 
 {% block content %}
-<div class="px-3 py-3">
-    <div class="text-3xl font-semibold mb-5">Weather Forecast</div>
-    <div class="columns-5 mb-5"> 
-        <div class="col">
-            <p class="text-body-secondary">Sunny</p>
+  {% any_weather as have_weather %}
+
+  {% if have_weather %}
+    {% current_weather as weather_current %}
+    {% forecast as current_forecast %}
+
+    <div class="max-w-[90vw]">
+        <div class="text-2xl font-semibold mb-4">Weather</div>
+      <div class="overflow-x-scroll min-[1650px]:overflow-hidden">
+        <div class="columns-9 mb-5 w-[1500px] xl:w-auto">
+          <div class="col text-center p-3 border-r-2">
+            <div>Current</div>
+            <img src="https://openweathermap.org/img/wn/{{ weather_current.icon_id }}@2x.png" class="m-auto" />
+            <div>{{ weather_current.current_temperature }}°C</div>
+            <div>{{ weather_current.description }}</div>
+          </div>
+          {% for entry in current_forecast %}
+            <div class="col text-center p-3">
+              <div>
+                {% format_date entry.date '%m/%d' %}
+              </div>
+              <img src="https://openweathermap.org/img/wn/{{ entry.icon_id }}@2x.png" class="m-auto" />
+              <div>{{ entry.high_temperature }}°C / {{ entry.low_temperature }}°C</div>
+              <div>{{ entry.description }}</div>
+            </div>
+          {% endfor %}
         </div>
-        <div class="col">
-            <p class="text-body-secondary">Sunny</p>
-        </div>
-        <div class="col">
-            <p class="text-body-secondary">Sunny</p>
-        </div>
-        <div class="col">
-            <p class="text-body-secondary">Sunny</p>
-        </div>
-        <div class="col">
-            <p class="text-body-secondary">Sunny</p>
-        </div>
+      </div>
     </div>
-    <div>Weather data from openweather</div>
-</div>
+    <div class="flex w-full">
+      <div class="flex-grow p-2">
+        <a href="https://openweathermap.org/city/5926958" class="text-orange-600" target="_blank">Detailed Forecast</a>
+      </div>
+      <div class="p-2 text-right">
+        Weather data from <a href="https://openweathermap.org" class="text-orange-600" target="_blank">openweather</a>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

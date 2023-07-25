@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+from kombu import Queue
+
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -36,6 +39,7 @@ INSTALLED_APPS = [
     "business_directory",
     "profiles",
     "common",
+    "weather",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.modeladmin",
@@ -98,8 +102,12 @@ WSGI_APPLICATION = "consort.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
 
@@ -172,3 +180,48 @@ WAGTAILSEARCH_BACKENDS = {
         "BACKEND": "wagtail.search.backends.database",
     }
 }
+
+
+# Celery settings
+
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://127.0.0.1:6379/0")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_BACKEND", "redis://127.0.0.1:6379/0")
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_BEAT_SCHEDULE = {
+    'task-update-weather': {
+        'task': 'weather.tasks.update_weather',
+        "schedule": 3600.0,  # every hour
+    },
+    'task-update-aqi': {
+        'task': 'weather.tasks.update_aqi',
+        "schedule": 3600.0,  # every hour
+    },
+}
+CELERY_TASK_DEFAULT_QUEUE = "default"
+
+# Force all queues to be explicitly listed in `CELERY_TASK_QUEUES` to help prevent typos
+CELERY_TASK_CREATE_MISSING_QUEUES = False
+
+CELERY_TASK_QUEUES = (
+    # need to define default queue here or exception would be raised
+    Queue("default"),
+
+    Queue("high_priority"),
+    Queue("low_priority"),
+)
+
+CELERY_TASK_ROUTES = {
+    'consort.celery.*': {
+        'queue': 'high_priority',
+    },
+}
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = int(os.environ.get("DEBUG", default=1))
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get("SECRET_KEY", default="django-insecure-csov7al8s0(4^!6)pfzh$kc8wd(#smvj&679u()mo22ia9_v4!")
+
+# SECURITY WARNING: define the correct hosts in production!
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="localhost 127.0.0.1 [::1]").split(" ")

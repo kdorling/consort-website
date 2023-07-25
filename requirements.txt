@@ -4,3 +4,4 @@ django-extensions>=3.2,<3.3
 celery>=5.3,<5.4
 redis>=4.6,<4.7
 flower>=2.0,<2.1
+psycopg2-binary>2.9,<2.10
