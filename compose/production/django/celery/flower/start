@@ -17,6 +17,17 @@ until worker_ready; do
 done
 >&2 echo 'Celery workers are available'
 
-celery -A consort  \
+worker_ready() {
+    celery -A consort inspect ping
+}
+
+until worker_ready; do
+  >&2 echo 'Celery workers not available'
+  sleep 1
+done
+>&2 echo 'Celery workers is available'
+
+exec celery -A consort \
     --broker="${CELERY_BROKER}" \
-    flower
+    flower \
+    --basic_auth="${CELERY_FLOWER_USER}:${CELERY_FLOWER_PASSWORD}"

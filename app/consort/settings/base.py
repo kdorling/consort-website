@@ -94,7 +94,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "consort.wsgi.application"
+#WSGI_APPLICATION = "consort.wsgi.application"
+ASGI_APPLICATION = "consort.asgi.application"
 
 
 # Database
