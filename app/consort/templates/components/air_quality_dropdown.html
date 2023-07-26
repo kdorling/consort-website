@@ -14,7 +14,7 @@ air-quality-dropdown
   {% any_airquality as have_airquality %}
   {% if have_airquality %}
     {% get_airquality as airquality %}
-    AQI: {{ airquality.current }}
+    AQI:&nbsp;<span class="normal-case {% airquality_color airquality.current %}">{{ airquality.current }} {% airquality_description airquality.current %}</span>
   {% endif %}
 {% endblock %}
 
@@ -29,7 +29,7 @@ air-quality-dropdown
         <div class="columns-7 mb-5 w-[1200px]">
           <div class="col text-center p-1 border-r-2">
             <div>Current</div>
-            <div class="text-2xl {% airquality_color airquality.current %}">{{ airquality.current }}</div>
+            <div class="text-2xl {% airquality_color airquality.current %}"> {{ airquality.current }} </div>
             <div class="{% airquality_color airquality.current %}">{% airquality_description airquality.current %}</div>
           </div>
           <div class="col text-center p-1">
@@ -66,7 +66,7 @@ air-quality-dropdown
       </div>
       <div class="flex w-full">
       <div class="flex-grow p-1">
-        <a href="https://map.purpleair.com/1/mAQI/a10/p604800/cC0?select=122099#11/52.0202/-110.7719" class="text-orange-600" target="_blank">Detailed Air Quality Informatoin</a>
+        <a href="https://map.purpleair.com/1/mAQI/a10/p604800/cC0?select=122099#11/52.0202/-110.7719" class="text-orange-600" target="_blank">Detailed Air Quality Information</a>
       </div>
       <div class="p-1 text-right">
         Air quality data from <a href="https://www2.purpleair.com" class="text-orange-600" target="_blank">purpleair</a>
