@@ -1,0 +1,9 @@
+{% load wagtailcore_tags %}
+
+<!-- Subsection Block -->
+<section>
+{% for block in value.body %}
+    {% include_block block %}
+{% endfor %}
+</section>
+<!-- End Subsection Block -->

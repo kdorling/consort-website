@@ -134,3 +134,4 @@ dmypy.json
 **/frontend
 **/media
 *.7z
+*.tar

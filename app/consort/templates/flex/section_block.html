@@ -2,13 +2,10 @@
 
 <!-- Section Block -->
 <section>
-<div class="prose">
-<h2>{{ value.header }}</h2>
-{{value.content}}
-</div>
-
-{% for block in value.subcontent %}
+<div class="prose text-xl lg:!max-w-[90ch] xl:!max-w-[120ch] min-[1600px]:!max-w-[160ch] p-5 mx-auto">
+{% for block in value.body %}
     {% include_block block %}
 {% endfor %}
+</div>
 </section>
 <!-- End Section Block -->

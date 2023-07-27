@@ -13,8 +13,28 @@ class TitleBlock(blocks.StructBlock):
         help_text="Text to display",
     )
 
+    alignment = blocks.ChoiceBlock(
+        choices=(
+            ("text-left", "Title to the left"),
+            ("text-center", "Title centered"),
+            ("text-right", "Title to the right")
+        ),
+        default="text-left", 
+        help_text="Title for a section of the page"
+    )
+
+    header = blocks.ChoiceBlock(
+        choices=(
+            ("h1", "Large title (h1)"),
+            ("h2", "Medium title (h2)"),
+            ("h3", "Small title (h3)"),
+        ),
+        default="h1", 
+        help_text="Header size"
+    )
+
     class Meta:
-        template = "common/title_block.html"
+        template = "flex/title_block.html"
         icon = "edit"
         label = "Title"
         help_text= "Centered text to display on the page"
@@ -65,7 +85,7 @@ class ButtonsBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = "common/buttons_block.html"
+        template = "flex/buttons_block.html"
         icon = "image"
         label = "Links"
         help_text = "A set of buttons on the page"
@@ -78,7 +98,7 @@ class PagesBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = "common/pages_block.html"
+        template = "flex/pages_block.html"
         icon = "image"
         label = "Pages"
         help_text = "A set of pages"
@@ -91,7 +111,7 @@ class PopularPagesBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = "common/popular_pages_block.html"
+        template = "flex/popular_pages_block.html"
         icon = "image"
         label = "Pages"
         help_text = "A set of pages"
@@ -108,7 +128,7 @@ class PagesTabBlock(blocks.StructBlock):
     ])
 
     class Meta:
-        template = "common/pages_tab_block.html"
+        template = "flex/pages_tab_block.html"
         icon = "image"
         label = "Page Tab"
         help_text = "A set of pages"
@@ -120,7 +140,7 @@ class PagesTabsBlock(blocks.StructBlock):
     ])
 
     class Meta:
-        template = "common/pages_tabs_block.html"
+        template = "flex/pages_tabs_block.html"
         icon = "image"
         label = "Tabs"
         help_text = "A set of tabs containing pages"
@@ -132,7 +152,7 @@ class CardsBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = "common/cards_block.html"
+        template = "flex/cards_block.html"
         icon = "image"
         label = "Cards"
         help_text = "A set of cards on the page"
@@ -157,7 +177,7 @@ class ImageAndTextBlock(blocks.StructBlock):
     link = Link()
 
     class Meta:
-        template = "common/image_and_text_block.html"
+        template = "flex/image_and_text_block.html"
         icon = "image"
         label = "Image & Text"
 
@@ -172,80 +192,9 @@ class ProfilesBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = "common/profiles_block.html"
+        template = "flex/profiles_block.html"
         label = "Profiles"
         help_text = "A set of user profiles"
-
-
-class GenericSectionValue(blocks.StructValue):
-    def anchor(self):
-        header = self.get("header")
-        return f"{header.lower().replace(' ', '_')}"
-
-
-class GenericSectionBlock(blocks.StructBlock):
-    common_sections = [
-        ("cards", CardsBlock()),
-        ("image_and_text", ImageAndTextBlock()),
-        ("text", blocks.RichTextBlock()),
-        ("profiles", ProfilesBlock())
-    ]
-
-    header = blocks.CharBlock(
-        required=True,
-        help_text="The section's title",
-    )
-
-    content = blocks.RichTextBlock(
-        required=True,
-        help_text="The section's content",
-    )
-
-    class Meta:
-        icon = "edit"
-        value_class = GenericSectionValue
-
-
-class SubSubSectionBlock(GenericSectionBlock):
-    
-    subcontent = blocks.StreamBlock(
-        GenericSectionBlock.common_sections,
-        required=False,
-        help_text="The subsubsection's subcontent"
-    )
-
-    class Meta:
-        template = "common/subsubsection_block.html"
-        label = "SubSubSection"
-        help_text = "A subsubsection of the document"
-
-
-class SubSectionBlock(GenericSectionBlock):  
-
-    subcontent = blocks.StreamBlock(
-        GenericSectionBlock.common_sections + [("subsubsection", SubSubSectionBlock())],
-        required=False,
-        help_text="The subsection's content"
-    )
-
-    class Meta:
-        template = "common/subsection_block.html"
-        label = "SubSection"
-        help_text = "A subsubsection of the document"
-
-
-class SectionBlock(GenericSectionBlock):
-
-    subcontent = blocks.StreamBlock(
-            GenericSectionBlock.common_sections + [("subsection", SubSectionBlock())],
-            required=False,
-            help_text="The section's content"
-        )
-    
-    class Meta:
-        template = "common/section_block.html"
-        label = "Section"
-        help_text = "A section of the document"
 
 
 class UpdateBlock(blocks.StructBlock):
@@ -275,6 +224,106 @@ class UpdatesBlock(blocks.StructBlock):
     )
 
     class Meta:
-        template = "common/updates_block.html"
+        template = "flex/updates_block.html"
         label = "Updates"
         help_text = "A set of update cards"
+
+
+class GenericSectionValue(blocks.StructValue):
+    def anchor(self):
+        header = self.get("header")
+        return f"{header.lower().replace(' ', '_')}"
+
+
+class GenericSectionBlock(blocks.StructBlock):
+    common_sections = [
+        ("cards", CardsBlock()),
+        ("image_and_text", ImageAndTextBlock()),
+        ("text", blocks.RichTextBlock()),
+        ("profiles", ProfilesBlock()),
+        ("title", TitleBlock()),
+        ("cards", CardsBlock()),
+        ("page_cards_with_tabs", PagesTabsBlock()),
+        ("page_menu", PopularPagesBlock()),
+        ("updates", UpdatesBlock()),
+    ]
+
+    # header = blocks.CharBlock(
+    #     required=True,
+    #     help_text="The section's title",
+    # )
+
+    # content = blocks.RichTextBlock(
+    #     required=True,
+    #     help_text="The section's content",
+    # )
+
+    class Meta:
+        icon = "edit"
+        value_class = GenericSectionValue
+
+
+class SubSubSectionBlock(GenericSectionBlock):
+    
+    body = blocks.StreamBlock(
+        GenericSectionBlock.common_sections,
+        required=False,
+        help_text="The subsubsection's subcontent"
+    )
+
+    class Meta:
+        template = "flex/subsubsection_block.html"
+        label = "SubSubSection"
+        help_text = "A subsubsection of the document"
+
+
+class SubSectionBlock(GenericSectionBlock):  
+
+    body = blocks.StreamBlock(
+        GenericSectionBlock.common_sections + [("subsubsection", SubSubSectionBlock())],
+        required=False,
+        help_text="The subsection's content"
+    )
+
+    class Meta:
+        template = "flex/subsection_block.html"
+        label = "SubSection"
+        help_text = "A subsubsection of the document"
+
+
+class SectionBlock(GenericSectionBlock):
+
+    body = blocks.StreamBlock(
+            GenericSectionBlock.common_sections + [("subsection", SubSectionBlock())],
+            required=False,
+            help_text="The section's content"
+        )
+    
+    class Meta:
+        template = "flex/section_block.html"
+        label = "Section"
+        help_text = "A section of the document"
+
+
+class SectionWithBackgroundBlock(GenericSectionBlock):
+
+    body = blocks.StreamBlock(
+            GenericSectionBlock.common_sections + [("subsection", SubSectionBlock())],
+            required=False,
+            help_text="The section's content"
+        )
+    
+    background_color = blocks.ChoiceBlock(
+        choices=[
+            ("bg-white", "White"),
+            ("bg-neutral-200", "Gray"),
+            ("bg-orange-200", "Orange"),
+        ], 
+        default="white",
+        help_text="The section's background color"
+    )
+    
+    class Meta:
+        template = "flex/section_block.html"
+        label = "Section"
+        help_text = "A section of the document"

@@ -80,13 +80,3 @@ class transaction_task_with_retry:
         )
 
         return countdown
-
-
-@app.task
-def divide(x, y):
-    #from celery.contrib import rdb
-    #rdb.set_trace()
-
-    import time
-    time.sleep(3)
-    return x / y

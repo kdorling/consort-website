@@ -59,7 +59,7 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}font-['Lexend']{% endblock %}">
+    <body {% block body_attributes %} {% endblock %} class="{% block body_class %} font-['Lexend'] {% endblock %}">
         {% wagtailuserbar %}
         {% block header %}
         {% include "includes/header.html" %}
@@ -67,7 +67,7 @@
 
         {% block banner %}{%endblock%}
 
-        <main class="{% block content_class %}font-['Lexend'] lg:w-[80%] mx-auto mt-12{% endblock %}">
+        <main class="{% block content_class %}font-['Lexend'] mt-12 {% endblock %}">
         {% block content %}{% endblock %}
         </main>
 

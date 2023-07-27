@@ -1,0 +1,24 @@
+{% load common_tags %}
+
+{% for block in body.body %}
+
+    {% is_title_type block as is_title_block %}
+    {% if is_title_block %}
+    <li class="py-1">
+        <a
+        data-te-nav-link-ref
+        data-te-nav-link-active
+        class="bg-transparent px-[5px] text-neutral-600 shadow-none dark:text-neutral-200"
+        href="#{% to_id block.value.text %}"
+        >{{block.value.text}}</a>
+    </li> 
+    {% endif %}
+
+    {% is_section_type block as is_section_block %}
+    {% if is_section_block %}
+        <ul data-te-nav-list-ref class="pl-3">               
+            {% include "components/scrollspy_section.html" with body=block.value %}
+        </ul>
+    {% endif %}
+
+{% endfor %}
