@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # Static folders
-*static/
+app/static/
 
 **/frontend
 **/media
