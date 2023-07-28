@@ -1,8 +1,15 @@
+from itertools import chain
+
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.template.response import TemplateResponse
 
 from wagtail.models import Page
+from wagtail.documents.models import Document
 from wagtail.search.models import Query
+
+def get_search_quote(search_result):
+    if "information" in search_result.page_type_display_name.lower():
+        body_elements = search_result.specific
 
 
 def search(request):
@@ -11,11 +18,11 @@ def search(request):
 
     # Search
     if search_query:
-        search_results = Page.objects.live().search(search_query)
-        query = Query.get(search_query)
+        page_results = Page.objects.live().search(search_query)
+        document_results  = Document.objects.search(search_query)
+        search_results = list(chain(page_results, document_results))
 
-        import pdb
-        pdb.set_trace()
+        query = Query.get(search_query)
 
         # Record hit
         query.add_hit()

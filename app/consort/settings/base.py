@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     "wagtail.snippets",
     "wagtail.documents",
     "wagtail.images",
-    "wagtail.search",
+    #"wagtail.search",
+    "custom_search",
     "wagtail.admin",
     "wagtail",
     "modelcluster",
@@ -173,13 +174,26 @@ MEDIA_URL = "/media/"
 WAGTAIL_SITE_NAME = "consort"
 
 # Search
+
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
+# WAGTAILSEARCH_BACKENDS = {
+#     "default": {
+#         "BACKEND": "wagtail.search.backends.database",
+#     }
+# }
+
+ELASTICSEARCH_URL = os.environ.get("ELASTIC_SEARCH_URL", "http://elasticsearch:9200")
+
 WAGTAILSEARCH_BACKENDS = {
-    "default": {
-        "BACKEND": "wagtail.search.backends.database",
+    'default': {
+        'BACKEND': 'custom_search.backends.elasticsearch7',
+        'URLS': [ELASTICSEARCH_URL],
+        'INDEX': 'wagtail',
+        'TIMEOUT': 5,
+        'OPTIONS': {},
+        'INDEX_SETTINGS': {},
     }
 }
-
 
 # Celery settings
 

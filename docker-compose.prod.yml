@@ -41,6 +41,14 @@ services:
   redis:
     image: redis:6-alpine
 
+  elasticsearch:
+    image: elasticsearch:7.17.10
+    environment:
+      - discovery.type=single-node
+      - cluster.name=elasticsearch
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+
   rabbitmq:
     image: rabbitmq:3-management
     env_file:

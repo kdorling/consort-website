@@ -11,3 +11,5 @@ SQL_PORT=5432
 
 CELERY_BROKER=redis://redis:6379/0
 CELERY_BACKEND=redis://redis:6379/0
+
+ELASTIC_SEARCH_URL=http://elasticsearch:9200

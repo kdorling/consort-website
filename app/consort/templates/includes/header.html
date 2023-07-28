@@ -6,7 +6,7 @@
 <nav
   class="relative md:flex w-full py-2 bg-neutral-200 dark:bg-neutral-600"
   data-te-navbar-ref>
-    <div class="list-style-none mr-auto flex pl-0 lg:mt-1 flex-row flex-wrap items-center justify-between">
+    <div class="list-style-none mr-auto flex pl-0 lg:my-0 flex-row flex-wrap items-center justify-between">
       {% any_weather as have_weather %}
       {% if have_weather %}
         {% include "components/weather_dropdown.html" %}
@@ -17,6 +17,9 @@
       {% endif %}
       {% include "components/electric_vehicle_dropdown.html" %}
     </div>
+    <div class="my-0 hidden md:flex">
+      <div class="my-auto">{% include "components/search.html" %}</div>
+      <div><a href="https://www.facebook.com/villageofconsort" target="_blank" class="my-auto"><i class="fa-brands fa-square-facebook fa-3x mr-2"></i></a></div>
   </div>
 </nav>
 <nav
@@ -68,4 +71,9 @@ data-te-sidenav-width="300">
     </div>
   </div>
   </div>
+
+<div class="my-0 flex md:hidden flex-grow">
+  <div class="my-auto flex-grow">{% include "components/search.html" %}</div>
+  <div><a href="https://www.facebook.com/villageofconsort" target="_blank" class="my-auto"><i class="fa-brands fa-square-facebook fa-3x mr-2"></i></a></div>
+</div>
 </nav>

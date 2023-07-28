@@ -6,24 +6,42 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
-<h1>Search</h1>
+{% include "components/page_title_component.html" with title="Search" icon="fa-solid fa-magnifying-glass" %}
 
-<form action="{% url 'search' %}" method="get">
-    <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-    <input type="submit" value="Search" class="button">
+
+<div class="sm:ml-20 mb-20">
+<form action="{% url 'search' %}" method="get" class="flex flex-wrap w-full sm:w-fit">
+    <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %} class="w-full mb-6 sm:mb-0 sm:w-[20rem] text-xl rounded_xl shadow-md border-2 border-neutral-200 sm:mr-10 p-3">
+    <input type="submit" value="Search" class="button text-xl bg-orange-400 rounded-xl border-2 p-3 mx-auto md:mx-none">
 </form>
+</div>
 
-{% if search_results %}
-<div>{{search_results}}</div>
-<ul>
-    {% for result in search_results %}
-    <li>
-        <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-        {% if result.search_description %}
-        {{ result.search_description|safe }}
-        {% endif %}
-    </li>
-    {% endfor %}
+
+<div class="text-xl mx-auto ml-10 sm:ml-20">
+<ul class="list-none">
+    {% if search_results %}
+        {% for result in search_results %}
+        <li class="!pl-0">
+            <div class="text-xl font-semibold">
+                {% if result.file %}
+                <a href="{{ result.url }}" class="!text-orange-600 !no-underline">{{ result }}</a>
+                {% else %}
+                <a href="{% pageurl result %}" class="!text-orange-600 !no-underline">{{ result }}</a>
+                {% endif %}
+            </div>
+            {% if result.search_description %}
+            {{ result.search_description|safe }}
+            {% endif %}
+            {% for highlight in result.highlights_ %}
+            <div class="ml-6 my-6">
+                {{ highlight|safe }}
+            </div>
+            {% endfor %}
+        </li>
+        {% endfor %}
+    {% else %}
+     <p> No results found </p>
+    {% endif %}
 </ul>
 
 {% if search_results.has_previous %}
@@ -33,7 +51,5 @@
 {% if search_results.has_next %}
 <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
 {% endif %}
-{% elif search_query %}
-No results found
-{% endif %}
 {% endblock %}
+</div>
