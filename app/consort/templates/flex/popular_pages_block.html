@@ -1,11 +1,11 @@
-<div class="overflow-hidden w-full mb-20">
-<div class="bg-neutral-100 dark:bg-neutral-900 w-full">
-    <div class="flex pb-10 mb-10">
+<div class="overflow-hidden w-full">
+<div class="w-full mb-10">
+    <div class="flex">
         <div class="mx-auto text-center sm:w-[80%]">
             {% comment %} {% include "components/page_cards.html" with links=value.links %} {% endcomment %}
             <div class="flex flex-wrap noprose mx-auto">
                 {% for link in value.links %}
-                    <a href="{{link.page.url}}" class="mx-auto px-3 transition duration-500 ease-in-out hover:scale-[1.1] hover:text-orange-500 mt-5 sm:mt-10">
+                    <a href="{{link.page.url}}" class="mx-auto px-3 transition duration-500 ease-in-out hover:scale-[1.1] hover:text-orange-500">
                         <div class="flex p-3 ml-auto my-auto w-[150px]">
                             <div class="flex mx-auto my-auto">
                                 <i class="fa fa-solid {{ link.page.icon }} fa-3x"></i>

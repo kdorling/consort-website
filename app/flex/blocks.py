@@ -197,10 +197,10 @@ class ProfilesBlock(blocks.StructBlock):
         help_text = "A set of user profiles"
 
 
-class UpdateBlock(blocks.StructBlock):
+class AnnouncementBlock(blocks.StructBlock):
     title = blocks.CharBlock(
         max_length=150,
-        help_text="The title of the update",
+        help_text="The title of the announcement",
     )
 
     icon = blocks.CharBlock(
@@ -214,19 +214,19 @@ class UpdateBlock(blocks.StructBlock):
     )
 
     text = blocks.RichTextBlock(
-        help_text="A description of the update"
+        help_text="A description of the announcement"
     )
 
 
-class UpdatesBlock(blocks.StructBlock):
-    updates = blocks.ListBlock(
-        UpdateBlock()
+class AnnouncementsBlock(blocks.StructBlock):
+    announcements = blocks.ListBlock(
+        AnnouncementBlock()
     )
 
     class Meta:
-        template = "flex/updates_block.html"
-        label = "Updates"
-        help_text = "A set of update cards"
+        template = "flex/announcements_block.html"
+        label = "Announcements"
+        help_text = "A set of announcement cards"
 
 
 class GenericSectionValue(blocks.StructValue):
@@ -245,7 +245,7 @@ class GenericSectionBlock(blocks.StructBlock):
         ("cards", CardsBlock()),
         ("page_cards_with_tabs", PagesTabsBlock()),
         ("page_menu", PopularPagesBlock()),
-        ("updates", UpdatesBlock()),
+        ("updates", AnnouncementsBlock()),
     ]
 
     # header = blocks.CharBlock(
@@ -305,25 +305,31 @@ class SectionBlock(GenericSectionBlock):
         help_text = "A section of the document"
 
 
-class SectionWithBackgroundBlock(GenericSectionBlock):
-
-    body = blocks.StreamBlock(
-            GenericSectionBlock.common_sections + [("subsection", SubSectionBlock())],
-            required=False,
-            help_text="The section's content"
-        )
-    
+class AdjustableSection(GenericSectionBlock):
+   
     background_color = blocks.ChoiceBlock(
         choices=[
             ("bg-white", "White"),
-            ("bg-neutral-200", "Gray"),
+            ("bg-neutral-100", "Gray"),
             ("bg-orange-200", "Orange"),
         ], 
         default="white",
         help_text="The section's background color"
     )
+
+    body_width = blocks.IntegerBlock(
+        default="100",
+        required=True,
+        help_text="Percent of the page width the section should take up"
+    )
+
+    body = blocks.StreamBlock(
+        GenericSectionBlock.common_sections + [("subsection", SubSectionBlock())],
+        required=False,
+        help_text="The section's content"
+    )
     
     class Meta:
-        template = "flex/section_block.html"
-        label = "Section"
+        template = "flex/adjustable_section_block.html"
+        label = "Adjustable Section"
         help_text = "A section of the document"

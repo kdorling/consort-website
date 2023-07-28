@@ -1,56 +1,48 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% load wagtailimages_tags wagtailcore_tags %}
 
 
+  {% block banner %}
+  {% if page.include_banner %}
+    {% image page.banner_background_image original as bbimg %}
 
-{% block banner %}
-
-{% image page.banner_background_image original as bbimg %}
-<div class="overflow-hidden">
-<div
-    class="relative xl:min-h-[calc(100vh-400px)] bg-cover bg-no-repeat bg-[50%] bg-[url('{{bbimg.url}}')]">
-    <div
-      class="relative flex xl:min-h-[calc(100vh-400px)] py-20 top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.45)]">
-      <div class="flex h-full items-center justify-center mx-auto my-auto">
-        <div class="my-auto">
-        <div class="px-6 text-center text-white md:px-12">
-          <span class="mt-6 mb-16 font-normal tracking-tight text-6xl md:text-7xl xl:text-8xl">
-            {{ page.banner_title }}
-          </span>
-          <span class="mt-6 mb-16 font-bold tracking-tight text-6xl md:text-7xl xl:text-8xl text-orange-500">
-            {{ page.banner_title_emphasis }}
-          </span>
-        </div>
-        <div class="px-6 text-center text-white md:px-12">
-          <div class="mt-16 mb-16 text-2xl font-light tracking-tight md:text-3xl xl:text-4xl space-y-5" >
-            {{ page.banner_text|richtext }}
+    <div class="overflow-hidden">
+      <div class="relative xl:min-h-[calc(100vh-400px)] bg-cover bg-no-repeat bg-[50%] bg-[url('{{ bbimg.url }}')]">
+        <div class="relative flex xl:min-h-[calc(100vh-400px)] py-20 top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.45)]">
+          <div class="flex h-full items-center justify-center mx-auto my-auto">
+            <div class="my-auto">
+              <div class="px-6 text-center text-white md:px-12">
+                <span class="mt-6 mb-16 font-normal tracking-tight text-6xl md:text-7xl xl:text-8xl">{{ page.banner_title }}&nbsp;</span>
+                <span class="mt-6 mb-16 font-bold tracking-tight text-6xl md:text-7xl xl:text-8xl text-orange-500">{{ page.banner_title_emphasis }}</span>
+              </div>
+              <div class="px-6 text-center text-white md:px-12">
+                <div class="mt-16 mb-16 text-2xl font-light tracking-tight md:text-3xl xl:text-4xl space-y-5">{{ page.banner_text|richtext }}</div>
+              </div>
+              {% for block in page.banner_buttons %}
+                {% include_block block %}
+              {% endfor %}
+            </div>
           </div>
         </div>
-        {% for block in page.banner_buttons %}
-          {% include_block block %}
-        {% endfor %}
-  </div>
-</div>
+      </div>
+
+      <div class="-mt-2.5 text-white dark:text-neutral-800 md:-mt-4 lg:-mt-6 xl:-mt-10 scale-[2] origin-[top_center] overflow-hidden">
+        <svg viewBox="0 0 2880 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 48 L 1437.5 48 L 2880 48 L 2880 0 L 2160 0 C 1453.324 60.118 726.013 4.51 720 0 L 0 0 L 0 48 Z" fill="rgb(245,245,245)"></path>
+        </svg>
+      </div>
     </div>
-  </div>
+    {% endif %}
+  {% endblock %}
 
 
-  <div
-    class="-mt-2.5 text-white dark:text-neutral-800 md:-mt-4 lg:-mt-6 xl:-mt-10 scale-[2] origin-[top_center] overflow-hidden">
-    <svg viewBox="0 0 2880 48" xmlns="http://www.w3.org/2000/svg">
-      <path d="M 0 48 L 1437.5 48 L 2880 48 L 2880 0 L 2160 0 C 1453.324 60.118 726.013 4.51 720 0 L 0 0 L 0 48 Z"
-        fill="rgb(245,245,245)"></path>
-    </svg>
-  </div>
-</div>
+{% block content_class %}
+  font-['Lexend'] mx-auto
+{% endblock %}
 
-  {% endblock banner %}
-
-  {% block content_class %}font-['Lexend'] mx-auto{% endblock %}
-
-  {% block content %}
+{% block content %}
   {% for block in page.body %}
     {% include_block block %}
   {% endfor %}
-{% endblock content %}
+{% endblock %}

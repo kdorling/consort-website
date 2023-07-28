@@ -14,12 +14,13 @@
 </form>
 
 {% if search_results %}
+<div>{{search_results}}</div>
 <ul>
     {% for result in search_results %}
     <li>
         <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
         {% if result.search_description %}
-        {{ result.search_description }}
+        {{ result.search_description|safe }}
         {% endif %}
     </li>
     {% endfor %}

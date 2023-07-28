@@ -14,6 +14,9 @@ def search(request):
         search_results = Page.objects.live().search(search_query)
         query = Query.get(search_query)
 
+        import pdb
+        pdb.set_trace()
+
         # Record hit
         query.add_hit()
     else:

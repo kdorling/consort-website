@@ -13,34 +13,49 @@ class HomePage(BasePage):
 
     banner_title = models.CharField(
         max_length=50,
-        help_text="The banner's title"
+        help_text="The banner's title",
+        blank=True,
+        null=True,
     )
 
     banner_title_emphasis = models.CharField(
         max_length=50,
-        help_text="The emphasized part of the banner's title"
+        help_text="The emphasized part of the banner's title",
+        blank=True,
+        null=True,
     )
 
     banner_text = RichTextField(
-        help_text="Text under the banner"
+        help_text="Text under the banner",
+        blank=True,
+        null=True,
     )
 
     banner_buttons = StreamField([
-        ("buttons", blocks.ButtonsBlock()),
-    ], use_json_field=True)
+            ("buttons", blocks.ButtonsBlock()),
+        ],
+        use_json_field=True,
+        blank=True,
+        null=True)
 
     banner_background_image = models.ForeignKey(
         "wagtailimages.Image",
-        blank=False,
+        blank=True,
         null=True,
         related_name="+",
         help_text="The banner background image",
         on_delete=models.SET_NULL,
     )
 
+    include_banner = models.BooleanField(
+        default=True,
+        help_text="Include banner in the page"
+    )
+
     body = StreamField([
-        ("section", blocks.SectionWithBackgroundBlock()),
-    ], use_json_field=True)
+            ("section", blocks.AdjustableSection()),
+        ], 
+        use_json_field=True)
 
     content_panels = BasePage.content_panels + [
         FieldPanel("banner_title"),
@@ -48,5 +63,6 @@ class HomePage(BasePage):
         FieldPanel("banner_text"),
         FieldPanel("banner_buttons"),
         FieldPanel("banner_background_image"),
+        FieldPanel("include_banner"),
         FieldPanel("body"),
     ]

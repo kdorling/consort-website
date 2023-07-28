@@ -9,7 +9,7 @@
 {% include "components/page_title_component.html" with title=page.title %}
  
 <div class="md:grid md:grid-cols-4 flex flex-wrap-reverse">
-    <div class="{% if page.include_scrollspy %} col-span-3 md:ml-8 xl:ml-16 {% else %} col-span-4 {% endif %} mx-auto">
+    <div class="{% if page.include_scrollspy %} col-span-3 md:ml-8 xl:ml-16 {% else %} col-span-4 {% endif %} mx-auto w-full">
         <div>
             {% for block in page.body %}
                 {% include_block block %}
