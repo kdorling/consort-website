@@ -1,14 +1,19 @@
 from django.db import models
+from django.utils.decorators import method_decorator
 
 from wagtail.admin.panels import FieldPanel
 from wagtail.blocks import RichTextBlock
 from wagtail.fields import StreamField
 from wagtail.search import index
 
+from wagtailcache.cache import cache_page, WagtailCacheMixin
+
+
 from base.models import BasePage
 from . import blocks
 
-class FlexPage(BasePage):
+@method_decorator(cache_page, name='serve')
+class FlexPage(WagtailCacheMixin, BasePage):
     body = StreamField([
         ("section", blocks.SectionBlock()),
     ], null=True, blank=True, use_json_field=True)

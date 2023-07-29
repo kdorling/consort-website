@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     "profiles",
     "miscellaneous",
     "weather",
+    "custom_search",
+
+    "wagtailcache",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.modeladmin",
@@ -49,7 +52,6 @@ INSTALLED_APPS = [
     "wagtail.documents",
     "wagtail.images",
     "wagtail.search",
-    "custom_search",
     "wagtail.admin",
     "wagtail",
     "modelcluster",
@@ -63,6 +65,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "wagtailcache.cache.UpdateCacheMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -71,6 +74,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    "wagtailcache.cache.FetchFromCacheMiddleware",
 ]
 
 ROOT_URLCONF = "consort.urls"
