@@ -1,4 +1,5 @@
 from datetime import datetime
+from django.core.cache import cache
 import pytz
 
 from celery.utils.log import get_task_logger
@@ -12,6 +13,7 @@ logger = get_task_logger(__name__)
 
 @transaction_task_with_retry()
 def update_weather():
+    cache.set("any_weather", False, 3600)
     Forecast.objects.all().delete()
 
     api_key = "b0010b6edcd2188e882720f6a70283c8"
@@ -51,7 +53,14 @@ def update_weather():
             current_temperature = round(current_forecast["temp"])
     )
 
+    current_weather = Forecast.objects.filter(forecast_index=0).first()
+    cache.set("current_weather", current_weather, 3600)
+
     logger.info('Weather updated successfully')
+    cache.set("any_weather", True, 3600)
+
+    forecast = Forecast.objects.filter(forecast_index__gte=1).all()
+    cache.set("forecast", forecast, 3600)
 
 
 @transaction_task_with_retry()
@@ -77,6 +86,7 @@ def update_aqi():
         else:
             return -1
 
+    cache.set("any_airquality", False, 3600)
     AirQuality.objects.all().delete()
 
     sensor_index = "122099"
@@ -113,4 +123,6 @@ def update_aqi():
             avg_week = calculate_aqi(sensor_data["pm2.5_1week"]),
         )
 
+        cache.set("airquality", AirQuality.objects.first(), 3600)
         logger.info('Air quality updated successfully')
+        cache.set("any_airquality", True, 3600)

@@ -1,4 +1,6 @@
 from django import template
+from django.core.cache import cache
+
 from weather.models import AirQuality
 from weather.models import Forecast
 
@@ -8,31 +10,46 @@ register = template.Library()
 
 @register.simple_tag
 def any_weather():
-    any_weather = Forecast.objects.count() > 0
+    any_weather = cache.get("any_weather")
+    if any_weather is None:
+        any_weather = Forecast.objects.count() > 0
+        cache.set("any_weather", any_weather, 3600)
     return any_weather
 
 
 @register.simple_tag
 def current_weather():
-    current_weather = Forecast.objects.filter(forecast_index=0).first()
+    current_weather = cache.get("current_weather")
+    if current_weather is None:
+        current_weather = Forecast.objects.filter(forecast_index=0).first()
+        cache.set("current_weather", current_weather, 3600)
     return current_weather
 
 
 @register.simple_tag
 def forecast():
-    forecast = Forecast.objects.filter(forecast_index__gte=1).all()
+    forecast = cache.get("forecast")
+    if forecast is None:
+        forecast = Forecast.objects.filter(forecast_index__gte=1).all()
+        cache.set("forecast", forecast, 3600)
     return forecast
 
 
 @register.simple_tag
 def any_airquality():
-    any_airquality = AirQuality.objects.count() > 0
+    any_airquality = cache.get("any_airquality")
+    if any_airquality is None:
+        any_airquality = AirQuality.objects.count() > 0
+        cache.set("any_airquality", any_airquality, 3600)
     return any_airquality
 
 
 @register.simple_tag
 def get_airquality():
-    airquality = AirQuality.objects.first()
+    airquality = cache.get("airquality")
+    if airquality is None:
+        airquality = AirQuality.objects.first()
+        cache.set("airquality", airquality, 3600)
     return airquality
 
 

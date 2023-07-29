@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "wagtail.snippets",
     "wagtail.documents",
     "wagtail.images",
-    #"wagtail.search",
+    "wagtail.search",
     "custom_search",
     "wagtail.admin",
     "wagtail",
@@ -189,9 +189,10 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'custom_search.backends.elasticsearch7',
         'URLS': [ELASTICSEARCH_URL],
         'INDEX': 'wagtail',
-        'TIMEOUT': 5,
-        'OPTIONS': {},
-        'INDEX_SETTINGS': {},
+        'AUTO_UPDATE': True,
+        # 'TIMEOUT': 5,
+        # 'OPTIONS': {},
+        # 'INDEX_SETTINGS': {},
     }
 }
 
@@ -238,3 +239,16 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="django-insecure-csov7al8s0(4^
 
 # SECURITY WARNING: define the correct hosts in production!
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="localhost 127.0.0.1 [::1]").split(" ")
+
+# CACHES
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+        # for django-redis < 3.8.0, use:
+        # 'LOCATION': '127.0.0.1:6379',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}

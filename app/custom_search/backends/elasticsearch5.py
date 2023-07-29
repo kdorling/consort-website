@@ -716,6 +716,7 @@ class Elasticsearch5SearchResults(BaseSearchResults):
         if not for_count:
             body["highlight"] = {"fields": {}}           
             body["highlight"]["fields"]["_all_text"] = {}
+            body["highlight"]["fields"]["_edgengrams"] = {}
 
             sort = self.query_compiler.get_sort()
 
@@ -735,7 +736,10 @@ class Elasticsearch5SearchResults(BaseSearchResults):
         # Get pks from results
         pks = [hit["fields"]["pk"][0] for hit in hits]
         scores = {str(hit["fields"]["pk"][0]): hit["_score"] for hit in hits}
-        highlights = {str(hit["fields"]["pk"][0]): hit["highlight"]["_all_text"] for hit in hits}
+        if len(hits) > 0 and "highlight" in hits[0] and "_all_text" in hits[0]["highlight"]:
+            highlights = {str(hit["fields"]["pk"][0]): hit["highlight"]["_all_text"] for hit in hits}
+        else:
+            highlights = {str(hit["fields"]["pk"][0]): hit["highlight"]["_edgengrams"] for hit in hits}
 
         # Initialise results dictionary
         results = {str(pk): None for pk in pks}
@@ -835,7 +839,7 @@ class Elasticsearch5SearchResults(BaseSearchResults):
                 }
             )
 
-            sr = self.backend.es.search(**params)
+            #sr = self.backend.es.search(**params)
 
             # import pdb
             # pdb.set_trace()
@@ -843,8 +847,8 @@ class Elasticsearch5SearchResults(BaseSearchResults):
             # Send to Elasticsearch
             hits = self.backend.es.search(**params)["hits"]["hits"]
 
-            # import pdb
-            # pdb.set_trace()
+            import pdb
+            pdb.set_trace()
 
             # Get results
             for result in self._get_results_from_hits(hits):
