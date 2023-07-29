@@ -1,0 +1,23 @@
+{% load weather_tags %}
+
+<!-- Top navigation container -->
+  <div class="list-style-none mr-auto flex pl-0 lg:my-0 flex-row flex-wrap items-center justify-between">
+    {% any_weather as have_weather %}
+    {% if have_weather %}
+      {% include 'components/weather_dropdown.html' %}
+    {% endif %}
+    {% any_airquality as have_airquality %}
+    {% if have_airquality %}
+      {% include 'components/air_quality_dropdown.html' %}
+    {% endif %}
+    {% include 'components/electric_vehicle_dropdown.html' %}
+  </div>
+  <div class="my-0 hidden md:flex">
+    <div class="my-auto">
+      {% include 'components/search.html' %}
+    </div>
+    <div class="flex">
+      <a href="https://www.facebook.com/villageofconsort" target="_blank" class="m-auto"><i class="fa-brands fa-square-facebook text-4xl mr-2"></i></a>
+    </div>
+  </div>
+<!-- End top navigation container -->
