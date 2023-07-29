@@ -214,6 +214,10 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'weather.tasks.update_aqi',
         "schedule": 3600.0,  # every hour
     },
+    'task-update-index': {
+        'task': 'miscellaneous.tasks.update_index',
+        "schedule": 600.0,  # every 10 minutes
+    },
 }
 CELERY_TASK_DEFAULT_QUEUE = "default"
 

@@ -28,6 +28,9 @@ from wagtail.search.query import And, Boost, Fuzzy, MatchAll, Not, Or, Phrase, P
 from wagtail.utils.utils import deep_update
 
 
+DEBUG = False
+
+
 def get_model_root(model):
     """
     This function finds the root model for any given model. The root model is
@@ -700,8 +703,9 @@ class Elasticsearch5SearchResults(BaseSearchResults):
             size=0,
         )
 
-        # import pdb
-        # pdb.set_trace()
+        if DEBUG:
+            import pdb
+            pdb.set_trace()
 
         return OrderedDict(
             [
@@ -730,8 +734,9 @@ class Elasticsearch5SearchResults(BaseSearchResults):
         Yields Django model instances from a page of hits returned by Elasticsearch
         """
 
-        # import pdb
-        # pdb.set_trace() 
+        if DEBUG:
+            import pdb
+            pdb.set_trace() 
 
         # Get pks from results
         pks = [hit["fields"]["pk"][0] for hit in hits]
@@ -793,8 +798,9 @@ class Elasticsearch5SearchResults(BaseSearchResults):
             # Send to Elasticsearch
             page = self.backend.es.search(**params)
 
-            # import pdb
-            # pdb.set_trace()
+            if DEBUG:
+                import pdb
+                pdb.set_trace()
 
             while True:
                 hits = page["hits"]["hits"]

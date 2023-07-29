@@ -2,6 +2,7 @@ from itertools import chain
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.template.response import TemplateResponse
+from pkg_resources import resource_isdir
 
 from wagtail.models import Page
 from wagtail.documents.models import Document
@@ -45,9 +46,16 @@ def search(request):
         search_results = paginator.page(paginator.num_pages)
 
     for result in search_results:
-        if result.highlights_:
-            result.highlights_ = set(result.highlights_)
+        highlights = set()
+        if result.highlights_ and len(search_query) >= 3:        
+            for highlight in result.highlights_:
+                for sample in highlight.split("<em>"):
+                    if len(sample) >= 3 and sample[:3] == search_query[:3]:
+                            highlights.add(highlight)
+            result.highlights_ = highlights
 
+    search_results = [result for result in search_results if result.highlights_]
+        
     return TemplateResponse(
         request,
         "search/search.html",
