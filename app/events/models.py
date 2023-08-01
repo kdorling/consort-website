@@ -1,6 +1,5 @@
 from django.db import models
 
-
 from modelcluster.fields import ParentalKey
 
 from wagtail.fields import RichTextField
@@ -8,11 +7,10 @@ from wagtail.models import Orderable, ClusterableModel, DraftStateMixin, Lockabl
 from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.snippets.models import register_snippet
 
-#from events import blocks
 
-
-#@register_snippet
-class EventBase(WorkflowMixin, DraftStateMixin, LockableMixin, RevisionMixin, models.Model):
+@register_snippet
+class Event(WorkflowMixin, DraftStateMixin, LockableMixin, RevisionMixin, models.Model):
+       
     name = models.CharField(
         max_length=255,
         help_text="The name of the event"
@@ -47,20 +45,6 @@ class EventBase(WorkflowMixin, DraftStateMixin, LockableMixin, RevisionMixin, mo
         default=False,
     )
 
-    panels = [
-        FieldPanel("name"),        
-        FieldPanel("image"),
-        FieldPanel("description"),
-        FieldPanel("document"),
-        FieldPanel("all_day")
-    ]
-
-    def __str__(self):
-        return self.name
-
-
-@register_snippet
-class SingleEvent(EventBase):
     start_time = models.DateTimeField(
         blank=False,
         null=True,
@@ -74,16 +58,90 @@ class SingleEvent(EventBase):
     )
 
     featured = models.BooleanField(
-        help_text="List this event on the featured events page?",
-        default=False,    
+        help_text="Is this event featured? (Note: Recurring events cannot be featured.)",
+        default=False,
     )
 
-    panels = EventBase.panels + [
+    FREQUENCY_CHOICES = [
+        ("DAILY", "Daily"),
+        ("WEEKLY", "Weekly"),
+        ("MONTHLY", "Monthly"),
+        ("YEARLY", "Yearly"),
+    ]
+
+    frequency = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
+        default="WEEKLY",
+        choices=FREQUENCY_CHOICES,
+        help_text="When does this event repeat?",
+    )
+    
+    interval = models.IntegerField(
+        blank=True,
+        null=True,
+        default=1,
+        help_text="How often does this event occur?"
+    )
+
+    bymonth= models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="The month when this event occurs"
+    )
+
+    bymonthday = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="The day of the month when this event occurs"
+    )
+
+    byyearday = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="The day of the year when this event occurs"
+    )
+
+    byeaster = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="The day of Easter"
+    )
+
+    byweekno = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="The week of the year when this event occurs"
+    )
+
+    byweekday = models.IntegerField(
+        blank=True,
+        null=True,
+        help_text="The day of the week when this event occurs"
+    )
+
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("image"),
+        FieldPanel("description"),
+        FieldPanel("document"),
         FieldPanel("start_time"),
         FieldPanel("end_time"),
-        FieldPanel("featured")
+        FieldPanel("featured"),
+        FieldPanel("frequency"),
+        FieldPanel("interval"),
+        FieldPanel("bymonth"),
+        FieldPanel("bymonthday"),
+        FieldPanel("byyearday"),
+        FieldPanel("byeaster"),
+        FieldPanel("byweekno"),
+        FieldPanel("byweekday"),
     ]
 
     def __str__(self):
-        return self.name
-
+        return f"{self.name} from {self.start_time} to {self.end_time}"
+    
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"

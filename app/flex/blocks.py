@@ -159,6 +159,15 @@ class CardsBlock(blocks.StructBlock):
         group = "Components"
 
 
+class EventsBlock(blocks.StructBlock):
+
+    class Meta:
+        template = "flex/events_block.html"
+        icon = "calendar"
+        label = "Events"
+        help_text = "A set of events on the page"
+        group = "Components"
+
 
 class ImageAndTextBlock(blocks.StructBlock):
     image = ImageChooserBlock(
@@ -260,6 +269,7 @@ class GenericSectionBlock(blocks.StructBlock):
         ("cards", CardsBlock()),
         ("page_menu", PopularPagesBlock()),
         ("announcements", AnnouncementsBlock()),
+        ("events", EventsBlock()),
     ]
 
     # header = blocks.CharBlock(

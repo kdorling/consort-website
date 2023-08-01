@@ -5,13 +5,13 @@ from django.template import loader
 
 from wagtail.images.views.serve import generate_image_url
 
-from .models import SingleEvent
+from .models import Event
 import json
 
 def index(request):
     #annotate(num_books=Count("book"))
     #event_list = Event.objects.annotate(min_date=Min("times__date"), max_date=Max("times__date")).exclude(max_date__lt=datetime.date.today()).order_by("min_date")
-    event_list = SingleEvent.objects.filter(live=True).filter(featured=True).filter(end_time__gte=datetime.date.today()).order_by("end_time")
+    event_list = Event.objects.filter(live=True).filter(featured=True).filter(end_time__gte=datetime.date.today()).order_by("end_time")
     template = loader.get_template("events/index.html")
     context = {
         "event_list": event_list,
@@ -19,7 +19,7 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def calendar(request):
-    event_list = SingleEvent.objects.filter(live=True).filter(end_time__gte=datetime.date.today()-datetime.timedelta(days=30)).filter(end_time__lte=datetime.date.today()+datetime.timedelta(days=30))
+    event_list = Event.objects.filter(live=True).filter(end_time__gte=datetime.date.today()-datetime.timedelta(days=30)).filter(end_time__lte=datetime.date.today()+datetime.timedelta(days=30))
 
     calendar_events = []
 

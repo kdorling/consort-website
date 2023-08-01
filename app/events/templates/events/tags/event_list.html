@@ -1,0 +1,33 @@
+{% load wagtailimages_tags wagtailcore_tags format_date create_id %}
+
+{% load wagtailimages_tags %}
+
+<div class="no-prose text-center mx-auto w-[80%] mt-16 pb-10">
+<div class="flex flex-wrap">
+{% for event in event_list %}
+{% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#{% create_id event.name %}" class="mx-auto my-5"> {% endcomment %}
+<div class="mx-auto my-5">
+    <div class="text-center rounded-lg shadow-lg overflow-hidden transition duration-300 ease-in-out hover:scale-110">
+        {% image event.image max-300x300 as img%}
+        <img src="{{ img.url }}" alt="{{ event.name }}" class="mx-auto w-[300px] h-[450px] !my-0"/>
+        <div class="text-2xl py-3 bg-orange-200">{{ event.name  }}</div>
+        <div class="text-2xl py-3">
+            <div>
+                From {% format_date event.start_time '%Y-%m-%d %H:%M' %}
+            </div>
+            <div>
+                to {% format_date event.end_time '%Y-%m-%d %H:%M' %}
+            </div>
+        </div>
+
+        {% if event.schedule %}
+                <div class="flex pb-3">
+                    <i class="fa-solid fa-file-lines fa-xl my-auto"></i><a href="{{event.schedule.url}}"
+                        class="mx-3 my-auto">Learn more</a>
+                </div>
+        {% endif %}                  
+    </div>
+</div>    
+{% endfor %}
+</div>
+</div>
