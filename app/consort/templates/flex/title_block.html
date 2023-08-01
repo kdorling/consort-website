@@ -1,5 +1,5 @@
 {% load common_tags %}
 
 <div>    
-    <{{ value.header }} id="{% to_id value.text %}" class="mb-20">{{value.text}}</{{ value.header }}>
+    <{{ value.header }} id="{% to_id value.text %}" class=":where([class~="prose"]):where([class~="prose-xl"])mb-20 {{value.alignment}}">{{value.text}}</{{ value.header }}>
 </div>

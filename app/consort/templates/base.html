@@ -28,32 +28,16 @@
         <!-- <link
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
         rel="stylesheet" /> -->
-      <link
+      {% comment %} <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-        {% comment %} <link
+        href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" /> {% endcomment %}
+        <link
         rel="stylesheet"
-        href="{% static 'css/consort.css' %}" /> {% endcomment %}
-      <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-      <link
-  rel="stylesheet"
-  href="https://unpkg.com/@tailwindcss/typography@0.2.x/dist/typography.min.css"
-/>
-      <script>
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            fontFamily: {
-              sans: ["Lexend", "sans-serif"],
-              body: ["Lexend", "sans-serif"],
-              mono: ["ui-monospace", "monospace"],
-            },
-          },
-          corePlugins: {
-            preflight: false,
-          },
-        };
-      </script>
+        href="{% static 'css/consort.css' %}" />
+        <link href="{% static 'css/fontawesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/brands.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/solid.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/regular.min.css' %}" rel="stylesheet">
         <!-- <link href="https://fonts.cdnfonts.com/css/source-sans-pro" rel="stylesheet"> -->
         
 
@@ -75,13 +59,9 @@
         </main>
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/consort.js' %}"></script>
-        <script src="https://kit.fontawesome.com/72084523ad.js" crossorigin="anonymous"></script>
-        <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.2.x/dist/typography.min.css"
-/>
-
+        <script src="{% static 'js/tw-elements.umd.min.js' %}"></script>
+        {% comment %} <script src="https://kit.fontawesome.com/72084523ad.js" crossorigin="anonymous"></script> {% endcomment %}
+        
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}
         {% endblock %}

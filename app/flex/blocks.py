@@ -8,6 +8,7 @@ from profiles.models import Profile
 
 
 class TitleBlock(blocks.StructBlock):
+
     text = blocks.CharBlock(
         required=True,
         help_text="Text to display",
@@ -38,6 +39,7 @@ class TitleBlock(blocks.StructBlock):
         icon = "edit"
         label = "Title"
         help_text= "Centered text to display on the page"
+        group="Writing"
 
 
 class BasePageChooserBlock(blocks.PageChooserBlock):
@@ -112,9 +114,10 @@ class PopularPagesBlock(blocks.StructBlock):
 
     class Meta:
         template = "flex/popular_pages_block.html"
-        icon = "image"
-        label = "Pages"
-        help_text = "A set of pages"
+        icon = "doc-full"
+        label = "Page Menu"
+        help_text = "A menu for selecting pages"
+        group = "Components"
 
 
 class PagesTabBlock(blocks.StructBlock):
@@ -129,10 +132,6 @@ class PagesTabBlock(blocks.StructBlock):
 
     class Meta:
         template = "flex/pages_tab_block.html"
-        icon = "image"
-        label = "Page Tab"
-        help_text = "A set of pages"
-
 
 class PagesTabsBlock(blocks.StructBlock):
     tab_blocks = blocks.StreamBlock([
@@ -141,9 +140,10 @@ class PagesTabsBlock(blocks.StructBlock):
 
     class Meta:
         template = "flex/pages_tabs_block.html"
-        icon = "image"
-        label = "Tabs"
+        icon = "folder"
+        label = "Tabbed Page Menu"
         help_text = "A set of tabs containing pages"
+        group = "Components"
 
 
 class CardsBlock(blocks.StructBlock):
@@ -153,9 +153,10 @@ class CardsBlock(blocks.StructBlock):
 
     class Meta:
         template = "flex/cards_block.html"
-        icon = "image"
+        icon = "copy"
         label = "Cards"
         help_text = "A set of cards on the page"
+        group = "Components"
 
 
 
@@ -180,6 +181,8 @@ class ImageAndTextBlock(blocks.StructBlock):
         template = "flex/image_and_text_block.html"
         icon = "image"
         label = "Image & Text"
+        help_text ="Text with an image on the side"
+        group="Writing"
 
 
 class ProfileBlock(blocks.StructBlock):
@@ -193,8 +196,18 @@ class ProfilesBlock(blocks.StructBlock):
 
     class Meta:
         template = "flex/profiles_block.html"
+        icon = "group"
         label = "Profiles"
         help_text = "A set of user profiles"
+        group = "Components"
+
+
+class RichTextBlockWithGroup(blocks.RichTextBlock):
+    class Meta:
+        icon = "pilcrow"
+        label = "Rich Text"
+        help_text = "A rich text field"
+        group = "Writing"
 
 
 class AnnouncementBlock(blocks.StructBlock):
@@ -227,6 +240,8 @@ class AnnouncementsBlock(blocks.StructBlock):
         template = "flex/announcements_block.html"
         label = "Announcements"
         help_text = "A set of announcement cards"
+        icon = "comment"
+        group = "Components"
 
 
 class GenericSectionValue(blocks.StructValue):
@@ -237,15 +252,14 @@ class GenericSectionValue(blocks.StructValue):
 
 class GenericSectionBlock(blocks.StructBlock):
     common_sections = [
-        ("cards", CardsBlock()),
-        ("image_and_text", ImageAndTextBlock()),
-        ("text", blocks.RichTextBlock()),
-        ("profiles", ProfilesBlock()),
         ("title", TitleBlock()),
-        ("cards", CardsBlock()),
+        ("text", RichTextBlockWithGroup()),
+        ("image_and_text", ImageAndTextBlock()),
+        ("profiles", ProfilesBlock()),
         ("page_cards_with_tabs", PagesTabsBlock()),
+        ("cards", CardsBlock()),
         ("page_menu", PopularPagesBlock()),
-        ("updates", AnnouncementsBlock()),
+        ("announcements", AnnouncementsBlock()),
     ]
 
     # header = blocks.CharBlock(
@@ -275,6 +289,7 @@ class SubSubSectionBlock(GenericSectionBlock):
         template = "flex/subsubsection_block.html"
         label = "SubSubSection"
         help_text = "A subsubsection of the document"
+        group = "Structure"
 
 
 class SubSectionBlock(GenericSectionBlock):  
@@ -289,6 +304,7 @@ class SubSectionBlock(GenericSectionBlock):
         template = "flex/subsection_block.html"
         label = "SubSection"
         help_text = "A subsubsection of the document"
+        group = "Structure"
 
 
 class SectionBlock(GenericSectionBlock):
@@ -303,6 +319,7 @@ class SectionBlock(GenericSectionBlock):
         template = "flex/section_block.html"
         label = "Section"
         help_text = "A section of the document"
+        group = "Structure"
 
 
 class AdjustableSection(GenericSectionBlock):
@@ -333,3 +350,4 @@ class AdjustableSection(GenericSectionBlock):
         template = "flex/adjustable_section_block.html"
         label = "Adjustable Section"
         help_text = "A section of the document"
+        group = "Structure"

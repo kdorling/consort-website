@@ -64,14 +64,20 @@ data-te-sidenav-width="300">
   document.addEventListener('DOMContentLoaded', init, false);
 
   async function init() {
-    let response = await fetch("/miscellaneous/top_nav_bar", {cache: "no-store"});
-    let view = await response.text()
-    document.querySelector("#top_nav_bar").innerHTML = view; 
-
-    let scriptEle = document.createElement("script");
-    scriptEle.setAttribute("src", "https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js");
-    document.body.appendChild(scriptEle);
-  } 
-
+    
+    fetch("/miscellaneous/top_nav_bar?" + new Date(Date.now()).toISOString().slice(0,13), {cache: "force-cache"}).then((response) => {
+      console.log("Top Nav Bar Loaded");
+      response.text().then((text) => {
+        document.querySelector("#top_nav_bar").innerHTML = text;
+        let scriptEle = document.createElement("script");
+        scriptEle.setAttribute("src", "{% static 'js/tw-elements.umd.min.js' %}");
+        document.body.appendChild(scriptEle);
+        const scrollSpy = new te.ScrollSpy(document.body, {
+          target: "#scrollspy",
+          offset: 150
+        });
+      });
+    });
+  }
 </script>
 {% endblock %}

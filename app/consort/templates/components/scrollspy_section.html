@@ -4,11 +4,11 @@
 
     {% is_title_type block as is_title_block %}
     {% if is_title_block %}
-    <li class="py-1">
+    <li class="py-1 flex">
         <a
         data-te-nav-link-ref
         data-te-nav-link-active
-        class="bg-transparent px-[5px] text-neutral-600 shadow-none dark:text-neutral-200"
+        class="bg-transparent mx-[5px] text-neutral-600 shadow-none dark:text-neutral-200 pl-1"
         href="#{% to_id block.value.text %}"
         >{{block.value.text}}</a>
     </li> 

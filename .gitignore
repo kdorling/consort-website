@@ -135,3 +135,4 @@ app/static/
 **/media
 *.7z
 *.tar
+**/node_modules
