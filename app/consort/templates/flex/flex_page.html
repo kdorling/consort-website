@@ -8,7 +8,8 @@
 
 {% include "components/page_title_component.html" with title=page.title icon=page.icon %}
  
-<div class="flex flex-wrap-reverse">
+<div class="flex">
+<div class="flex flex-wrap-reverse mx-auto">
     <div class="flex-grow md:max-w-[65vw] xl:max-w-[65vw]">
         <div>
             {% for block in page.body %}
@@ -34,6 +35,7 @@
 </div>
   <!-- Scrollspy -->
   {% endif %}
+</div>
 </div>
 </div>
 {% endblock content %}

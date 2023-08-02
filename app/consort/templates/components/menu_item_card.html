@@ -1,6 +1,10 @@
 {% load menu_tags %}
 
+{% if open_in_new_tab %}
+<a class="group w-[300px] lg:w-auto flex rounded-lg bg-transparent hover:text-orange-400 hover:bg-neutral-100 p-3" href="{{page.url}}" target="_blank">
+{% else %}
 <a class="group w-[300px] lg:w-auto flex rounded-lg bg-transparent hover:text-orange-400 hover:bg-neutral-100 p-3" href="{{page.url}}">
+{% endif %}
     <div class="flex">
         <div class="flex bg-transparent border-0 border-black rounded-lg w-16 h-16 m-auto group-hover:border-orange-400">
             <i class="fa-solid text-4xl fa-fw m-auto {{page.icon}}"></i>

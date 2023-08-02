@@ -2,7 +2,7 @@
 
 <!-- Section Block -->
 <section>
-<div class="prose xl:prose-xl text-xl lg:!max-w-[90ch] xl:!max-w-[120ch] min-[1600px]:!max-w-[140ch] p-5 lg:ml-8 xl:ml-16">
+<div class="prose max-w-[100vw] xl:prose-xl text-xl lg:!max-w-[90ch] xl:!max-w-[120ch] min-[1600px]:!max-w-[140ch] p-2 sm:p-5 lg:ml-8 xl:ml-16 overflow-auto">
 {% for block in value.body %}
     {% include_block block %}
 {% endfor %}

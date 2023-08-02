@@ -34,7 +34,7 @@
               <div class="lg:max-w-2xl lg:grid lg:grid-cols-2 auto-rows-fr gap-2 lg:p-3">
             {% if menu_item.submenu_items %}
                 {% for item in menu_item.submenu_items.all %}
-                    {% include "components/menu_item_card.html" with page=item.page %}
+                    {% include "components/menu_item_card.html" with page=item.page open_in_new_tab=item.open_in_new_tab %}
                 {% endfor %}
             {% endif %}
         </div>

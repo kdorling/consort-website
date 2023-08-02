@@ -225,12 +225,12 @@ object,
 svg,
 video {
     display: block;
-    vertical-align: middle
+    vertical-align: middle;
 }
 
 img,
 video {
-    max-width: 100%;
+    max-width: 90vw;
     height: auto
 }
 
