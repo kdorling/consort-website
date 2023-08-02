@@ -53,7 +53,7 @@ class HomePage(BasePage):
     )
 
     body = StreamField([
-            ("section", blocks.AdjustableSection()),
+            ("section", blocks.HomepageSection()),
         ], 
         use_json_field=True)
 

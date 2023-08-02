@@ -8,7 +8,7 @@
     {% image page.banner_background_image original as bbimg %}
 
     <div class="overflow-hidden">
-      <div class="relative xl:min-h-[calc(100vh-400px)] bg-cover bg-no-repeat bg-[50%] bg-[url('{{ bbimg.url }}')]">
+      <div class="relative xl:min-h-[calc(100vh-400px)] bg-cover bg-no-repeat bg-[50%]" style="background-image: url('{{ bbimg.url }}');">
         <div class="relative flex xl:min-h-[calc(100vh-400px)] py-20 top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.45)]">
           <div class="flex h-full items-center justify-center mx-auto my-auto">
             <div class="my-auto">

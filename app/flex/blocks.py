@@ -332,23 +332,7 @@ class SectionBlock(GenericSectionBlock):
         group = "Structure"
 
 
-class AdjustableSection(GenericSectionBlock):
-   
-    background_color = blocks.ChoiceBlock(
-        choices=[
-            ("bg-white", "White"),
-            ("bg-neutral-100", "Gray"),
-            ("bg-orange-200", "Orange"),
-        ], 
-        default="white",
-        help_text="The section's background color"
-    )
-
-    body_width = blocks.IntegerBlock(
-        default="100",
-        required=True,
-        help_text="Percent of the page width the section should take up"
-    )
+class HomepageSection(GenericSectionBlock):
 
     body = blocks.StreamBlock(
         GenericSectionBlock.common_sections + [("subsection", SubSectionBlock())],
@@ -357,7 +341,7 @@ class AdjustableSection(GenericSectionBlock):
     )
     
     class Meta:
-        template = "flex/adjustable_section_block.html"
-        label = "Adjustable Section"
+        template = "flex/homepage_section_block.html"
+        label = "Homepage Section"
         help_text = "A section of the document"
         group = "Structure"
