@@ -59,7 +59,9 @@
         </main>
 
         {# Global javascript #}
+        <script src="{% static 'js/consort.js' %}"></script>
         <script src="{% static 'js/tw-elements.umd.min.js' %}"></script>
+        {% comment %} <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script> {% endcomment %}
         {% comment %} <script src="https://kit.fontawesome.com/72084523ad.js" crossorigin="anonymous"></script> {% endcomment %}
         
         {% block extra_js %}
