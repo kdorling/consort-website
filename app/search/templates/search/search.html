@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags create_id%}
 
 {% block body_class %}template-searchresults{% endblock %}
 
@@ -21,22 +21,46 @@
 <ul class="list-none">
     {% if search_results %}
         {% for result in search_results %}
-        <li class="!pl-0">
-            <div class="text-xl font-semibold">
+        <li class="!pl-0 mb-16">
+            <div class="text-xl font-thin">
                 {% if result.file %}
-                <a href="{{ result.url }}" class="!text-orange-600 !no-underline">{{ result }}</a>
+                <a href="{{ result.url }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <i>Document</i> 
+                {% elif result.address %}
+                {% create_id result.name as business_id%}
+                <a href="/directory#{{ business_id }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <em>Business</em>
+                <div class="ml-6 my-3"><em>{% for category in result.categories.all %}{% if forloop.last %}{{category}}{% else %}{{category}},&nbsp;{% endif %}</em></div>
+            {% endfor %}
+            {% if result.search_keywords %}
+                <div class="ml-6 my-3"><span class="font-bold">Keywords: </span>
+                {% for keyword in result.search_keywords %}
+                    {% if forloop.last %}{{keyword}}{% else %}{{keyword}},&nbsp;{% endif %}
+                {% endfor %}
+                </div>
+            {% endif %}
+                <div class="flex ml-6 my-3">
+                <div><span class="font-bold">Address:&nbsp</span></div>
+                <div>{{result.address}}</div>
+                </div>
+                {% if result.phone_number %}
+                <div class="flex ml-6 my-3">
+                <div><span class="font-bold">Phone: </span></div>
+                <div>{{result.phone_number}}</div>
+                </div>
+                {% endif %}
                 {% else %}
-                <a href="{% pageurl result %}" class="!text-orange-600 !no-underline">{{ result }}</a>
+                <a href="{% pageurl result %}" class="!text-orange-600 !no-underline font-semibold">{{ result }} </a> - <i>Page</i> 
                 {% endif %}
             </div>
             {% if result.search_description %}
             {{ result.search_description|safe }}
             {% endif %}
+            {% if not result.address %}
             {% for highlight in result.highlights_ %}
-            <div class="ml-6 my-6">
+            <div class="ml-6 my-6 font-thin">
                 {{ highlight|safe }}
             </div>
             {% endfor %}
+            {% endif %}
         </li>
         {% endfor %}
     {% else %}
