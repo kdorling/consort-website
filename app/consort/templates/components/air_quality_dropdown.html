@@ -14,7 +14,7 @@ air-quality-dropdown
   {% any_airquality as have_airquality %}
   {% if have_airquality %}
     {% get_airquality as airquality %}
-    AQI:&nbsp;<span class="normal-case {% airquality_color airquality.current %}">{{ airquality.current }} {% airquality_description airquality.current %}</span>
+    AQI:&nbsp;<span class="normal-case {% airquality_color airquality.current %}">{{ airquality.current }}</span>
   {% endif %}
 {% endblock %}
 

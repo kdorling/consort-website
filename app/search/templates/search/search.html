@@ -24,12 +24,17 @@
         <li class="!pl-0 mb-16">
             <div class="text-xl font-thin">
                 {% if result.file %}
-                <a href="{{ result.url }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <i>Document</i> 
+                <a href="{{ result.url }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <i>Document</i>
+                {% if result.score_ %}
+                    - {{ result.score_ }}
+                {% endif %}
                 {% elif result.address %}
                 {% create_id result.name as business_id%}
                 <a href="/directory#{{ business_id }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <em>Business</em>
-                <div class="ml-6 my-3"><em>{% for category in result.categories.all %}{% if forloop.last %}{{category}}{% else %}{{category}},&nbsp;{% endif %}</em></div>
-            {% endfor %}
+                {% if result.score_ %}
+                    - {{ result.score_ }}
+                {% endif %}
+                <div class="ml-6 my-3"><em>{% for category in result.categories.all %}{% if forloop.last %}{{category}}{% else %}{{category}},&nbsp;{% endif %}{% endfor %}</em></div>
             {% if result.search_keywords %}
                 <div class="ml-6 my-3"><span class="font-bold">Keywords: </span>
                 {% for keyword in result.search_keywords %}
@@ -49,6 +54,9 @@
                 {% endif %}
                 {% else %}
                 <a href="{% pageurl result %}" class="!text-orange-600 !no-underline font-semibold">{{ result }} </a> - <i>Page</i> 
+                {% if result.score_ %}
+                    - {{ result.score_ }}
+                {% endif %}
                 {% endif %}
             </div>
             {% if result.search_description %}

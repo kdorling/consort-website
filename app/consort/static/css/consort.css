@@ -1554,10 +1554,6 @@
   margin-left: 0.5rem;
 }
 
-.ml-3 {
-  margin-left: 0.75rem;
-}
-
 .ml-6 {
   margin-left: 1.5rem;
 }
@@ -2156,6 +2152,11 @@
 
 .w-screen {
   width: 100vw;
+}
+
+.w-min {
+  width: -moz-min-content;
+  width: min-content;
 }
 
 .min-w-0 {
@@ -9973,6 +9974,10 @@ a.joy-img-link {
   .sm\:w-fit {
     width: -moz-fit-content;
     width: fit-content;
+  }
+
+  .sm\:w-auto {
+    width: auto;
   }
 
   .sm\:max-w-\[604px\] {

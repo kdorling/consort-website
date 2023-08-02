@@ -27,17 +27,18 @@ def search(request):
 
         s = get_search_backend()
 
-        page_results = Page.objects.live().search(Fuzzy(search_query))
-        business_results = s.search(Fuzzy(search_query), Business.objects.filter(live=True))
-        document_results  = Document.objects.search(search_query)
+        page_results = Page.objects.live().search(Fuzzy(search_query)).annotate_score("score_")
+        business_results = s.search(Fuzzy(search_query), Business.objects.filter(live=True)).annotate_score("score_")
+        document_results  = Document.objects.search(search_query).annotate_score("score_")
 
         if len(page_results) == 0:
-            page_results = Page.objects.live().autocomplete(search_query)
+            page_results = Page.objects.live().autocomplete(search_query).annotate_score("score_")
 
         if len(business_results) == 0:
-            business_results = s.autocomplete(search_query, Business.objects.filter(live=True))
+            business_results = s.autocomplete(search_query, Business.objects.filter(live=True)).annotate_score("score_")
     
         search_results = list(chain(page_results, document_results, business_results))
+        search_results = sorted(search_results, key=lambda result: result.score_, reverse=True)
 
         query = Query.get(search_query)
 
@@ -63,7 +64,7 @@ def search(request):
         if result.highlights_ and len(search_query) >= 3:        
             for highlight in result.highlights_:
                 for sample in highlight.split("<em>"):
-                    if len(sample) >= 3 and sample[:3] == search_query[:3]:
+                    if len(sample) >= 3 and sample[:3].lower() == search_query[:3].lower():
                             highlights.add(highlight)
             result.highlights_ = highlights
 
