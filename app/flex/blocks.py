@@ -56,6 +56,11 @@ class Link(blocks.StructBlock):
         required=False
     )
 
+class PageLink(blocks.StructBlock):
+    page = BasePageChooserBlock(
+        required=False
+    )
+
 
 class Card(blocks.StructBlock):
     title = blocks.CharBlock(
@@ -70,20 +75,14 @@ class Card(blocks.StructBlock):
     image = ImageChooserBlock(
         help_text="Image will be automatically cropped to 570px x 370px"
     )
-    link = Link(
+    link = PageLink(
         help_text="Enter a link or select a page"
     )
 
 
 class ButtonsBlock(blocks.StructBlock):
     links = blocks.ListBlock(
-        Link()
-    )
-
-    button_styles = blocks.CharBlock(
-        required=False,
-        max_length=150,
-        help_text="Tailwind classes to style the buttons"
+        PageLink()
     )
 
     class Meta:
@@ -109,7 +108,7 @@ class PagesBlock(blocks.StructBlock):
 class PopularPagesBlock(blocks.StructBlock):
 
     links = blocks.ListBlock(
-        Link()
+        PageLink()
     )
 
     class Meta:
