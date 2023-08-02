@@ -4,12 +4,19 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
+from django.template.response import TemplateResponse
 
 from .models import Business, Category
 
 def index(request):
+    category = request.GET.get("category", None)
     template = loader.get_template("business_directory/index.html")
-    return HttpResponse(template.render(None, request))
+    return TemplateResponse(
+        request,
+        "business_directory/index.html",
+        {
+            "category": category,
+        },)
 
 
 def businesses(request):

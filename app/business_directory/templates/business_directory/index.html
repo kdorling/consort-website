@@ -4,14 +4,16 @@
 {% block content %}
 <div class="w-[80%] text-center mx-auto">
     <div class="text-3xl sm:text-5xl font-bold mb-16">Business Directory</div>
-</div>
+
     <div class="flex flex-wrap xl:grid xl:grid-cols-2 mb-12">
             <div class="mx-auto w-full sm:w-[500px] md:w-auto"><input id="search" class="mb-5 p-4 bg-neutral-200 rounded-lg w-full md:w-[300px] xl:w-[500px]" type="text" placeholder="Search..."/></div>
             <div class="mx-auto w-full sm:w-[500px] md:w-auto"><select id="category" class="mb-5 p-4 bg-neutral-200 rounded-lg  w-full md:w-[300px] xl:w-[500px]"><option value="all">All</option></select></div>
-        </div>
     </div>
+</div>
+<div class="w-[80%] mx-auto">
     <div id="business-container">
     </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -38,6 +40,7 @@ function not_in_search(search, c)
              && !c["name"].toLowerCase().includes(search.toLowerCase())
              && !c["description"].toLowerCase().includes(search.toLowerCase())
              && !c["contact_name"].toLowerCase().includes(search.toLowerCase())
+             && !c["keywords"].reduce((result,k) => result || k.toLowerCase().includes(search.toLowerCase()), false)
 }
 
 function render_businesses(search)
@@ -91,7 +94,7 @@ function render_businesses(search)
         }
 
         result += `
-            <div class="mx-auto w-full my-8 sm:w-[500px] shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-lg bg-white dark:bg-neutral-700">
+            <div id="${c["name"].toLowerCase().replace(" ", "_")}" class="mx-auto w-full my-8 sm:w-[500px] shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-lg bg-white dark:bg-neutral-700">
                 <div class="text-3xl bg-neutral-200 p-0 rounded-t-lg p-4">${c["name"]}</div>
                 <div class="flex flex-wrap"><div class="me-8 p-4">
         `;
@@ -102,6 +105,14 @@ function render_businesses(search)
                 <div class="flex mb-4">
                     <div class="font-bold me-1 "mb-4">Address:</div><div>${c.address.replace("\n", "<br/>")}</div>
                 </div>`;
+        c["keywords"] = [""];
+        if (c.search_keywords && JSON.parse(c.search_keywords).length > 0) {
+            c["keywords"] = JSON.parse(c.search_keywords)
+             result += `
+                <div class="flex mb-4">
+                    <div class="font-bold me-1 "mb-4">Keywords:</div> <div>${c["keywords"].join(", ")}</div>
+                </div>`;
+        }        
         if (c.website) {
             result += `<div class="mb-4"><b>Website:</b> ${c.website}</div>`;
         }
@@ -150,6 +161,13 @@ async function init() {
         let k = getKeyByValue(tag_dictionary, sorted_categories[category_value]);
         select.innerHTML += `<option value="${k}">${tag_dictionary[k]}</option>`;
     }
+
+    {% if category %}
+    let category = "{{ category }}";
+    if (category && category != "None" && sorted_categories.includes(category)) {
+        select.value = getKeyByValue(tag_dictionary, category);
+    }
+    {% endif %}
 
     render_businesses();
 }
