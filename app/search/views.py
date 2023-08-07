@@ -21,6 +21,7 @@ def get_search_quote(search_result):
 def search(request):
     search_query = request.GET.get("query", None)
     page = request.GET.get("page", 1)
+    show_scores = request.GET.get("show_scores", None)
 
     # Search
     if search_query:
@@ -76,5 +77,6 @@ def search(request):
         {
             "search_query": search_query,
             "search_results": search_results,
+            "show_scores": show_scores,
         },
     )

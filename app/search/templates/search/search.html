@@ -25,13 +25,13 @@
             <div class="text-xl font-thin">
                 {% if result.file %}
                 <a href="{{ result.url }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <i>Document</i>
-                {% if result.score_ %}
+                {% if show_scores and result.score_ %}
                     - {{ result.score_ }}
                 {% endif %}
                 {% elif result.address %}
-                {% create_id result.name as business_id%}
+                {% create_id result.name as business_id %}
                 <a href="/directory#{{ business_id }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <em>Business</em>
-                {% if result.score_ %}
+                {% if show_scores and result.score_ %}
                     - {{ result.score_ }}
                 {% endif %}
                 <div class="ml-6 my-3"><em>{% for category in result.categories.all %}{% if forloop.last %}{{category}}{% else %}{{category}},&nbsp;{% endif %}{% endfor %}</em></div>
@@ -43,18 +43,30 @@
                 </div>
             {% endif %}
                 <div class="flex ml-6 my-3">
-                <div><span class="font-bold">Address:&nbsp</span></div>
-                <div>{{result.address}}</div>
+                <div><span class="font-bold">Address:&nbsp;</span></div>
+                <div> <a href="http://maps.google.com/maps?q={{result.address}} T0C 1B0" target="_blank" class="text-orange-600 font-semibold">{{result.address}}</a></div>
                 </div>
+                {% if result.website %}
+                <div class="flex ml-6 my-3">
+                    <div><span class="font-bold">Website:&nbsp;</span></div>
+                    <div><a href="{{result.website}}" target="_blank" class="text-orange-600 font-semibold">{{result.website}}</a></div>
+                </div>
+                {% endif %}
                 {% if result.phone_number %}
                 <div class="flex ml-6 my-3">
-                <div><span class="font-bold">Phone: </span></div>
+                <div><span class="font-bold">Phone:&nbsp;</span></div>
                 <div>{{result.phone_number}}</div>
+                </div>
+                {% endif %}
+                {% if result.fax_number %}
+                <div class="flex ml-6 my-3">
+                <div><span class="font-bold">Fax:&nbsp;</span></div>
+                <div>{{result.fax_number}}</div>
                 </div>
                 {% endif %}
                 {% else %}
                 <a href="{% pageurl result %}" class="!text-orange-600 !no-underline font-semibold">{{ result }} </a> - <i>Page</i> 
-                {% if result.score_ %}
+                {% if show_scores and result.score_ %}
                     - {{ result.score_ }}
                 {% endif %}
                 {% endif %}
