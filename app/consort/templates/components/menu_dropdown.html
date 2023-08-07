@@ -5,7 +5,7 @@
       {% has_children menu_item.submenu_items.all as has_items %}
       {% if has_items %}
         <button
-              class="ps-2 w-full lg:w-auto flex items-center whitespace-nowrap lg:rounded-lg bg-transparent lg:px-3 xl:px-6 pb-3 pt-3.5 text-normal min-[1500px]:text-xl font-light leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-100 hover:bg-neutral-200 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus-visible:bg-neutral-200 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
+              class="ps-2 w-full lg:w-auto flex items-center whitespace-nowrap lg:rounded-lg bg-transparent lg:px-3 xl:px-6 pb-3 pt-3.5 text-normal lg:text-small min-[1500px]:text-xl font-light leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-100 hover:bg-neutral-200 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus-visible:bg-neutral-200 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] motion-reduce:transition-none"
               type="button"
               data-te-collapse-init
               data-te-target="#{{menu_item.page.slug}}"

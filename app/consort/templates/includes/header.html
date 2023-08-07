@@ -5,7 +5,7 @@
   {% include "components/top_nav_bar.html" %}
 </nav>
 <nav
-class="flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 shadow-lg dark:bg-neutral-600 lg:py-4 font-['Lexend']"
+class="flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 shadow-lg dark:bg-neutral-600 font-['Lexend']"
 data-te-navbar-ref>
   <button
   class="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
@@ -40,16 +40,21 @@ data-te-sidenav-width="300">
 <div class="flex mx-0 lg:mx-7">
   <a href="#" class="mx-auto">
     <img class="my-5 w-[250px] hidden lg:inline lg:w-10 min-[1600px]:hidden" src="{% static 'images/logo_small.webp' %}">
-    <img class="my-5 inline md:hidden min-[1600px]:inline w-64 mx-4 my-0" src="{% static 'images/logo.webp' %}">
+    <img class="my-5 inline lg:hidden min-[1600px]:inline w-64 mx-4 my-0" src="{% static 'images/logo.webp' %}">
   </a>
 </div>
   <div class="px-0 lg:grow xl:px-3">
-    <div class="lg:flex mx-auto lg:items-center lg:justify-between">
+    <div class="lg:flex lg:items-center">
       {% for item in navigation_menu.menu_items.all %}
         <div>
           {% include "components/menu_dropdown.html" with menu_item=item %}
         </div>
       {% endfor %}
+      <!-- Blank div for spacing -->
+      <div class="w-full flex h-24 invisible lg:hidden">
+        Blank
+      </div>
+      <!-- End blank div for spacing -->
     </div>
   </div>
   </div>
@@ -65,7 +70,7 @@ data-te-sidenav-width="300">
   document.addEventListener('DOMContentLoaded', init, false);
 
   async function init() {
-    if (document.querySelector("#scrollspy") > 0) {
+    if (document.querySelector("#scrollspy") !== null) {
         const scrollSpy = new te.ScrollSpy(document.body, {
           target: "#scrollspy",
           offset: 150
