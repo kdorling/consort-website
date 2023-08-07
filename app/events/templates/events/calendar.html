@@ -6,8 +6,8 @@
 </div>
 
 
-<h1 class="mt-5 mb-10 text-center">Events</h1>
-<div class="w-full overflow-y-auto">
+{% include "components/page_title_component.html" with title="Calendar" icon="fa-calendar" %}
+<div class="w-full overflow-y-auto p-2">
 <div id="calendar-view" class="w-[1200px] lg:w-full mx-auto min-h-[600px]">
 <div id='calendar'></div>
 </div>
@@ -18,7 +18,9 @@
 {% endblock %}
 
 {% block extra_js %}
+<script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@6.1.8/index.global.min.js'></script>
     <script>
 
         function renderModal(event) {
@@ -72,7 +74,7 @@
         }
       result +=
        `<p><b>Start:</b> ${new Date(event.start).toLocaleString()}</p>
-        <p><b>End:</b> ${new Date(event.end).toLocaleString()}</p></div>`;
+        <p><b>End:</b> ${new Date(event.extendedProps.end_time).toLocaleString()}</p></div>`;
         
         if (event.extendedProps.description) {
          result+=`<div class="p-4 prose relative flex-auto bg-white rounded-b-md" data-te-modal-body-ref>${event.extendedProps.description}</div>`;
