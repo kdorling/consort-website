@@ -54,9 +54,13 @@
 
         {% block banner %}{%endblock%}
 
-        <main class="{% block content_class %}font-['Lexend'] mt-12 {% endblock %}">
+        <main class="{% block content_class %}font-['Lexend'] mt-12 min-h-[80vh] {% endblock %}">
         {% block content %}{% endblock %}
         </main>
+
+        {% block footer %}
+        {% include "includes/footer.html" %}
+        {% endblock %}
 
         {# Global javascript #}
         <script src="{% static 'js/consort.js' %}"></script>

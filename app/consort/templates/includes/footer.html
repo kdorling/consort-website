@@ -1,0 +1,68 @@
+{% load static %}
+
+<div class="flex flex-wrap">
+    <div class="hidden xl:flex"><a href="https://goo.gl/maps/K3tu9vch8LeiAr3x7" target="_blank"><img class="h-80" src="{% static 'images/footer-left.png' %}"/></a></div>
+    {% static 'images/footer-center.png' as center_footer_image %}
+    <div class="flex flex-grow bg-[bottom_0px_right_-100px] min-[900px]:bg-right bg-no-repeat bg-contain bg-[rgb(240,238,232);] p-8 pr-11" style="background-image: url('{{ center_footer_image }}')">
+        <div>
+        <div class="text-2xl mb-6">Village of Consort</div>
+        <div class="grid grid-cols-12 gap-y-4">
+            <div class="col text-lg text-center my-auto">
+                <i class="fa fa-solid fa-location-dot"></i>
+            </div>
+            <div class="col col-span-11 texl-lg">
+                Box 490 4901 50 Avenue Consort, Alberta T0C 1B0
+            </div>
+            <div class="col text-lg text-center my-auto">
+                <i class="fa fa-solid fa-envelope"></i>
+            </div>
+            <div class="col col-span-11 texl-lg">
+                <a href="mailto:info@consort.ca" class="text-orange-400">info@consort.ca</a>
+            </div>
+            <div class="col text-lg text-center my-auto">
+                <i class="fa fa-solid fa-phone"></i>
+            </div>
+            <div class="col col-span-11 texl-lg">
+                <a href="tel:403-577-3623" class="text-orange-400">403-577-3623</a>
+            </div>
+            <div class="col text-lg text-center my-auto">
+                <i class="fa fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="col col-span-11 texl-lg">
+                911 Emergency
+            </div>
+        </div>
+        <div class="flex-grow"></div>
+    </div>
+    </div>
+    {% static 'images/footer-right.png' as right_footer_image %}
+    <div class="bg-right bg-no-repeat bg-contain bg-[rgb(68,68,68);] text-neutral-200 p-8 flex-grow min-[900px]:flex-none" style="background-image: url('{{ right_footer_image }}')">
+        <div class="text-2xl mb-6">
+            Transfer Station Hours
+        </div>
+        <div class="mb-6">
+            <div class="text-xl pl-3 mb-3">Summer Hours (May to October)</div>
+            <ul class="text-base pl-6">
+                <li>Tuesday &amp; Thursday: 1:00pm - 7:00pm </li>
+                <li> Saturday: 9:00am - 3:00pm </li>
+            </ul>
+        </div>
+        <div>
+            <div class="text-xl pl-3 mb-3">Winter Hours (November to April)</div>
+            <ul class="text-base pl-6">
+                <li>Tuesday &amp; Thursday: Noon - 7:00pm </li>
+                <li> Saturday: 8:00am - Noon </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="bg-[rgb(68,68,68);] text-neutral-200 flex flex-wrap p-4">
+    <div class="text-base flex-grow mb-3 sm:mb-0">
+        &copy; {{ year }} Village of Consort. All Rights Reserved.
+    </div>
+    <div class="text-base flex">
+        <a class="mr-3" href="#">Disclaimer</a>
+        <a class="mr-3" href="#">Privacy Policy</a>
+    </div>
+</div>
