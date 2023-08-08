@@ -13,7 +13,8 @@ def restart_celery():
         cmd = "taskkill /f /t /im celery.exe"
 
     subprocess.call(shlex.split(cmd))
-    subprocess.call(shlex.split(f"{celery_worker_cmd} --loglevel=info --concurrency=2"))
+    #subprocess.call(shlex.split(f"{celery_worker_cmd} --loglevel=info --concurrency=2"))
+    subprocess.call(shlex.split(f"celery -A consort multi start high_priority low_priority --loglevel=info --concurrency=1 -Q:high_priority high_priority,default -Q:low_priority low_priority"))
 
 
 class Command(BaseCommand):

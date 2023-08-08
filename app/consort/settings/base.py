@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    "searchable_documents",
 ]
 
 MIDDLEWARE = [
@@ -236,6 +238,15 @@ CELERY_TASK_ROUTES = {
     'consort.celery.*': {
         'queue': 'high_priority',
     },
+    'weather.tasks.*': {
+        'queue': 'high_priority',
+    },
+    'miscellaneous.tasks.*': {
+        'queue': 'low_priority',
+    },
+    'searchable_documents.tasks.*': {
+        'queue': 'low_priority',
+    },
 }
 
 
@@ -260,3 +271,5 @@ CACHES = {
         }
     }
 }
+
+WAGTAILDOCS_DOCUMENT_MODEL = 'searchable_documents.document'

@@ -54,12 +54,27 @@ services:
     env_file:
       - ./compose/production/django/.prod-env
 
-  celery_worker:
+  celery_worker_high_priority:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
     image: consort_celery_worker
-    command: /start-celeryworker
+    command: /start-celeryworker-highpriority
+    volumes:
+      - staticfiles:/app/staticfiles
+      - mediafiles:/app/mediafiles
+    env_file:
+      - ./compose/production/django/.prod-env
+    depends_on:
+      - redis
+      - db
+  
+  celery_worker_low_priority:
+    build:
+      context: .
+      dockerfile: ./compose/production/django/Dockerfile
+    image: consort_celery_worker
+    command: /start-celeryworker-lowpriority
     volumes:
       - staticfiles:/app/staticfiles
       - mediafiles:/app/mediafiles

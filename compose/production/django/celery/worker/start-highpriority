@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# if any of the commands in your code fails for any reason, the entire script fails
+set -o errexit
+# fail exit if one of your pipe command fails
+set -o pipefail
+# exits if any of your variables is not set
+set -o nounset
+
+exec celery -A consort worker -l INFO --concurrency 1 -Q default,high_priority -n high_priority@%h
+#exec celery -A consort worker -l INFO --concurrency 1 -Q low_priority -n low_priority@%h
+#exec celery -A consort multi start high_priority low_priority -l INFO --concurrency=1 -Q:high_priority high_priority,default -Q:low_priority low_priority
+#exec supervisord -c /supervisord.conf

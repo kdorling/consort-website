@@ -44,6 +44,8 @@ services:
       - cluster.name=elasticsearch
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ports:
+      - 9200:9200
 
   celery_worker:
     build:

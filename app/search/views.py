@@ -65,7 +65,7 @@ def search(request):
         if result.highlights_ and len(search_query) >= 3:        
             for highlight in result.highlights_:
                 for sample in highlight.split("<em>"):
-                    if len(sample) >= 3 and sample[:3].lower() == search_query[:3].lower():
+                    if len(sample) >= 3 and sample[:3].lower() == ''.join(filter(str.isalnum, search_query))[:3].lower():
                             highlights.add(highlight)
             result.highlights_ = highlights
 

@@ -28,6 +28,22 @@ RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-r
     libwebp-dev \
     procps \
     telnet \ 
+    python-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    antiword \
+    unrtf \
+    poppler-utils \
+    tesseract-ocr \
+    flac \
+    ffmpeg \
+    lame \
+    libmad0 \
+    libsox-fmt-mp3 \
+    sox \
+    libjpeg-dev \
+    swig \
+    libpulse-dev \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
 
@@ -61,6 +77,9 @@ COPY ./compose/local/django/celery/flower/start /start-flower
 RUN sed -i 's/\r$//g' /start-flower
 RUN chmod +x /start-flower
 
+RUN mkdir /var/run/celery
+RUN mkdir /var/log/celery
+
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
 
@@ -68,6 +87,8 @@ WORKDIR /app
 # uses SQLite, the folder needs to be owned by the user that
 # will be writing to the database file.
 RUN chown wagtail:wagtail /app
+RUN chown wagtail:wagtail /var/run/celery
+RUN chown wagtail:wagtail /var/log/celery
 
 # Copy the source code of the project into the container.
 COPY --chown=wagtail:wagtail . .

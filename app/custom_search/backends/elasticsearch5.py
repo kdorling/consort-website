@@ -853,8 +853,9 @@ class Elasticsearch5SearchResults(BaseSearchResults):
             # Send to Elasticsearch
             hits = self.backend.es.search(**params)["hits"]["hits"]
 
-            import pdb
-            pdb.set_trace()
+            if DEBUG:
+                import pdb
+                pdb.set_trace()
 
             # Get results
             for result in self._get_results_from_hits(hits):
