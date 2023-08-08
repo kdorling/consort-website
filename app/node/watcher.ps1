@@ -1,0 +1,1 @@
+npx tailwindcss -i ../consort/styles/consort.css -o ../consort/static/css/consort.css --watch
