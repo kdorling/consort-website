@@ -30,11 +30,10 @@
                 {% endif %}
                 {% elif result.address %}
                 {% create_id result.name as business_id %}
-                <a href="/directory#{{ business_id }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <em>Business</em>
+                <a href="/directory#{{ business_id }}" class="!text-orange-600 !no-underline font-semibold">{{ result }}</a> - <em>Business</em> - <em>{% for category in result.categories.all %}{% if forloop.last %}{{category}}{% else %}{{category}},&nbsp;{% endif %}{% endfor %}</em>
                 {% if show_scores and result.score_ %}
                     - {{ result.score_ }}
                 {% endif %}
-                <div class="ml-6 my-3"><em>{% for category in result.categories.all %}{% if forloop.last %}{{category}}{% else %}{{category}},&nbsp;{% endif %}{% endfor %}</em></div>
             {% if result.search_keywords %}
                 <div class="ml-6 my-3"><span class="font-bold">Keywords: </span>
                 {% for keyword in result.search_keywords %}
@@ -44,24 +43,40 @@
             {% endif %}
                 <div class="flex ml-6 my-3">
                 <div><span class="font-bold">Address:&nbsp;</span></div>
-                <div> <a href="http://maps.google.com/maps?q={{result.address}} T0C 1B0" target="_blank" class="text-orange-600 font-semibold">{{result.address}}</a></div>
+                {% if result.google_maps_link %}
+                    <div><a href="{{result.google_maps_link}}" target="_blank" class="text-orange-600 font-semibold">{{result.address}}</a></div>
+                {% else %}
+                    <div>{{result.address}}</div>
+                {% endif %}
                 </div>
+                {% if result.mailing_address %}
+                <div class="flex ml-6 my-3">
+                <div><span class="font-bold">Mailing Address:&nbsp;</span></div>
+                <div>{{result.mailing_address}}</div>
+                </div>
+                {% endif %}
                 {% if result.website %}
                 <div class="flex ml-6 my-3">
                     <div><span class="font-bold">Website:&nbsp;</span></div>
                     <div><a href="{{result.website}}" target="_blank" class="text-orange-600 font-semibold">{{result.website}}</a></div>
                 </div>
                 {% endif %}
+                {% if result.email_address %}
+                <div class="flex ml-6 my-3">
+                <div><span class="font-bold">Phone:&nbsp;</span></div>
+                <div><a href="mailto:{{result.email_address}}" class="text-orange-600 font-semibold">{{result.email_address}}</a></div>
+                </div>
+                {% endif %}
                 {% if result.phone_number %}
                 <div class="flex ml-6 my-3">
                 <div><span class="font-bold">Phone:&nbsp;</span></div>
-                <div>{{result.phone_number}}</div>
+                <div><a href="tel:{{result.phone_number}}" class="text-orange-600 font-semibold">{{result.phone_number}}</a></div>
                 </div>
                 {% endif %}
                 {% if result.fax_number %}
                 <div class="flex ml-6 my-3">
                 <div><span class="font-bold">Fax:&nbsp;</span></div>
-                <div>{{result.fax_number}}</div>
+                <div><a href="tel:{{result.fax_number}}" class="text-orange-600 font-semibold">{{result.fax_number}}</a></div>
                 </div>
                 {% endif %}
                 {% else %}

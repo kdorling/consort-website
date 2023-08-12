@@ -133,7 +133,7 @@ function render_businesses(search)
             if (website_string.length > 30) {
                 website_string = website_string.substring(0, 30) + "...";
             }
-            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-globe fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="${website_string}" target="_blank">Click here</a></div>`;
+            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-globe fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="${website_string}" target="_blank">Visit website</a></div>`;
         }    
         if (c.phone_number) {
             result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-phone fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="tel:${c.phone_number}">${c.phone_number}</a></div>`;

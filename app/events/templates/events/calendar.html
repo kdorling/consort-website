@@ -109,6 +109,9 @@
         }
 
         var calendar = new FullCalendar.Calendar(calendarEl, parameters);
+        if (document.body.clientWidth < 900) {
+          calendar.setOption('height', "auto");
+        }
         calendar.render();
 
         var button_groups = document.querySelectorAll(".fc-button-group");
@@ -118,16 +121,29 @@
               if (button.classList.contains("fc-listMonth-button") ||
                   button.classList.contains("fc-timeGridDay-button")) {
                 document.getElementById("calendar-view").style.width = "100%";
-                calendar.setOption('height', 700);
+                calendar.setOption('height', "auto");
               }
               else {
                   if (document.getElementById("calendar-view").style.width != "900px") {
                     document.getElementById("calendar-view").style.width = "1200px";
                     calendar.setOption('aspectRatio', 1.35);
+                    calendar.setOption('height', null);
               }
                   
               }
               calendar.render();
+            }
+            else
+            {
+              if (button.classList.contains("fc-listMonth-button") ||
+                  button.classList.contains("fc-timeGridDay-button")) {
+                calendar.setOption('height', "auto");
+              }
+              else
+              {
+                calendar.setOption('aspectRatio', 1.35);
+                calendar.setOption('height', null);
+              }
             }
           });
         });
