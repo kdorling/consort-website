@@ -77,12 +77,21 @@ def search(request):
 
     for result in search_results:
         highlights = set()
-        if result.highlights_ and len(search_query) >= 3:        
-            for highlight in result.highlights_:
-                for sample in highlight.split("<em>"):
-                    if len(sample) >= 3 and sample[:3].lower() == ''.join(filter(str.isalnum, search_query))[:3].lower():
-                            highlights.add(highlight)
+        for highlight in result.highlights_:
+            samples = highlight.split(" ")
+            if len(samples) >= 5:
+                highlights.add(highlight)
+        if len(highlights) > 0:
             result.highlights_ = highlights
+
+    # for result in search_results:
+    #     highlights = set()
+    #     if result.highlights_ and len(search_query) >= 3:        
+    #         for highlight in result.highlights_:
+    #             for sample in highlight.split("<em>"):
+    #                 if len(sample) >= 3 and sample[:3].lower() == ''.join(filter(str.isalnum, search_query))[:3].lower():
+    #                         highlights.add(highlight)
+    #         result.highlights_ = highlights
 
     # search_results = [result for result in search_results if result.highlights_ or "page" in str(type(result)).lower()]
         
