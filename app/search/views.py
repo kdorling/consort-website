@@ -8,6 +8,7 @@ from wagtail.models import Page
 from wagtail.documents.models import Document
 from wagtail.search.models import Query
 from wagtail.search.query import Fuzzy
+from miscellaneous.models import IndexPage
 
 from business_directory.models import Business
 from custom_search.backends import get_search_backend
@@ -28,7 +29,7 @@ def search(request):
 
         s = get_search_backend()
 
-        page_results = Page.objects.live().search(Fuzzy(search_query)).annotate_score("score_")
+        page_results = Page.objects.live().not_type(IndexPage).search(Fuzzy(search_query)).annotate_score("score_")
         business_results = s.search(Fuzzy(search_query), Business.objects.filter(live=True)).annotate_score("score_")
         document_results  = Document.objects.search(search_query).annotate_score("score_")
 
