@@ -26,6 +26,9 @@ document.getElementById("search").addEventListener("keyup", function(event) {
 document.getElementById("category").addEventListener("mouseup", function(event) {
     render_businesses(document.getElementById("search").value);
 });
+document.getElementById("category").addEventListener("touchend", function(event) {
+    render_businesses(document.getElementById("search").value);
+});
 
 let parsed_data = [];
 let tag_dictionary = {};
@@ -94,7 +97,7 @@ function render_businesses(search)
         }
 
         result += `
-            <div id="${c["name"].toLowerCase().replaceAll(" ", "_").replaceAll("&", "and")}" class="mx-auto w-full my-8 sm:w-[500px] shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-lg bg-white dark:bg-neutral-700 flex flex-col">
+            <div id="${c["name"].toLowerCase().replaceAll(" ", "_").replaceAll("&", "and")}" class="mx-auto w-full my-8 sm:w-[500px] shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-lg bg-white dark:bg-neutral-700 flex flex-col overflow-x-hidden">
                 <div class="text-3xl bg-neutral-200 p-0 rounded-t-lg p-4">${c["name"]}</div>
                 <div class="flex flex-wrap"><div class="me-8 p-4 grid gap-x-4 gap-y-6 grid-cols-4">
         `;
@@ -110,28 +113,36 @@ function render_businesses(search)
             result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-address-book fa-xl"></i></div><div class="col col-span-3"> ${c.contact_name} </div>`;
         }
 
-        let address = c.address.replace("\n", " ");
-        if (!address.toLowerCase().includes("consort")) {
-            address += " Consort, AB";
-        }
-        if (!address.toLowerCase().includes("t0c")) {
-            address += " T0C 1B0";
+        if (c.address) {
+            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-location-dot fa-xl"></i></div>`;
+            if (c.google_maps_link) {
+                result += `<div class="col col-span-3 text-orange-400"><a href="${c.google_maps_link}" target="_blank">${c.address.replace("\n", "<br/>")}</a></div>`;
+            }
+            else {
+                result += `<div class="col col-span-3">${c.address.replace("\n", "<br/>")}</div>`;
+            }
         }
 
-        result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-location-dot fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="http://maps.google.com/maps?q=${address}" target="_blank">${c.address.replace("\n", "<br/>")}</a></div>`;
+        if (c.mailing_address) {
+            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-envelope fa-xl"></i></div><div class="col col-span-3">${c.mailing_address}</div>`;
+        }
  
+        if (c.email_address) {
+            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-at fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="mailto:${c.email_address}">${c.email_address}</a></div>`;
+        }
+
         if (c.website) {
             let website_string = c.website;
             if (website_string.length > 30) {
                 website_string = website_string.substring(0, 30) + "...";
             }
-            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-globe fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="http://maps.google.com/maps?q=${address}" target="_blank"> ${website_string}</a></div>`;
+            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-globe fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="${website_string}" target="_blank">Click here</a></div>`;
         }    
         if (c.phone_number) {
-            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-phone fa-xl"></i></div><div class="col col-span-3"> ${c.phone_number}</div>`;
+            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-phone fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="tel:${c.phone_number}">${c.phone_number}</a></div>`;
         }
         if (c.fax_number) {
-            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-fax fa-xl"></i></div><div class="col col-span-3"> ${c.fax_number}</div>`;
+            result += `<div class="my-auto col text-center text-orange-400"><i class="fa fa-fax fa-xl"></i></div><div class="col col-span-3 text-orange-400"><a href="tel:${c.fax_number}">${c.fax_number}</a></div>`;
         }
         if (c.description) {
             result += `</div><div class="px-8 py-4 flex-grow"><hr/><div class="p-2 pt-6"> ${c.description} </div>`;

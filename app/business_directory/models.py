@@ -55,7 +55,33 @@ class Business(WorkflowMixin, DraftStateMixin, LockableMixin, RevisionMixin, ind
     address = models.TextField(
         max_length=50,
         default="",
-        help_text="The business's address"
+        help_text="The business's address",
+        blank=True,
+        null=True,
+    )
+
+    google_maps_link = models.TextField(
+        max_length=50,
+        default="",
+        help_text="A link to the business on Google Maps",
+        blank=True,
+        null=True,
+    )
+
+    mailing_address = models.TextField(
+        max_length=50,
+        default="",
+        help_text="The business's mailing address",
+        blank=True,
+        null=True,
+    )
+
+    email_address = models.TextField(
+        max_length=50,
+        default="",
+        help_text="The business's email address",
+        blank=True,
+        null=True,
     )
 
     website = models.TextField(
@@ -91,6 +117,9 @@ class Business(WorkflowMixin, DraftStateMixin, LockableMixin, RevisionMixin, ind
         FieldPanel('search_keywords'),
         FieldPanel('contact_name'),
         FieldPanel('address'),
+        FieldPanel('google_maps_link'),
+        FieldPanel('mailing_address'),
+        FieldPanel('email_address'),
         FieldPanel('website'),
         FieldPanel('phone_number'),
         FieldPanel('fax_number'),
