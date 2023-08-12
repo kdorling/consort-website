@@ -40,12 +40,18 @@ def search(request):
 
         if len(page_results) == 0 and '"' not in search_query:
             page_results = Page.objects.live().autocomplete(search_query).annotate_score("score_")
+            for result in page_results:
+                result.score_ -= 10
 
         if len(business_results) == 0 and '"' not in search_query:
             business_results = s.autocomplete(search_query, Business.objects.filter(live=True)).annotate_score("score_")
+            for result in business_results:
+                result.score_ -= 10
 
         if len(document_results) == 0 and '"' not in search_query:
             document_results = Document.objects.autocomplete(search_query).annotate_score("score_")
+            for result in document_results:
+                result.score_ -= 10
     
         search_results = list(chain(page_results, document_results, business_results))
         search_results = sorted(search_results, key=lambda result: result.score_, reverse=True)

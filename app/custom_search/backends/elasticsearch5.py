@@ -718,8 +718,8 @@ class Elasticsearch5SearchResults(BaseSearchResults):
         body = {"query": self.query_compiler.get_query()}
 
         if not for_count:
-            body["highlight"] = {"fields": {}}           
-            body["highlight"]["fields"]["_all_text"] = {}
+            body["highlight"] = {"fields": {}, "order": "score"}
+            body["highlight"]["fields"]["_all_text"] = {"fragment_size": 150, "number_of_fragments": 3}
             body["highlight"]["fields"]["_edgengrams"] = {}
 
             sort = self.query_compiler.get_sort()
