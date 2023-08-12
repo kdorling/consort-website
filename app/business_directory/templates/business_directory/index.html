@@ -23,10 +23,7 @@ document.addEventListener('DOMContentLoaded', init, false);
 document.getElementById("search").addEventListener("keyup", function(event) {
     render_businesses(document.getElementById("search").value);
 });
-document.getElementById("category").addEventListener("mouseup", function(event) {
-    render_businesses(document.getElementById("search").value);
-});
-document.getElementById("category").addEventListener("touchend", function(event) {
+document.getElementById("category").addEventListener("change", function(event) {
     render_businesses(document.getElementById("search").value);
 });
 
