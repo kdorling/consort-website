@@ -7,7 +7,7 @@ from pkg_resources import resource_isdir
 from wagtail.models import Page
 from wagtail.documents.models import Document
 from wagtail.search.models import Query
-from wagtail.search.query import Fuzzy
+from wagtail.search.query import Fuzzy, Phrase
 from miscellaneous.models import IndexPage
 
 from business_directory.models import Business
@@ -29,15 +29,23 @@ def search(request):
 
         s = get_search_backend()
 
-        page_results = Page.objects.live().not_type(IndexPage).search(Fuzzy(search_query)).annotate_score("score_")
-        business_results = s.search(Fuzzy(search_query), Business.objects.filter(live=True)).annotate_score("score_")
-        document_results  = Document.objects.search(search_query).annotate_score("score_")
+        if '"' in search_query:
+            page_results = Page.objects.live().not_type(IndexPage).search(Phrase(search_query)).annotate_score("score_")
+            business_results = s.search(Phrase(search_query), Business.objects.filter(live=True)).annotate_score("score_")
+            document_results  = Document.objects.search(Phrase(search_query)).annotate_score("score_")
+        else:
+            page_results = Page.objects.live().not_type(IndexPage).search(Fuzzy(search_query)).annotate_score("score_")
+            business_results = s.search(Fuzzy(search_query), Business.objects.filter(live=True)).annotate_score("score_")
+            document_results  = Document.objects.search(Fuzzy(search_query)).annotate_score("score_")
 
-        if len(page_results) == 0:
+        if len(page_results) == 0 and '"' not in search_query:
             page_results = Page.objects.live().autocomplete(search_query).annotate_score("score_")
 
-        if len(business_results) == 0:
+        if len(business_results) == 0 and '"' not in search_query:
             business_results = s.autocomplete(search_query, Business.objects.filter(live=True)).annotate_score("score_")
+
+        if len(document_results) == 0 and '"' not in search_query:
+            document_results = Document.objects.autocomplete(search_query).annotate_score("score_")
     
         search_results = list(chain(page_results, document_results, business_results))
         search_results = sorted(search_results, key=lambda result: result.score_, reverse=True)
