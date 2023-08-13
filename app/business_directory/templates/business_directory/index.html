@@ -36,6 +36,11 @@ const getKeyByValue = (obj, value) =>
 
 function not_in_search(search, c)
 {
+    c["keywords"] = [""];
+    if (c.search_keywords && JSON.parse(c.search_keywords).length > 0) {
+        c["keywords"] = JSON.parse(c.search_keywords)
+    }  
+
     return search
              && !c["name"].toLowerCase().includes(search.toLowerCase())
              && !c["description"].toLowerCase().includes(search.toLowerCase())
