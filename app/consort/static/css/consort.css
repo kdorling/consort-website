@@ -10756,6 +10756,10 @@ a.joy-img-link {
     width: fit-content;
   }
 
+  .sm\:w-\[400px\] {
+    width: 400px;
+  }
+
   .sm\:max-w-\[604px\] {
     max-width: 604px;
   }
