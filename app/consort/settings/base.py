@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "miscellaneous",
     "weather",
     "custom_search",
+    "news",
 
     "wagtailcache",
 

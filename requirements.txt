@@ -11,3 +11,4 @@ elasticsearch>=7.0.0,<8.0.0
 django-redis>=5.3.0,<5.4.0
 wagtail-cache>=2.3.0,<2.4.0
 textract==1.6.5
+beautifulsoup4==4.8.2
