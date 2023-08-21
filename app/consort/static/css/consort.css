@@ -2425,6 +2425,10 @@
   min-width: max-content;
 }
 
+.min-w-\[65vw\] {
+  min-width: 65vw;
+}
+
 .\!max-w-full {
   max-width: 100% !important;
 }
