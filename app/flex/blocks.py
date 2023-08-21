@@ -218,32 +218,7 @@ class RichTextBlockWithGroup(blocks.RichTextBlock):
         group = "Writing"
 
 
-class AnnouncementBlock(blocks.StructBlock):
-    title = blocks.CharBlock(
-        max_length=150,
-        help_text="The title of the announcement",
-    )
-
-    icon = blocks.CharBlock(
-        max_length=50,
-        help_text="The icon associated with this announcement",
-        default="fa-regular fa-bell"
-    )
-
-    date = blocks.DateBlock(
-        help_text="The date of this announcement"
-    )
-
-    text = blocks.RichTextBlock(
-        help_text="A description of the announcement"
-    )
-
-
 class AnnouncementsBlock(blocks.StructBlock):
-    announcements = blocks.ListBlock(
-        AnnouncementBlock()
-    )
-
     class Meta:
         template = "flex/announcements_block.html"
         label = "Announcements"
