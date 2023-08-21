@@ -40,10 +40,10 @@
                     <h2 class="my-4">{{event.name}}</h2>
                     <div style="margin-left: auto; margin-right: 0; text-align: right;" class="my-4">
                         <div style="font-weight: 400; font-size: 20px;">
-                            From {% format_date event.start_time '%Y-%m-%d %H:%M' %}
+                            From {% format_date event.start_time '%Y-%m-%d %I:%M %p' %}
                         </div>
                         <div style="font-weight: 400; font-size: 20px;">
-                            to {% format_date event.end_time '%Y-%m-%d %H:%M' %}
+                            to {% format_date event.end_time '%Y-%m-%d %I:%M %p' %}
                         </div>
                     </div>
                 </div>
