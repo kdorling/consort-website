@@ -8,13 +8,13 @@
 {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#{% create_id event.name %}" class="mx-auto my-5"> {% endcomment %}
 <div class="mx-auto my-5">
     <div class="text-center rounded-lg shadow-lg overflow-hidden transition duration-300 ease-in-out hover:scale-110">
-        {% image event.image max-300x300 as img%}
-        <img src="{{ img.url }}" alt="{{ event.name }}" class="mx-auto w-[350px] h-[500px] !my-0"/>
-        <div class="text-2xl p-2 flex flex-wrap w-[350px]">
+        {% image event.image max-300x450 as img%}
+        <img src="{{ img.url }}" alt="{{ event.name }}" class="mx-auto w-[300px] h-[450px] !my-0"/>
+        <div class="text-2xl p-2 flex flex-wrap w-[300px]">
             <div class="w-full text-center">{{event.name}}</div>
         </div>
-        <div class="text-base p-2 flex">
-                {% format_date event.start_time '%Y-%m-%d %I:%M %p' %} - {% format_date event.end_time '%Y-%m-%d %I:%M %p' %}
+        <div class="text-lg p-2 flex-wrap w-[300px]">
+                <div>{% format_date event.start_time '%Y-%m-%d %I:%M %p' %} -</div> <div>{% format_date event.end_time '%Y-%m-%d %I:%M %p' %}</div>
         </div>
         {% if event.schedule %}
                 <div class="flex pb-3">
