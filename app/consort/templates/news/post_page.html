@@ -6,11 +6,12 @@
 
 {% include "components/page_title_component.html" with title=page.title icon=page.icon %}
 
-<div class="text-center text-xl mb-12">
-    <em> Published on {{ page.date|date:"F j, Y" }} </em>
-</div>
+
 
 <div class="md:max-w-[65vw] xl:max-w-[65vw] mx-auto">
+    <div class="prose max-w-[90vw] min-w-[65vw] prose-sm sm:prose-base xl:prose-lg p-2 pt-0 sm:p-5 sm:pt-0 overflow-hidden mx-auto">
+        <em> Published on {{ page.date|date:"F j, Y" }} </em>
+    </div>
     <div>
         {% for block in page.body %}
             {% include_block block %}
