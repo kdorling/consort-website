@@ -1,0 +1,15 @@
+{% load common_tags %}
+<!-- Contents -->
+<h2>Contents</h2>
+<div>
+    <ul>
+    {% for block in page.body %}
+        {% is_section_type block as is_section_block %}
+        
+        {% if is_section_block %}           
+            {% include "components/page_contents_section.html" with body=block.value %}
+        {% endif %}               
+    {% endfor %}
+    </ul>
+</div>
+  <!-- Contents -->

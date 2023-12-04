@@ -168,6 +168,16 @@ class EventsBlock(blocks.StructBlock):
         group = "Components"
 
 
+class PageContentsBlock(blocks.StructBlock):
+
+    class Meta:
+        template = "flex/page_contents_block.html"
+        icon = "doc-full"
+        label = f"Page Contents"
+        help_text = "A list of all the titles in a page"
+        group = "Components"
+
+
 class ImageAndTextBlock(blocks.StructBlock):
     image = ImageChooserBlock(
         required=True,
@@ -244,6 +254,7 @@ class GenericSectionBlock(blocks.StructBlock):
         ("page_menu", PopularPagesBlock()),
         ("announcements", AnnouncementsBlock()),
         ("events", EventsBlock()),
+        ("contents", PageContentsBlock()),
     ]
 
     # header = blocks.CharBlock(

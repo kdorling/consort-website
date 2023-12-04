@@ -1,0 +1,21 @@
+{% load common_tags %}
+
+{% for block in body.body %}
+
+    {% is_title_type block as is_title_block %}
+    {% if is_title_block %}
+    <li class="py-0 flex">
+        <a
+        class="bg-transparent mx-[5px] text-orange-600 shadow-none dark:text-neutral-200 pl-1 my-0 no-underline"
+        href="#{% to_id block.value.text %}"
+        >
+        <i class="fa fa-arrow-right mr-2" aria-hidden="true"></i>{{block.value.text}}</a>
+    </li> 
+    {% endif %}
+
+    {% is_section_type block as is_section_block %}
+    {% if is_section_block %}              
+        {% include "components/page_contents_section.html" with body=block.value %}
+    {% endif %}
+
+{% endfor %}
