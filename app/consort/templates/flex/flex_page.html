@@ -8,34 +8,13 @@
 
 {% include "components/page_title_component.html" with title=page.title icon=page.icon %}
  
-<div class="flex">
-<div class="flex flex-wrap-reverse mx-auto">
-    <div class="flex-grow md:max-w-[65vw] xl:max-w-[65vw]">
+<div class="flex flex-wrap-reverse w-[90vw] xl:w-[60vw] mx-auto">
+    <div class="flex-grow ">
         <div>
             {% for block in page.body %}
                 {% include_block block %}
             {% endfor %}
         </div>
     </div>
-  <div>
-    {% if page.include_scrollspy %}
-  <!-- Scrollspy -->
-  <div id="scrollspy" class="sticky top-8 flex p-5 text-sm xl:text-lg sm:ml-16 md:ml-0 text-xl md:text-sm md:mr-8 lg:mr-10 xl:mr-16 md:max-w-[25vw]">
-    <div class="">
-    <div class="font-semibold mb-5">Contents</div>
-        {% for block in page.body %}
-            {% is_section_type block as is_section_block %}
-            {% if is_section_block %} 
-                <ul data-te-nav-list-ref>               
-                    {% include "components/scrollspy_section.html" with body=block.value %}
-                </ul>
-            {% endif %}               
-      {% endfor %}
-  </div>
-</div>
-  <!-- Scrollspy -->
-  {% endif %}
-</div>
-</div>
 </div>
 {% endblock content %}

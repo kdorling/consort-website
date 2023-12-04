@@ -1,11 +1,9 @@
 {% load wagtailcore_tags %}
 
 <!-- Section Block -->
-<section>
-<div class="prose max-w-[90vw] min-w-[65vw] prose-sm sm:prose-base xl:prose-lg p-2 sm:p-5 overflow-hidden mx-auto">
+<section class="mb-8 md:mb-14 prose prose-orange prose-sm sm:prose-base xl:prose-lg overflow-hidden">
 {% for block in value.body %}
     {% include_block block %}
 {% endfor %}
-</div>
 </section>
 <!-- End Section Block -->
