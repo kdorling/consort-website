@@ -306,7 +306,7 @@ class SectionBlock(GenericSectionBlock):
         group = "Structure"
 
 
-class HomepageSection(GenericSectionBlock):
+class AlternatingBackgroundSection(GenericSectionBlock):
 
     body = blocks.StreamBlock(
         GenericSectionBlock.common_sections + [("subsection", SubSectionBlock())],
@@ -315,7 +315,7 @@ class HomepageSection(GenericSectionBlock):
     )
     
     class Meta:
-        template = "flex/homepage_section_block.html"
-        label = "Homepage Section"
-        help_text = "A section of the document"
+        template = "flex/alternating_background_section_block.html"
+        label = "Alternating Background Section"
+        help_text = "A section of the document where the background color of adjacent sections alternate between white and gray"
         group = "Structure"

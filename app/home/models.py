@@ -53,7 +53,7 @@ class HomePage(BasePage):
     )
 
     body = StreamField([
-            ("section", blocks.HomepageSection()),
+            ("section", blocks.AlternatingBackgroundSection()),
         ], 
         use_json_field=True)
 
