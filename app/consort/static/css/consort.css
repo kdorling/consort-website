@@ -1764,10 +1764,6 @@
   margin-left: 0.25rem;
 }
 
-.ml-10 {
-  margin-left: 2.5rem;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -4097,6 +4093,16 @@
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
 }
 
+.bg-orange-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}
+
+.\!bg-orange-400 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(251 146 60 / var(--tw-bg-opacity)) !important;
+}
+
 .decoration-slice {
   -webkit-box-decoration-break: slice;
           box-decoration-break: slice;
@@ -4639,6 +4645,11 @@
   line-height: 1;
 }
 
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+
 .text-\[0\.8rem\] {
   font-size: 0.8rem;
 }
@@ -4710,11 +4721,6 @@
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
 }
 
 .font-bold {
@@ -5590,6 +5596,10 @@
   transition-delay: 0ms;
 }
 
+.delay-300 {
+  transition-delay: 300ms;
+}
+
 .duration-100 {
   transition-duration: 100ms;
 }
@@ -5620,6 +5630,10 @@
 
 .duration-\[400ms\] {
   transition-duration: 400ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
 }
 
 .ease-\[cubic-bezier\(0\2c 0\2c 0\.15\2c 1\)\2c _cubic-bezier\(0\2c 0\2c 0\.15\2c 1\)\] {
@@ -9214,6 +9228,26 @@ a.joy-img-link {
   background-color: rgb(217 228 243 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-orange-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}
+
+.hover\:\!bg-orange-600:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity)) !important;
+}
+
+.hover\:\!bg-orange-200:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(254 215 170 / var(--tw-bg-opacity)) !important;
+}
+
+.hover\:\!bg-orange-300:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(253 186 116 / var(--tw-bg-opacity)) !important;
+}
+
 .hover\:bg-opacity-10:hover {
   --tw-bg-opacity: 0.1;
 }
@@ -10702,10 +10736,6 @@ a.joy-img-link {
 
   .sm\:mb-0 {
     margin-bottom: 0px;
-  }
-
-  .sm\:ml-20 {
-    margin-left: 5rem;
   }
 
   .sm\:mr-10 {
