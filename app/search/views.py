@@ -18,6 +18,12 @@ def get_search_quote(search_result):
     if "information" in search_result.page_type_display_name.lower():
         body_elements = search_result.specific
 
+def unique_chain(*args, **kwargs):
+    seen = set()
+    for element in chain(*args, **kwargs):
+        if element not in seen:
+            seen.add(element)
+            yield element
 
 def search(request):
     search_query = request.GET.get("query", None)
@@ -34,24 +40,40 @@ def search(request):
             business_results = s.search(Phrase(search_query), Business.objects.filter(live=True)).annotate_score("score_")
             document_results  = Document.objects.search(Phrase(search_query)).annotate_score("score_")
         else:
-            page_results = Page.objects.live().not_type(IndexPage).search(Fuzzy(search_query)).annotate_score("score_")
-            business_results = s.search(Fuzzy(search_query), Business.objects.filter(live=True)).annotate_score("score_")
-            document_results  = Document.objects.search(Fuzzy(search_query)).annotate_score("score_")
+            page_results = Page.objects.live().not_type(IndexPage).search(search_query).annotate_score("score_")
+            business_results = s.search(search_query, Business.objects.filter(live=True)).annotate_score("score_")
+            document_results  = Document.objects.search(search_query).annotate_score("score_")
+
+        if '"' not in search_query:
+            fuzzy_page_results = Page.objects.live().not_type(IndexPage).search(Fuzzy(search_query)).annotate_score("score_")
+            for result in fuzzy_page_results:
+                result.score_ /= 5
+            page_results = list(unique_chain(page_results, fuzzy_page_results))
+
+            fuzzy_business_results = s.search(Fuzzy(search_query), Business.objects.filter(live=True)).annotate_score("score_")
+            for result in fuzzy_business_results:
+                result.score_ /= 5
+            business_results = list(unique_chain(business_results, fuzzy_business_results))
+
+            fuzzy_document_results = Document.objects.search(Fuzzy(search_query)).annotate_score("score_")
+            for result in fuzzy_document_results:
+                result.score_ /= 5
+            document_results = list(unique_chain(document_results, fuzzy_document_results))
 
         if len(page_results) == 0 and '"' not in search_query:
             page_results = Page.objects.live().autocomplete(search_query).annotate_score("score_")
             for result in page_results:
-                result.score_ -= 10
+                result.score_ /= 10
 
         if len(business_results) == 0 and '"' not in search_query:
             business_results = s.autocomplete(search_query, Business.objects.filter(live=True)).annotate_score("score_")
             for result in business_results:
-                result.score_ -= 10
+                result.score_ /= 10
 
         if len(document_results) == 0 and '"' not in search_query:
             document_results = Document.objects.autocomplete(search_query).annotate_score("score_")
             for result in document_results:
-                result.score_ -= 10
+                result.score_ /= 10
     
         search_results = list(chain(page_results, document_results, business_results))
         search_results = sorted(search_results, key=lambda result: result.score_, reverse=True)
