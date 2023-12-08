@@ -17,7 +17,7 @@ def index(request):
     context = {
         "event_list": event_list,
     }
-    return HttpResponse(template.render(context, request))
+    return HttpResponse(template.render(context, request))   
 
 def calendar(request):
     event_list = Event.objects.filter(live=True).filter(end_time__gte=datetime.date.today()-datetime.timedelta(days=30)).filter(end_time__lte=datetime.date.today()+datetime.timedelta(days=30))
@@ -26,40 +26,14 @@ def calendar(request):
 
     for event in event_list:
         image_url = event.image
-        print(image_url)
-        image_url = image_url.get_rendition('width-300|jpegquality-90')
-        print(dir(image_url))
-        image_url = image_url.url
-        print(image_url)
+        if image_url:
+            image_url = image_url.get_rendition('width-300|jpegquality-90')
+            print(dir(image_url))
+            image_url = image_url.url
+            print(image_url)
 
-        rrule_str = None
-
-        if event.frequency != None and event.interval != None:
-
-            match event.frequency:
-                case "DAILY":
-                    frequency = rrule.DAILY
-                case "WEEKLY":
-                    frequency = rrule.WEEKLY
-                case "MONTHLY":
-                    frequency = rrule.MONTHLY
-                case "YEARLY":
-                    frequency = rrule.YEARLY
-                case _:
-                    frequency = None
-
-            rrule_str = str(
-                rrule.rrule(frequency,
-                            event.start_time,
-                            interval=event.interval,
-                            until=event.end_time,
-                            byweekday=event.byweekday,
-                            byeaster=event.byeaster,
-                            bymonth=event.bymonth,
-                            bymonthday=event.bymonthday,
-                            byweekno=event.byweekno,
-                            byyearday=event.byyearday)
-            )
+        rrule_str = f"DTSTART:{event.start_time.strftime('%Y%m%dT%H%M%S')}\nRRULE:{event.rrule}" if event.rrule != "" else None
+        duration = event.end_time - event.start_time
 
         new_event = {
             "id": event.pk,            
@@ -68,8 +42,8 @@ def calendar(request):
             "start": event.start_time.strftime("%Y-%m-%dT%H:%M:%S"),
             "end": event.end_time.strftime("%Y-%m-%dT%H:%M:%S"),
             "description": event.description,
-            "end_time": event.end_time.strftime("%Y-%m-%dT%H:%M:%S"), # Full calendar deletes end on recurring events
             "rrule": rrule_str,
+            "duration": duration.total_seconds() * 1000,
         }
 
         calendar_events.append(new_event)

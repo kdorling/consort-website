@@ -21,6 +21,8 @@
 <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@6.1.8/index.global.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.8/index.global.min.js'></script>
+
     <script>
 
         function renderModal(event) {
@@ -72,11 +74,12 @@
         else {
           result += `<div class="prose relative flex-auto bg-neutral-200 rounded-b-md p-4" data-te-modal-body-ref>`;
         }
+
       result +=
        `<p><b>Start:</b> ${new Date(event.start).toLocaleString()}</p>
-        <p><b>End:</b> ${new Date(event.extendedProps.end_time).toLocaleString()}</p></div>`;
+        <p><b>End:</b> ${new Date(event.end).toLocaleString()}</p></div>`;
         
-        if (event.extendedProps.description) {
+       if (event.extendedProps.description) {
          result+=`<div class="p-4 prose relative flex-auto bg-white rounded-b-md" data-te-modal-body-ref>${event.extendedProps.description}</div>`;
         }
       result += `</div></div></div></div></div>`;
@@ -93,6 +96,20 @@
         parameters["eventClick"] = (info) => {
             renderModal(info.event);
         }
+        parameters["eventDataTransform"] = (event) => {
+          event.url = "";
+          if (event["extendedProps"] == null)
+          {
+            event["extendedProps"] = {}
+          }
+          if (event.end) {
+            event["extendedProps"]["end_time"] = event.end;
+          }
+          if (event.description) {
+            event["extendedProps"]["description"] = event.description;
+          }
+          return event;
+      }
         parameters["themeSystem"] = "bootstrap5";
         parameters["headerToolbar"] = {
             left: 'prev,next today',
@@ -100,6 +117,11 @@
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
         }
         parameters["initialView"] = document.body.clientWidth < 765 ? 'listMonth':'dayGridMonth';
+        parameters["googleCalendarApiKey"] = "AIzaSyDBGIySPKFKw6iuFXkRkR14xCz9hGn_NGs";
+        parameters["eventSources"]=[{
+          googleCalendarId: "7703dbcf3448de02cfd1938cf3de54a7da3f4cd79cfccc9782850c7cf4bb5747@group.calendar.google.com", 
+          color: "green",
+          className: "sportex"}];
         //parameters["aspectRatio"] = 2;
         //parameters["contentHeight"] = document.body.clientWidth < 765 ? null : 1000;
 
@@ -109,6 +131,7 @@
         }
 
         var calendar = new FullCalendar.Calendar(calendarEl, parameters);
+        calendar.setOption('expandRows', false);
         if (document.body.clientWidth < 900) {
           calendar.setOption('height', "auto");
         }
@@ -158,6 +181,10 @@
      cursor:pointer;
     }
 
+    .fc .fc-daygrid-day-frame {
+      max-height: 10px;
+    }
+   
     .fc-daygrid-event {
       display: flex;
       flex-wrap: wrap;

@@ -2368,8 +2368,8 @@
   width: 80%;
 }
 
-.w-\[80vw\] {
-  width: 80vw;
+.w-\[90vw\] {
+  width: 90vw;
 }
 
 .w-auto {
@@ -2387,18 +2387,6 @@
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[65vw\] {
-  width: 65vw;
-}
-
-.w-\[60vw\] {
-  width: 60vw;
-}
-
-.w-\[90vw\] {
-  width: 90vw;
 }
 
 .min-w-0 {
@@ -2450,10 +2438,6 @@
   max-width: 540px;
 }
 
-.max-w-\[80vw\] {
-  max-width: 80vw;
-}
-
 .max-w-\[90\%\] {
   max-width: 90%;
 }
@@ -2468,14 +2452,6 @@
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-\[65vw\] {
-  max-width: 65vw;
-}
-
-.max-w-\[60vw\] {
-  max-width: 60vw;
 }
 
 .flex-auto {
@@ -4034,9 +4010,14 @@
   background-color: rgb(250 229 233 / var(--tw-bg-opacity));
 }
 
-.bg-gray-100 {
+.bg-gray-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
 .bg-neutral-200 {
@@ -4114,21 +4095,6 @@
 .bg-zinc-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
-}
-
-.bg-orange-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
-}
-
-.bg-orange-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(253 186 116 / var(--tw-bg-opacity));
-}
-
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .decoration-slice {
@@ -4744,6 +4710,11 @@
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
 }
 
 .font-bold {
@@ -10450,11 +10421,6 @@ a.joy-img-link {
   background-color: rgb(39 39 42 / var(--tw-bg-opacity));
 }
 
-:is(.dark .dark\:bg-orange-300) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(253 186 116 / var(--tw-bg-opacity));
-}
-
 :is(.dark .dark\:fill-gray-400) {
   fill: #9ca3af;
 }
@@ -10881,22 +10847,6 @@ a.joy-img-link {
     width: fit-content;
   }
 
-  .md\:w-\[90vw\] {
-    width: 90vw;
-  }
-
-  .md\:w-\[6vw\] {
-    width: 6vw;
-  }
-
-  .md\:w-\[60vw\] {
-    width: 60vw;
-  }
-
-  .md\:w-60 {
-    width: 15rem;
-  }
-
   .md\:min-w-max {
     min-width: -moz-max-content;
     min-width: max-content;
@@ -11174,12 +11124,12 @@ a.joy-img-link {
     width: 500px;
   }
 
-  .xl\:w-auto {
-    width: auto;
-  }
-
   .xl\:w-\[60vw\] {
     width: 60vw;
+  }
+
+  .xl\:w-auto {
+    width: auto;
   }
 
   .xl\:max-w-\[65vw\] {

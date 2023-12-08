@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from modelcluster.fields import ParentalKey
@@ -62,82 +63,32 @@ class Event(WorkflowMixin, DraftStateMixin, LockableMixin, RevisionMixin, models
         default=False,
     )
 
-    FREQUENCY_CHOICES = [
-        ("DAILY", "Daily"),
-        ("WEEKLY", "Weekly"),
-        ("MONTHLY", "Monthly"),
-        ("YEARLY", "Yearly"),
-    ]
-
-    frequency = models.CharField(
-        max_length=8,
+    rrule = models.CharField(
+        max_length=255,
         blank=True,
-        null=True,
-        default="WEEKLY",
-        choices=FREQUENCY_CHOICES,
-        help_text="When does this event repeat?",
-    )
-    
-    interval = models.IntegerField(
-        blank=True,
-        null=True,
-        default=1,
-        help_text="How often does this event occur?"
-    )
-
-    bymonth= models.IntegerField(
-        blank=True,
-        null=True,
-        help_text="The month when this event occurs"
-    )
-
-    bymonthday = models.IntegerField(
-        blank=True,
-        null=True,
-        help_text="The day of the month when this event occurs"
-    )
-
-    byyearday = models.IntegerField(
-        blank=True,
-        null=True,
-        help_text="The day of the year when this event occurs"
-    )
-
-    byeaster = models.IntegerField(
-        blank=True,
-        null=True,
-        help_text="The day of Easter"
-    )
-
-    byweekno = models.IntegerField(
-        blank=True,
-        null=True,
-        help_text="The week of the year when this event occurs"
-    )
-
-    byweekday = models.IntegerField(
-        blank=True,
-        null=True,
-        help_text="The day of the week when this event occurs"
+        default="",
+        help_text="Apply an RRULE to this event. (Note: Recurring events cannot be featured.)",
     )
 
     panels = [
         FieldPanel("name"),
         FieldPanel("image"),
         FieldPanel("description"),
-        FieldPanel("document"),
         FieldPanel("start_time"),
         FieldPanel("end_time"),
         FieldPanel("featured"),
-        FieldPanel("frequency"),
-        FieldPanel("interval"),
-        FieldPanel("bymonth"),
-        FieldPanel("bymonthday"),
-        FieldPanel("byyearday"),
-        FieldPanel("byeaster"),
-        FieldPanel("byweekno"),
-        FieldPanel("byweekday"),
+        FieldPanel("rrule"),
     ]
+
+    def clean(self):
+        if self.rrule != None:
+            if self.rrule != "":
+                if self.featured:
+                    raise ValidationError("Recurring events cannot be featured.")
+                
+        if self.start_time != None and self.end_time != None:
+            if self.start_time > self.end_time:
+                raise ValidationError("The end time must be after the start time.")
 
     def __str__(self):
         return f"{self.name} from {self.start_time} to {self.end_time}"
