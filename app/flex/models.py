@@ -24,7 +24,7 @@ class FlexPage(WagtailCacheMixin, BasePage):
     )
 
     content_panels = BasePage.content_panels + [
-        FieldPanel("include_scrollspy"),
+        # FieldPanel("include_scrollspy"),
         FieldPanel("body"),
     ]
 
