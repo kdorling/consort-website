@@ -274,3 +274,4 @@ CACHES = {
 }
 
 WAGTAILDOCS_DOCUMENT_MODEL = 'searchable_documents.document'
+WAGTAILDOCS_DOCUMENT_FORM_BASE = 'searchable_documents.forms.DocumentWithDateForm'

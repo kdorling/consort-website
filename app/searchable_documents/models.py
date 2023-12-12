@@ -1,11 +1,25 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
-from wagtail.documents.models import Document as WagtailDocument
+from wagtail.documents.models import Document
 from wagtail.search import index
 
 from searchable_documents.tasks import transcribe_document
+
+
+class DocumentWithDate(Document):
+
+    date = models.DateField(
+        "date",
+        blank=True,
+        null=True,
+        help_text="The date associated with the document.",
+    )
+
+    admin_form_fields = Document.admin_form_fields + (
+       "date",
+    )
+
+    class Meta:
+        abstract = True
 
 
 class TranscriptionMixin(models.Model):
@@ -25,9 +39,9 @@ class TranscriptionMixin(models.Model):
             transcribe_document.delay(self.id)
 
 
-class Document(TranscriptionMixin, WagtailDocument):
+class Document(TranscriptionMixin, DocumentWithDate):
     
     """Include transcription in search_fields."""
-    search_fields = WagtailDocument.search_fields + [
+    search_fields = DocumentWithDate.search_fields + [
         index.SearchField('transcription', boost=10),
     ]

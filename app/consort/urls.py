@@ -17,6 +17,7 @@ urlpatterns = [
     path("directory/", include("business_directory.urls")),
     path("weather/", include("weather.urls")),
     path("miscellaneous/", include("miscellaneous.urls")),
+    path("documents/", include("searchable_documents.urls")),
 ]
 
 

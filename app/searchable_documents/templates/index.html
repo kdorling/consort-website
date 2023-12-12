@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "components/page_title_component.html" with title=collection_name icon="fa-solid fa-magnifying-glass" %}
+
+<div class="min-w-[90vw] xl:min-w-[60vw] mx-auto prose sm:prose-sm md:prose-md lg:prose-lg xl:prose-xl">
+    {% for collection_key, collection_value in collection_contents.items %}
+        <h2>{{collection_key}}</h2>
+        <ul>
+        {% for document_name, document_url in collection_value.items %}
+            <li>
+                <a href="{{document_url}}" target="_blank" class="text-orange-600 no-underline">{{document_name}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+
+{% endblock content %}
