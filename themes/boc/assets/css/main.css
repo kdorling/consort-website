@@ -57,7 +57,7 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 .header-container {
@@ -171,10 +171,10 @@ nav ul ul {
     left: 0;
     right: 0;
     width: 100%;
-    background-color: #fafafa;
-    background-image: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
+    z-index: 9999;
     border-top: 3px solid var(--boc-red);
     padding: 30px 0;
     flex-direction: row;
@@ -190,8 +190,8 @@ nav ul ul {
     pointer-events: none;
 }
 
-nav ul li:hover > ul,
-nav ul li:focus-within > ul {
+/* Open state - controlled by JavaScript */
+nav ul li.dropdown-open > ul {
     display: flex;
     opacity: 1;
     transform: translateY(0);
@@ -225,7 +225,7 @@ nav ul ul a {
     display: block;
     padding: 12px 20px;
     margin: 5px 0;
-    color: var(--boc-text);
+    color: var(--boc-dark-gray);
     background-color: transparent;
     border-left: 3px solid transparent;
     border-radius: 2px;
@@ -238,7 +238,7 @@ nav ul ul a {
 
 nav ul ul a:hover,
 nav ul ul a:focus {
-    background-color: var(--boc-white);
+    background-color: #f5f5f5;
     border-left-color: var(--boc-red);
     color: var(--boc-teal);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -246,10 +246,19 @@ nav ul ul a:focus {
 }
 
 /* Dropdown Indicator */
+nav > ul > li.has-dropdown > a {
+    cursor: pointer;
+}
+
 nav > ul > li.has-dropdown > a::after {
     content: " ▼";
     font-size: 0.7em;
     margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+nav > ul > li.has-dropdown.dropdown-open > a::after {
+    transform: rotate(180deg);
 }
 
 /* Main Content */
@@ -645,7 +654,8 @@ tr:hover {
         padding: 12px 20px 12px 40px;
     }
 
-    nav ul li.mobile-open > ul {
+    nav ul li.mobile-open > ul,
+    nav ul li.dropdown-open > ul {
         display: flex;
     }
 

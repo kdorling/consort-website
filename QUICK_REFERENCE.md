@@ -2,7 +2,7 @@
 
 ## 🎯 What Changed
 
-Your Hugo site now has **full-width mega menu dropdowns** matching the Bank of Canada website design.
+Your Hugo site now has **full-width mega menu dropdowns** matching the Bank of Canada website design with **click-based toggle** for better control.
 
 ## 🚀 Quick Start
 
@@ -15,7 +15,7 @@ Visit: **http://localhost:1313**
 
 ## 👀 What to Look For
 
-Hover over these menu items to see the full-width mega menu:
+**Click** on these menu items to see the full-width mega menu:
 - **Monetary Policy** (4 subitems)
 - **Financial System** (3 subitems)
 - **Markets** (3 subitems)
@@ -26,13 +26,15 @@ Hover over these menu items to see the full-width mega menu:
 
 | Feature | Description |
 |---------|-------------|
+| **Click-Based Toggle** | Click to open, click outside or Escape to close |
 | **Full Viewport Width** | Dropdown spans entire screen width |
 | **Centered Content** | Items constrained to 1200px max-width |
 | **Horizontal Layout** | Multiple columns displayed side-by-side |
 | **Smooth Animation** | 0.3s fade-in with slide-down effect |
-| **Gradient Background** | White to light gray professional look |
+| **White Background** | Pure white with clear black text |
 | **Red Accent** | 3px red border at top of dropdown |
-| **Hover Effects** | Items highlight with shadow and slide |
+| **Visible Above Content** | High z-index ensures dropdown appears on top |
+| **Auto-Close Others** | Only one dropdown open at a time |
 | **Responsive** | Converts to vertical mobile menu at 768px |
 
 ## 🎨 Visual Design
@@ -109,14 +111,19 @@ background-image: linear-gradient(to bottom, #f0f0f0 0%, #e5e5e5 100%);
 
 ## ✅ Testing Checklist
 
-- [ ] Hover over "Monetary Policy" - dropdown appears full-width
+- [ ] Click "Monetary Policy" - dropdown appears full-width
+- [ ] Text inside dropdown is clearly visible
+- [ ] Dropdown appears above all page content
 - [ ] Check smooth fade-in animation
 - [ ] Verify items are arranged horizontally
-- [ ] Test hover effects on individual items
+- [ ] Click outside to close dropdown
+- [ ] Press Escape to close dropdown
+- [ ] Only one dropdown open at a time
+- [ ] Arrow indicator rotates when open (▼ → ▲)
 - [ ] Resize window to mobile (<768px)
 - [ ] Test mobile hamburger menu
 - [ ] Verify dropdown items stack vertically on mobile
-- [ ] Test keyboard navigation (Tab, Enter, Arrow keys)
+- [ ] Test keyboard navigation (Tab, Enter, Escape)
 
 ## 🐛 Troubleshooting
 
@@ -159,11 +166,14 @@ background-image: linear-gradient(to bottom, #f0f0f0 0%, #e5e5e5 100%);
 
 ## 💡 Pro Tips
 
-1. **Hover Timing**: Dropdown appears instantly on hover, no delay
-2. **Keyboard Nav**: Use Tab to navigate, Enter to activate links
-3. **Mobile**: Tap menu items with "▼" to expand dropdowns
-4. **Customization**: All styles in one CSS file for easy editing
-5. **Performance**: Pure CSS animations, no JavaScript for dropdowns
+1. **Click to Toggle**: Click menu items to open/close dropdowns
+2. **Quick Close**: Press Escape or click outside to close any dropdown
+3. **One at a Time**: Opening a dropdown automatically closes others
+4. **Arrow Indicator**: Watch the arrow rotate when dropdown opens (▼ → ▲)
+5. **Keyboard Nav**: Use Tab to navigate, Enter to click, Escape to close
+6. **Mobile**: Tap menu items with "▼" to expand dropdowns
+7. **Customization**: All styles in one CSS file for easy editing
+8. **Text Visibility**: Black text on white background for maximum readability
 
 ## 📞 Need More Help?
 
@@ -175,5 +185,6 @@ background-image: linear-gradient(to bottom, #f0f0f0 0%, #e5e5e5 100%);
 ---
 
 **Last Updated**: December 29, 2024  
-**Status**: ✅ Fully Functional  
-**Build Status**: ✅ Passing
+**Status**: ✅ Fully Functional (Click-based, Visible Text, Above Content)  
+**Build Status**: ✅ Passing  
+**Issues Fixed**: ✅ All 3 issues resolved

@@ -3,6 +3,60 @@
 (function () {
   "use strict";
 
+  // Dropdown Menu Toggle (Click-based for Desktop)
+  function initDropdownMenus() {
+    const mainNav = document.getElementById("main-nav");
+    if (!mainNav) return;
+
+    const dropdownParents = mainNav.querySelectorAll(".has-dropdown");
+
+    dropdownParents.forEach(function (parent) {
+      const link = parent.querySelector("a");
+
+      // Add click handler for dropdown toggle
+      link.addEventListener("click", function (e) {
+        // On desktop, prevent default and toggle dropdown
+        if (window.innerWidth > 768) {
+          e.preventDefault();
+
+          // Close all other dropdowns
+          dropdownParents.forEach(function (otherParent) {
+            if (otherParent !== parent) {
+              otherParent.classList.remove("dropdown-open");
+            }
+          });
+
+          // Toggle this dropdown
+          parent.classList.toggle("dropdown-open");
+        } else {
+          // On mobile, toggle mobile-open class
+          e.preventDefault();
+          parent.classList.toggle("mobile-open");
+        }
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener("click", function (e) {
+      if (!mainNav.contains(e.target)) {
+        dropdownParents.forEach(function (parent) {
+          parent.classList.remove("dropdown-open");
+          parent.classList.remove("mobile-open");
+        });
+      }
+    });
+
+    // Close dropdowns on Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        dropdownParents.forEach(function (parent) {
+          parent.classList.remove("dropdown-open");
+          parent.classList.remove("mobile-open");
+        });
+      }
+    });
+  }
+
   // Mobile Menu Toggle
   function initMobileMenu() {
     const mobileToggle = document.getElementById("mobile-menu-toggle");
@@ -10,7 +64,8 @@
 
     if (!mobileToggle || !mainNav) return;
 
-    mobileToggle.addEventListener("click", function () {
+    mobileToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
       mainNav.classList.toggle("mobile-open");
 
       // Update aria-expanded for accessibility
@@ -21,22 +76,7 @@
       mobileToggle.textContent = isExpanded ? "✕" : "☰";
     });
 
-    // Handle dropdown toggles on mobile
-    const dropdownParents = mainNav.querySelectorAll(".has-dropdown");
-
-    dropdownParents.forEach(function (parent) {
-      const link = parent.querySelector("a");
-
-      // Add click handler for mobile
-      link.addEventListener("click", function (e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          parent.classList.toggle("mobile-open");
-        }
-      });
-    });
-
-    // Close menu when clicking outside
+    // Close mobile menu when clicking outside
     document.addEventListener("click", function (e) {
       if (!mainNav.contains(e.target) && !mobileToggle.contains(e.target)) {
         mainNav.classList.remove("mobile-open");
@@ -183,6 +223,7 @@
 
   // Initialize all functionality when DOM is ready
   function init() {
+    initDropdownMenus();
     initMobileMenu();
     initKeyboardNav();
     initSearch();
