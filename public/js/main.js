@@ -20,6 +20,10 @@
           } else {
             e.preventDefault();
             parent.classList.toggle("mobile-open");
+            console.log(
+              "Mobile dropdown toggled:",
+              parent.classList.contains("mobile-open")
+            );
           }
         });
       });

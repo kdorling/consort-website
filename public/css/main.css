@@ -637,6 +637,9 @@ tr:hover {
         padding: 0;
         border-top: none;
         flex-direction: column;
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
     }
 
     nav > ul > li {
@@ -649,24 +652,36 @@ tr:hover {
         max-width: none;
     }
 
+    nav ul li.mobile-open > ul,
+    nav ul li.dropdown-open > ul {
+        display: flex !important;
+        visibility: visible !important;
+    }
+
     nav ul ul a {
         margin: 0;
         padding: 12px 20px 12px 40px;
+        color: #ffffff !important;
+        background-color: rgba(0, 0, 0, 0.2);
+        border-left: 3px solid transparent;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        display: block;
+        text-decoration: none;
     }
 
-    nav ul li.mobile-open > ul,
-    nav ul li.dropdown-open > ul {
-        display: flex;
+    nav ul ul a:hover,
+    nav ul ul a:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff !important;
+        border-left-color: var(--boc-red);
+        text-decoration: none;
     }
 
-    nav ul ul a {
-        color: rgba(255, 255, 255, 0.9);
-        padding-left: 40px;
-    }
-
-    nav ul ul a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: var(--boc-white);
+    /* Ensure mobile dropdown items are visible */
+    nav ul ul li {
+        display: block !important;
+        opacity: 1 !important;
     }
 
     .hero h1 {

@@ -32,6 +32,10 @@
           // On mobile, toggle mobile-open class
           e.preventDefault();
           parent.classList.toggle("mobile-open");
+          console.log(
+            "Mobile dropdown toggled:",
+            parent.classList.contains("mobile-open"),
+          );
         }
       });
     });
