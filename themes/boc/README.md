@@ -6,7 +6,8 @@ A Hugo theme inspired by the Bank of Canada website design, featuring a professi
 
 - **Responsive Design**: Mobile-first approach that works seamlessly on all devices
 - **Bank of Canada Color Scheme**: Teal, red, and gray colors matching the official website
-- **Dropdown Navigation**: Multi-level navigation menus with hover and keyboard support
+- **Full-Width Mega Menu Dropdowns**: Navigation dropdowns span the entire viewport width, just like the Bank of Canada website
+- **Dropdown Navigation**: Multi-level navigation menus with smooth animations, hover and keyboard support
 - **Accessibility**: WCAG 2.1 compliant with skip links, proper ARIA labels, and keyboard navigation
 - **Modern Typography**: Clean, professional font stack using system fonts
 - **Hero Section**: Eye-catching hero area for homepage
@@ -74,6 +75,21 @@ The theme supports multi-level dropdown menus. Define your menus in `hugo.toml`:
     pageRef = '/monetary-policy/inflation'
     weight = 2
 ```
+
+## Navigation Mega Menu
+
+The theme features **full-width mega menu dropdowns** that match the Bank of Canada website design:
+
+- Dropdowns span the entire viewport width
+- Content is centered within a 1200px max-width container
+- Smooth fade-in animation with 10px slide-down effect
+- Professional gradient background (white to light gray)
+- 3px red border accent at the top
+- Horizontal flexbox layout with wrapping
+- Each submenu item: 220-280px wide
+- Hover effects with subtle animations
+
+When users hover over menu items with children (e.g., "Monetary Policy", "Financial System"), the dropdown appears across the full width of the screen, providing a premium, professional navigation experience.
 
 ## Layouts
 

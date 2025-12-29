@@ -159,41 +159,90 @@ nav > ul > li > a.active {
     border-bottom-color: var(--boc-red);
 }
 
-/* Dropdown Menu Styles */
+/* Dropdown Menu Styles - Full Width Mega Menu */
+nav > ul > li {
+    position: static;
+}
+
 nav ul ul {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--boc-white);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 250px;
+    right: 0;
+    width: 100%;
+    background-color: #fafafa;
+    background-image: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 1000;
-    flex-direction: column;
-    gap: 0;
+    border-top: 3px solid var(--boc-red);
+    padding: 30px 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    pointer-events: none;
 }
 
 nav ul li:hover > ul,
 nav ul li:focus-within > ul {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
+/* Constrain dropdown items to container width */
 nav ul ul li {
-    width: 100%;
+    width: auto;
+    min-width: 220px;
+    max-width: 280px;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0 10px;
+}
+
+/* Center dropdown content within max-width */
+nav ul ul {
+    padding-left: calc((100% - 1200px) / 2);
+    padding-right: calc((100% - 1200px) / 2);
+}
+
+@media (max-width: 1240px) {
+    nav ul ul {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 nav ul ul a {
+    display: block;
     padding: 12px 20px;
+    margin: 5px 0;
     color: var(--boc-text);
+    background-color: transparent;
     border-left: 3px solid transparent;
-    transition: all 0.3s ease;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    white-space: normal;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 500;
 }
 
 nav ul ul a:hover,
 nav ul ul a:focus {
-    background-color: var(--boc-gray);
+    background-color: var(--boc-white);
     border-left-color: var(--boc-red);
     color: var(--boc-teal);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transform: translateX(3px);
 }
 
 /* Dropdown Indicator */
@@ -575,6 +624,25 @@ tr:hover {
         display: none;
         box-shadow: none;
         background-color: var(--boc-dark-teal);
+        width: 100%;
+        padding: 0;
+        border-top: none;
+        flex-direction: column;
+    }
+
+    nav > ul > li {
+        position: relative;
+    }
+
+    nav ul ul li {
+        width: 100%;
+        min-width: auto;
+        max-width: none;
+    }
+
+    nav ul ul a {
+        margin: 0;
+        padding: 12px 20px 12px 40px;
     }
 
     nav ul li.mobile-open > ul {
