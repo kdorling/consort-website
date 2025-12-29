@@ -1,9 +1,88 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <section>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      {{ .Summary }}
-    </section>
+<div id="main-content">
+  {{ with .Content }}
+    {{ . }}
   {{ end }}
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>More than a bank. We are the Central Bank of Canada.</h1>
+    <p>Our primary responsibility is to preserve the value of your money by keeping inflation low, stable and predictable.</p>
+  </div>
+
+  <!-- Stats/Highlights Section -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-label">Policy Interest Rate</div>
+      <div class="stat-value">2.25%</div>
+      <div class="stat-date">Dec 10, 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total CPI Inflation</div>
+      <div class="stat-value">2.2%</div>
+      <div class="stat-date">Nov 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">CPI-trim</div>
+      <div class="stat-value">2.8%</div>
+      <div class="stat-date">Nov 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">CPI-median</div>
+      <div class="stat-value">2.8%</div>
+      <div class="stat-date">Nov 2025</div>
+    </div>
+  </div>
+
+  <!-- Recent Pages/Posts Section -->
+  {{ if site.RegularPages }}
+  <section>
+    <h2>Latest Updates</h2>
+    <div class="card-grid">
+      {{ range first 6 site.RegularPages }}
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            </h3>
+          </div>
+          <div class="card-body">
+            {{ with .Summary }}
+              <p>{{ . }}</p>
+            {{ else }}
+              <p>{{ .Description | default "Read more..." }}</p>
+            {{ end }}
+          </div>
+          <div class="card-footer">
+            {{ with .Date }}
+              <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>
+            {{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Important Notice Section -->
+  <section>
+    <div class="alert alert-warning">
+      <h3>Don't be fooled!</h3>
+      <p>We are seeing an increasing number of investment scams and deceptive articles mentioning the Bank online on social media. We never give financial advice, offer investment products to individuals or ask for your personal details. <a href="/scams">Find out more about recognizing and reporting scams.</a></p>
+    </div>
+  </section>
+
+  <!-- Additional Content Sections -->
+  <section>
+    <h2>What does the Bank of Canada do?</h2>
+    <p>Our primary responsibility is to preserve the value of your money by keeping inflation low, stable and predictable. We also:</p>
+    <ul>
+      <li>Design, issue and distribute Canada's bank notes</li>
+      <li>Promote the safety, soundness and efficiency of Canada's financial system</li>
+      <li>Provide funds management services and be the fiscal agent for the Government of Canada</li>
+    </ul>
+    <a href="/about" class="btn btn-primary">Learn More About Us</a>
+  </section>
+
+</div>
 {{ end }}

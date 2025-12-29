@@ -1,3 +1,12 @@
 baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+languageCode = 'en-US'
+title = 'Bank of Canada'
+theme = 'boc'
+
+[params]
+  description = 'More than a bank. We are the Central Bank of Canada.'
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = '0.146.0'

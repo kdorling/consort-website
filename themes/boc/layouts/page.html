@@ -1,10 +1,114 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+<div id="main-content">
+  <article>
+    <header class="page-header">
+      <h1>{{ .Title }}</h1>
 
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+      {{ with .Description }}
+        <p class="page-description">{{ . }}</p>
+      {{ end }}
 
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+      {{ if not .Date.IsZero }}
+        {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+        {{ $dateHuman := .Date | time.Format "January 2, 2006" }}
+        <p class="page-meta">
+          <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+        </p>
+      {{ end }}
+    </header>
+
+    <div class="page-content">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.tags }}
+      <footer class="page-footer">
+        <div class="page-tags">
+          <strong>Tags:</strong>
+          {{ range . }}
+            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">{{ . }}</a>
+          {{ end }}
+        </div>
+      </footer>
+    {{ end }}
+  </article>
+</div>
+
+<style>
+  .page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--boc-red);
+  }
+
+  .page-header h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--boc-teal);
+  }
+
+  .page-description {
+    font-size: 1.2rem;
+    color: var(--boc-medium-gray);
+    margin: 0.5rem 0;
+  }
+
+  .page-meta {
+    color: var(--boc-medium-gray);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0;
+  }
+
+  .page-content {
+    line-height: 1.8;
+  }
+
+  .page-content h2 {
+    margin-top: 2rem;
+    color: var(--boc-teal);
+  }
+
+  .page-content h3 {
+    margin-top: 1.5rem;
+    color: var(--boc-dark-gray);
+  }
+
+  .page-content ul, .page-content ol {
+    margin: 1rem 0 1rem 2rem;
+  }
+
+  .page-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--boc-light-gray);
+  }
+
+  .page-tags {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--boc-gray);
+    color: var(--boc-teal);
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .tag:hover {
+    background-color: var(--boc-teal);
+    color: var(--boc-white);
+    text-decoration: none;
+  }
+</style>
 {{ end }}

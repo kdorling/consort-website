@@ -1,2 +1,30 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<div class="header-container">
+    <div class="header-top">
+        <h1 class="site-title">
+            <a
+                href="{{ site.BaseURL }}"
+                style="color: inherit; text-decoration: none"
+            >
+                {{ site.Title }}
+            </a>
+        </h1>
+
+        <div class="header-utils">
+            <button class="search-toggle" aria-label="Search">
+                <span aria-hidden="true">🔍</span> Search
+            </button>
+            <button class="lang-toggle" aria-label="Change language">FR</button>
+            <button
+                class="mobile-menu-toggle"
+                aria-label="Toggle menu"
+                id="mobile-menu-toggle"
+            >
+                ☰
+            </button>
+        </div>
+    </div>
+
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</div>

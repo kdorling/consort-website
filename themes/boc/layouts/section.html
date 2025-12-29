@@ -1,10 +1,91 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <section>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      {{ .Summary }}
-    </section>
+<div id="main-content">
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}
+      <p class="page-description">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{ with .Content }}
+    <div class="section-intro">
+      {{ . }}
+    </div>
   {{ end }}
+
+  {{ if .Pages }}
+    <div class="card-grid">
+      {{ range .Pages }}
+        <article class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            </h3>
+          </div>
+          <div class="card-body">
+            {{ with .Summary }}
+              {{ . }}
+            {{ else }}
+              <p>{{ .Description | default "Read more..." }}</p>
+            {{ end }}
+          </div>
+          <div class="card-footer">
+            {{ if not .Date.IsZero }}
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            {{ end }}
+            <a href="{{ .RelPermalink }}" class="read-more">Read more →</a>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  {{ end }}
+</div>
+
+<style>
+  .page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--boc-red);
+  }
+
+  .page-header h1 {
+    margin-top: 0;
+    color: var(--boc-teal);
+  }
+
+  .page-description {
+    font-size: 1.2rem;
+    color: var(--boc-medium-gray);
+    margin: 1rem 0 0;
+  }
+
+  .section-intro {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--boc-gray);
+    border-left: 4px solid var(--boc-teal);
+    border-radius: 4px;
+  }
+
+  .read-more {
+    color: var(--boc-red);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-footer time {
+    color: var(--boc-medium-gray);
+    font-size: 0.9rem;
+  }
+</style>
 {{ end }}
