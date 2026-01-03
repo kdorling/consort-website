@@ -4,6 +4,8 @@
 
 Your Hugo site now has **full-width mega menu dropdowns** matching the Bank of Canada website design with **click-based toggle** for better control.
 
+**Latest Update**: Mobile menu spacing and contrast significantly improved!
+
 ## 🚀 Quick Start
 
 ```bash
@@ -31,11 +33,13 @@ Visit: **http://localhost:1313**
 | **Centered Content** | Items constrained to 1200px max-width |
 | **Horizontal Layout** | Multiple columns displayed side-by-side |
 | **Smooth Animation** | 0.3s fade-in with slide-down effect |
-| **White Background** | Pure white with clear black text |
+| **White Background** | Pure white with clear black text (desktop) |
 | **Red Accent** | 3px red border at top of dropdown |
 | **Visible Above Content** | High z-index ensures dropdown appears on top |
 | **Auto-Close Others** | Only one dropdown open at a time |
 | **Responsive** | Converts to vertical mobile menu at 768px |
+| **Mobile High Contrast** | White text on almost-black background (14.8:1) |
+| **Zero Padding** | No unnecessary spacing on mobile submenu items |
 
 ## 🎨 Visual Design
 
@@ -111,6 +115,7 @@ background-image: linear-gradient(to bottom, #f0f0f0 0%, #e5e5e5 100%);
 
 ## ✅ Testing Checklist
 
+**Desktop (>768px)**:
 - [ ] Click "Monetary Policy" - dropdown appears full-width
 - [ ] Text inside dropdown is clearly visible
 - [ ] Dropdown appears above all page content
@@ -120,9 +125,15 @@ background-image: linear-gradient(to bottom, #f0f0f0 0%, #e5e5e5 100%);
 - [ ] Press Escape to close dropdown
 - [ ] Only one dropdown open at a time
 - [ ] Arrow indicator rotates when open (▼ → ▲)
+
+**Mobile (≤768px)**:
 - [ ] Resize window to mobile (<768px)
 - [ ] Test mobile hamburger menu
-- [ ] Verify dropdown items stack vertically on mobile
+- [ ] Click menu items with ▼ to expand
+- [ ] Verify white text on dark background (high contrast)
+- [ ] Check that submenu items have NO vertical padding
+- [ ] Confirm items are compact with 44px height
+- [ ] Hover/tap changes background color
 - [ ] Test keyboard navigation (Tab, Enter, Escape)
 
 ## 🐛 Troubleshooting
@@ -173,11 +184,15 @@ background-image: linear-gradient(to bottom, #f0f0f0 0%, #e5e5e5 100%);
 5. **Keyboard Nav**: Use Tab to navigate, Enter to click, Escape to close
 6. **Mobile**: Tap menu items with "▼" to expand dropdowns
 7. **Customization**: All styles in one CSS file for easy editing
-8. **Text Visibility**: Black text on white background for maximum readability
+8. **Desktop**: Black text on white background for maximum readability
+9. **Mobile Contrast**: White text on almost-black background (14.8:1 ratio!)
+10. **Compact Mobile**: Zero padding on mobile submenu items for clean appearance
 
 ## 📞 Need More Help?
 
-- **Full Guide**: See `MEGA_MENU_UPDATE.md`
+- **Mobile Menu Guide**: See `MOBILE_MENU_IMPROVED.md`
+- **Mobile Fix Details**: See `MOBILE_FIX.md`
+- **Mega Menu Guide**: See `MEGA_MENU_UPDATE.md`
 - **All Changes**: See `SUMMARY.md`
 - **Theme Docs**: See `themes/boc/README.md`
 - **Hugo Docs**: https://gohugo.io/documentation/
@@ -185,6 +200,7 @@ background-image: linear-gradient(to bottom, #f0f0f0 0%, #e5e5e5 100%);
 ---
 
 **Last Updated**: December 29, 2024  
-**Status**: ✅ Fully Functional (Click-based, Visible Text, Above Content)  
+**Status**: ✅ Fully Functional (Click-based, High Contrast, Compact Mobile)  
 **Build Status**: ✅ Passing  
-**Issues Fixed**: ✅ All 3 issues resolved
+**Desktop**: ✅ Click-based, visible, above content  
+**Mobile**: ✅ High contrast (14.8:1), zero padding, 44px touch targets

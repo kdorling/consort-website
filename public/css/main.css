@@ -632,9 +632,10 @@ tr:hover {
         position: static;
         display: none;
         box-shadow: none;
-        background-color: var(--boc-dark-teal);
+        background-color: #002838;
         width: 100%;
         padding: 0;
+        margin: 0;
         border-top: none;
         flex-direction: column;
         opacity: 1 !important;
@@ -650,6 +651,8 @@ tr:hover {
         width: 100%;
         min-width: auto;
         max-width: none;
+        padding: 0;
+        margin: 0;
     }
 
     nav ul li.mobile-open > ul,
@@ -660,19 +663,21 @@ tr:hover {
 
     nav ul ul a {
         margin: 0;
-        padding: 12px 20px 12px 40px;
-        color: #ffffff !important;
-        background-color: rgba(0, 0, 0, 0.2);
+        padding: 0;
+        padding-left: 40px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
         border-left: 3px solid transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         font-size: 0.95rem;
         line-height: 1.5;
-        display: block;
         text-decoration: none;
     }
 
     nav ul ul a:hover,
     nav ul ul a:focus {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: #003744;
         color: #ffffff !important;
         border-left-color: var(--boc-red);
         text-decoration: none;
@@ -682,6 +687,8 @@ tr:hover {
     nav ul ul li {
         display: block !important;
         opacity: 1 !important;
+        padding: 0;
+        margin: 0;
     }
 
     .hero h1 {
