@@ -154,7 +154,8 @@ nav > ul > li > a:focus {
     border-bottom-color: var(--boc-red);
 }
 
-nav > ul > li > a.active {
+/* Keep button highlighted when dropdown is open */
+nav > ul > li.dropdown-open > a {
     background-color: var(--boc-dark-teal);
     border-bottom-color: var(--boc-red);
 }
@@ -162,6 +163,7 @@ nav > ul > li > a.active {
 /* Dropdown Menu Styles - Full Width Mega Menu */
 nav > ul > li {
     position: static;
+    margin-bottom: 0px;
 }
 
 nav ul ul {
@@ -171,16 +173,14 @@ nav ul ul {
     left: 0;
     right: 0;
     width: 100%;
-    background-color: #ffffff;
-    background-image: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%);
+    background-color: #005570;
+    background-image: linear-gradient(to bottom, #005570 0%, #015671 100%);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 9999;
-    border-top: 3px solid var(--boc-red);
     padding: 30px 0;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
     max-width: none;
     opacity: 0;
     transform: translateY(-10px);
@@ -225,7 +225,7 @@ nav ul ul a {
     display: block;
     padding: 12px 20px;
     margin: 5px 0;
-    color: var(--boc-dark-gray);
+    color: var(--boc-gray);
     background-color: transparent;
     border-left: 3px solid transparent;
     border-radius: 2px;
@@ -622,17 +622,23 @@ tr:hover {
         border-left: 3px solid transparent;
     }
 
-    nav > ul > li > a:hover,
-    nav > ul > li > a.active {
+    nav > ul > li > a:hover {
         border-left-color: var(--boc-red);
         border-bottom-color: transparent;
+    }
+
+    /* Keep button highlighted when dropdown is open on mobile */
+    nav > ul > li.mobile-open > a:not(.active),
+    nav > ul > li.dropdown-open > a:not(.active) {
+        background-color: #005570;
+        border-left-color: var(--boc-red);
     }
 
     nav ul ul {
         position: static;
         display: none;
         box-shadow: none;
-        background-color: #002838;
+        background-color: #005570;
         width: 100%;
         padding: 0;
         margin: 0;
@@ -677,7 +683,7 @@ tr:hover {
 
     nav ul ul a:hover,
     nav ul ul a:focus {
-        background-color: #003744;
+        background-color: #006a85;
         color: #ffffff !important;
         border-left-color: var(--boc-red);
         text-decoration: none;
