@@ -54,12 +54,18 @@
         const isExpanded = mainNav.classList.contains("mobile-open");
         mobileToggle.setAttribute("aria-expanded", isExpanded);
         mobileToggle.textContent = isExpanded ? "\u2715" : "\u2630";
+        if (isExpanded) {
+          document.body.classList.add("mobile-menu-open");
+        } else {
+          document.body.classList.remove("mobile-menu-open");
+        }
       });
       document.addEventListener("click", function(e) {
         if (!mainNav.contains(e.target) && !mobileToggle.contains(e.target)) {
           mainNav.classList.remove("mobile-open");
           mobileToggle.setAttribute("aria-expanded", "false");
           mobileToggle.textContent = "\u2630";
+          document.body.classList.remove("mobile-menu-open");
         }
       });
     }
@@ -151,6 +157,7 @@
           const mobileToggle = document.getElementById("mobile-menu-toggle");
           if (window.innerWidth > 768 && mainNav) {
             mainNav.classList.remove("mobile-open");
+            document.body.classList.remove("mobile-menu-open");
             if (mobileToggle) {
               mobileToggle.setAttribute("aria-expanded", "false");
               mobileToggle.textContent = "\u2630";

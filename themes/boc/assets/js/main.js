@@ -78,6 +78,13 @@
 
       // Change icon
       mobileToggle.textContent = isExpanded ? "✕" : "☰";
+
+      // Toggle body class to prevent scrolling
+      if (isExpanded) {
+        document.body.classList.add("mobile-menu-open");
+      } else {
+        document.body.classList.remove("mobile-menu-open");
+      }
     });
 
     // Close mobile menu when clicking outside
@@ -86,6 +93,7 @@
         mainNav.classList.remove("mobile-open");
         mobileToggle.setAttribute("aria-expanded", "false");
         mobileToggle.textContent = "☰";
+        document.body.classList.remove("mobile-menu-open");
       }
     });
   }
@@ -216,6 +224,7 @@
         // Reset mobile menu on desktop
         if (window.innerWidth > 768 && mainNav) {
           mainNav.classList.remove("mobile-open");
+          document.body.classList.remove("mobile-menu-open");
           if (mobileToggle) {
             mobileToggle.setAttribute("aria-expanded", "false");
             mobileToggle.textContent = "☰";
