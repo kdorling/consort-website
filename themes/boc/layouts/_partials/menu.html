@@ -1,5 +1,10 @@
 {{- /*
 Renders a menu for the given menu ID with dropdown support.
+Supports three-column mega menu structure with:
+- Images
+- Headers
+- Descriptions
+- Link blocks with subheaders
 
 @context {page} page The current page.
 @context {string} menuID The menu ID.
@@ -23,6 +28,7 @@ Renders a menu for the given menu ID with dropdown support.
   {{- range .menuEntries }}
     {{- $attrs := dict "href" .URL }}
     {{- $liClass := "" }}
+    {{- $parentIdentifier := .Identifier }}
 
     {{- if .Children }}
       {{- $liClass = "has-dropdown" }}
@@ -51,7 +57,85 @@ Renders a menu for the given menu ID with dropdown support.
       >{{ $name }}</a>
       {{- with .Children }}
         <ul>
-          {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+          {{- /* Check if this dropdown has mega menu data defined */ -}}
+          {{- $megaMenuData := false }}
+          {{- if $parentIdentifier }}
+            {{- with site.Data.menus }}
+              {{- with .megaMenus }}
+                {{- $megaMenuData = index . $parentIdentifier }}
+              {{- end }}
+            {{- end }}
+          {{- end }}
+
+          {{- if $megaMenuData }}
+            {{- /* Render structured mega menu from data file */ -}}
+            {{- $megaMenuCols := len $megaMenuData.columns }}
+            {{- $colClass := "mega-menu-columns" }}
+            {{- if eq $megaMenuCols 1 }}
+              {{- $colClass = "mega-menu-columns cols-1" }}
+            {{- else if eq $megaMenuCols 2 }}
+              {{- $colClass = "mega-menu-columns cols-2" }}
+            {{- else }}
+              {{- $colClass = "mega-menu-columns cols-3" }}
+            {{- end }}
+
+            <li class="{{ $colClass }}">
+              {{- range $megaMenuData.columns }}
+                <div class="mega-menu-column">
+                  {{- /* Process all blocks in the column */ -}}
+                  {{- range .blocks }}
+                    {{- /* Check if this is a featured card block (has url + title/description/image) */ -}}
+                    {{- if .url }}
+                      {{- /* Featured card block */ -}}
+                      <a href="{{ .url }}" class="mega-menu-column-featured">
+                        {{- with .image }}
+                          <div class="mega-menu-column-image">
+                            <img src="{{ . }}" alt="{{ $.title | default "" }}" loading="lazy">
+                          </div>
+                        {{- end }}
+
+                        {{- with .title }}
+                          <h3 class="mega-menu-column-header">{{ . }}</h3>
+                        {{- end }}
+
+                        {{- with .description }}
+                          <p class="mega-menu-column-description">{{ . }}</p>
+                        {{- end }}
+                      </a>
+                    {{- else if .subheader }}
+                      {{- /* Link list block with subheader */ -}}
+                      <div class="mega-menu-link-block">
+                        <h4 class="mega-menu-link-block-header">{{ .subheader }}</h4>
+                        {{- with .links }}
+                          <ul>
+                            {{- range . }}
+                              <li>
+                                <a href="{{ .url }}">{{ .text }}</a>
+                              </li>
+                            {{- end }}
+                          </ul>
+                        {{- end }}
+                      </div>
+                    {{- else if .links }}
+                      {{- /* Link list block without subheader */ -}}
+                      <div class="mega-menu-link-block">
+                        <ul>
+                          {{- range .links }}
+                            <li>
+                              <a href="{{ .url }}">{{ .text }}</a>
+                            </li>
+                          {{- end }}
+                        </ul>
+                      </div>
+                    {{- end }}
+                  {{- end }}
+                </div>
+              {{- end }}
+            </li>
+          {{- else }}
+            {{- /* Render simple dropdown (backward compatible) */ -}}
+            {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+          {{- end }}
         </ul>
       {{- end }}
     </li>
