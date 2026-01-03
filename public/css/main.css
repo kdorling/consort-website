@@ -252,22 +252,16 @@ nav ul ul > li {
     gap: 15px;
 }
 
-/* Featured Link (image, header, description as clickable card) */
+/* Featured Link (image, header, description as clickable link) */
 .mega-menu-column-featured {
     display: block;
     text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
     margin-bottom: 15px;
-}
-
-.mega-menu-column-featured:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .mega-menu-column-featured:hover .mega-menu-column-header {
     color: var(--boc-light-teal);
+    text-decoration: underline;
 }
 
 /* Column Image */
@@ -285,11 +279,6 @@ nav ul ul > li {
     object-fit: cover;
     display: block;
     border-radius: 4px;
-    transition: transform 0.3s ease;
-}
-
-.mega-menu-column-featured:hover .mega-menu-column-image img {
-    transform: scale(1.05);
 }
 
 /* Column Header */
@@ -299,7 +288,6 @@ nav ul ul > li {
     color: var(--boc-teal);
     margin: 0;
     padding: 0;
-    transition: color 0.3s ease;
 }
 
 /* Column Description */
@@ -344,8 +332,6 @@ nav ul ul > li {
     color: var(--boc-dark-gray);
     background-color: transparent;
     border-left: 3px solid transparent;
-    border-radius: 2px;
-    transition: all 0.2s ease;
     text-decoration: none;
     font-size: 0.9rem;
     line-height: 1.5;
@@ -355,11 +341,8 @@ nav ul ul > li {
 .mega-menu-link-block a:focus,
 .mega-menu-column > a:hover,
 .mega-menu-column > a:focus {
-    background-color: #f5f5f5;
-    border-left-color: var(--boc-red);
     color: var(--boc-teal);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    transform: translateX(3px);
+    text-decoration: underline;
 }
 
 /* Fallback for old structure (simple list of links) */
@@ -381,8 +364,6 @@ nav ul ul > li:not(.mega-menu-columns) > a {
     color: var(--boc-dark-gray);
     background-color: transparent;
     border-left: 3px solid transparent;
-    border-radius: 2px;
-    transition: all 0.2s ease;
     white-space: normal;
     font-size: 0.95rem;
     line-height: 1.5;
@@ -392,11 +373,8 @@ nav ul ul > li:not(.mega-menu-columns) > a {
 
 nav ul ul > li:not(.mega-menu-columns) > a:hover,
 nav ul ul > li:not(.mega-menu-columns) > a:focus {
-    background-color: #f5f5f5;
-    border-left-color: var(--boc-red);
     color: var(--boc-teal);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    transform: translateX(3px);
+    text-decoration: underline;
 }
 
 /* Dropdown Indicator */
@@ -857,12 +835,6 @@ tr:hover {
         margin-bottom: 15px;
     }
 
-    .mega-menu-column-featured:hover,
-    .mega-menu-column-featured:active {
-        transform: none;
-        box-shadow: none;
-    }
-
     .mega-menu-column-featured .mega-menu-column-image {
         margin-bottom: 10px;
     }
@@ -883,18 +855,17 @@ tr:hover {
 
     .mega-menu-link-block a,
     .mega-menu-column > a {
+        padding: 12px 15px;
         color: var(--boc-white);
-        padding: 10px 12px;
-        border-left-color: transparent;
+        font-size: 0.95rem;
     }
 
     .mega-menu-link-block a:hover,
     .mega-menu-link-block a:focus,
     .mega-menu-column > a:hover,
     .mega-menu-column > a:focus {
-        background-color: #006a85;
         color: #ffffff !important;
-        border-left-color: var(--boc-red);
+        text-decoration: underline;
     }
 
     /* Old structure mobile styles */
@@ -942,10 +913,8 @@ tr:hover {
 
     nav ul ul > li:not(.mega-menu-columns) > a:hover,
     nav ul ul > li:not(.mega-menu-columns) > a:focus {
-        background-color: #006a85;
         color: #ffffff !important;
-        border-left-color: var(--boc-red);
-        text-decoration: none;
+        text-decoration: underline;
     }
 
     /* Ensure mobile dropdown items are visible */
