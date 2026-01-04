@@ -4,10 +4,35 @@
     <div class="header-top">
         <div class="site-title">
             <a href="{{ site.BaseURL }}">
+                {{- $logoLight := site.Params.logo.light | default
+                "/images/consort-full-light.svg" -}} {{- $logoDark :=
+                site.Params.logo.dark | default "/images/consort-full-dark.svg"
+                -}} {{- $logoLightMobile := site.Params.logo.lightMobile |
+                default $logoLight -}} {{- $logoDarkMobile :=
+                site.Params.logo.darkMobile | default $logoDark -}}
+
+                <!-- Desktop logos -->
                 <img
-                    src="/images/consort-logo.png"
+                    src="{{ $logoLight }}"
                     alt="{{ site.Title }}"
-                    class="site-logo"
+                    class="site-logo site-logo-desktop site-logo-light"
+                />
+                <img
+                    src="{{ $logoDark }}"
+                    alt="{{ site.Title }}"
+                    class="site-logo site-logo-desktop site-logo-dark"
+                />
+
+                <!-- Mobile logos -->
+                <img
+                    src="{{ $logoLightMobile }}"
+                    alt="{{ site.Title }}"
+                    class="site-logo site-logo-mobile site-logo-light"
+                />
+                <img
+                    src="{{ $logoDarkMobile }}"
+                    alt="{{ site.Title }}"
+                    class="site-logo site-logo-mobile site-logo-dark"
                 />
             </a>
         </div>

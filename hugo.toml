@@ -6,6 +6,16 @@ theme = 'boc'
 [params]
   description = 'Welcome to the Village of Consort, Alberta - a vibrant community where rural living meets modern opportunity.'
 
+  # Logo configuration
+  [params.logo]
+    # Desktop logos (default)
+    light = '/images/consort-full-light.svg'
+    dark = '/images/consort-full-dark.svg'
+
+    # Mobile logos (optional - falls back to desktop if not specified)
+    # lightMobile = '/images/consort-mobile-light.svg'
+    # darkMobile = '/images/consort-mobile-dark.svg'
+
   # Utility links displayed in the header (above navigation)
   [[params.utilityLinks]]
     text = "Online Services"

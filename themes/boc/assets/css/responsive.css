@@ -300,6 +300,8 @@
         height: 80px;
     }
 
+    /* Small mobile logo size adjustment - switching already handled by tablet breakpoint */
+
     .header-utils {
         gap: var(--spacing-sm);
     }

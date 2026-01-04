@@ -253,12 +253,49 @@ header {
 .site-logo {
     height: 150px;
     width: auto;
-    display: block;
+    display: none; /* Hidden by default, specific combinations will show */
     transition: opacity var(--transition-speed) ease;
 }
 
 .site-logo:hover {
     opacity: 0.9;
+}
+
+/* Logo visibility - Show only specific combinations */
+/* Desktop Light Mode (default) */
+.site-logo-desktop.site-logo-light {
+    display: block;
+}
+
+/* Desktop Dark Mode */
+[data-theme="dark"] .site-logo-desktop.site-logo-light {
+    display: none;
+}
+
+[data-theme="dark"] .site-logo-desktop.site-logo-dark {
+    display: block;
+}
+
+/* Mobile Light Mode */
+@media (max-width: 768px) {
+    .site-logo-desktop {
+        display: none !important;
+    }
+
+    .site-logo-mobile.site-logo-light {
+        display: block;
+    }
+}
+
+/* Mobile Dark Mode */
+@media (max-width: 768px) {
+    [data-theme="dark"] .site-logo-mobile.site-logo-light {
+        display: none;
+    }
+
+    [data-theme="dark"] .site-logo-mobile.site-logo-dark {
+        display: block;
+    }
 }
 
 /* Header Utilities */
@@ -1327,6 +1364,8 @@ footer {
     .site-logo {
         height: 80px;
     }
+
+    /* Small mobile logo size adjustment - switching already handled by tablet breakpoint */
 
     .header-utils {
         gap: var(--spacing-sm);
