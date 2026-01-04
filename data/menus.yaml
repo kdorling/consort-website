@@ -5,222 +5,211 @@
 # 2. Link lists (with subheader and links, or just links)
 
 megaMenus:
-  # Monetary Policy mega menu with 3 columns
-  monetary-policy:
+  # Government & Council mega menu with 2 columns
+  government:
     columns:
       - blocks:
           # Featured card block
-          - url: "/monetary-policy/tools"
-            title: "Policy Tools"
-            description: "Learn about our monetary policy instruments and framework."
-            image: "/images/mega-menu/monetary-policy.jpg"
+          - url: "/government/mayor-council"
+            title: "Mayor and Council"
+            description: "Meet your elected officials and learn about their roles in serving our community."
+            image: "/images/mega-menu/council.jpg"
           # Link list blocks
-          - subheader: "Interest Rates"
+          - subheader: "Council Information"
             links:
-              - text: "Policy Interest Rate"
-                url: "/monetary-policy/policy-rate"
-              - text: "Interest Rate Decisions"
-                url: "/monetary-policy/decisions"
-          - subheader: "Framework"
+              - text: "Mayor Biography"
+                url: "/government/mayor"
+              - text: "Council Biographies"
+                url: "/government/council-bios"
+              - text: "Council Meeting Schedule"
+                url: "/government/meetings"
+          - subheader: "Governance Documents"
             links:
-              - text: "Monetary Policy Framework"
-                url: "/monetary-policy/framework"
-              - text: "Inflation Control"
-                url: "/monetary-policy/inflation"
+              - text: "Bylaws"
+                url: "/government/bylaws"
+              - text: "Policies"
+                url: "/government/policies"
+              - text: "Strategic Plans"
+                url: "/government/strategic-plans"
 
       - blocks:
-          - url: "/monetary-policy/publications"
-            title: "Publications & Reports"
-            description: "Access our latest research and policy documents."
-          - subheader: "Regular Publications"
+          - url: "/government/agendas-minutes"
+            title: "Meeting Agendas & Minutes"
+            description: "Access current and archived council meeting documents."
+          - subheader: "Current Year"
             links:
-              - text: "Monetary Policy Report"
-                url: "/monetary-policy/report"
-              - text: "Policy Announcements"
-                url: "/monetary-policy/announcements"
-              - text: "Speeches & Statements"
-                url: "/monetary-policy/speeches"
-          - subheader: "Research"
+              - text: "2025 Agendas"
+                url: "/government/agendas/2025"
+              - text: "2025 Minutes"
+                url: "/government/minutes/2025"
+          - subheader: "Previous Year"
             links:
-              - text: "Staff Analytical Notes"
-                url: "/monetary-policy/research"
-              - text: "Technical Reports"
-                url: "/monetary-policy/technical"
+              - text: "2024 Agendas"
+                url: "/government/agendas/2024"
+              - text: "2024 Minutes"
+                url: "/government/minutes/2024"
+          - subheader: "Meeting Notices"
+            links:
+              - text: "Schedule Changes"
+                url: "/government/meeting-notices"
+              - text: "Special Meetings"
+                url: "/government/special-meetings"
 
-      - blocks:
-          - url: "/monetary-policy/resources"
-            title: "Resources"
-            description: "Tools and educational materials about monetary policy."
-          - subheader: "Data & Statistics"
-            links:
-              - text: "Inflation Calculator"
-                url: "/tools/inflation-calculator"
-              - text: "Economic Data"
-                url: "/data/economic"
-          - subheader: "Education"
-            links:
-              - text: "How Monetary Policy Works"
-                url: "/education/monetary-policy"
-              - text: "FAQs"
-                url: "/monetary-policy/faq"
-
-  # Financial System mega menu with 2 columns
-  financial-system:
+  # Departments & Services mega menu with 3 columns
+  departments:
     columns:
       - blocks:
-          - url: "/financial-system/overview"
-            title: "Oversight & Stability"
-            description: "Our role in maintaining financial system stability."
-            image: "/images/mega-menu/financial-system.jpg"
-          - subheader: "Key Areas"
-            links:
-              - text: "Financial System Review"
-                url: "/financial-system/review"
-              - text: "Financial Stability"
-                url: "/financial-system/stability"
-              - text: "Systemic Risk"
-                url: "/financial-system/systemic-risk"
-          - subheader: "Infrastructure"
-            links:
-              - text: "Payment Systems"
-                url: "/financial-system/payments"
-              - text: "Market Infrastructure"
-                url: "/financial-system/infrastructure"
-
-      - blocks:
-          - url: "/financial-system/regulations"
-            title: "Regulations & Guidance"
-            description: "Rules and guidelines for financial institutions."
-          - subheader: "Oversight"
-            links:
-              - text: "Regulatory Framework"
-                url: "/financial-system/regulations"
-              - text: "Supervision"
-                url: "/financial-system/supervision"
-              - text: "Compliance"
-                url: "/financial-system/compliance"
-          - subheader: "Resources"
-            links:
-              - text: "Guidelines & Policies"
-                url: "/financial-system/guidelines"
-              - text: "Contact Oversight"
-                url: "/financial-system/contact"
-
-  # Markets mega menu with 1 column - multiple featured cards
-  markets:
-    columns:
-      - blocks:
-          - url: "/markets/overview"
-            title: "Market Operations"
-            description: "Information about our market activities and data."
-            image: "/images/mega-menu/markets.jpg"
-          - subheader: "Rates & Data"
-            links:
-              - text: "Exchange Rates"
-                url: "/markets/exchange-rates"
-              - text: "Interest Rates"
-                url: "/markets/interest-rates"
-              - text: "Bond Yields"
-                url: "/markets/bonds"
-          - url: "/markets/liquidity"
-            title: "Liquidity Management"
-            description: "Tools and facilities for market liquidity."
-          - subheader: "Operations"
-            links:
-              - text: "Market Operations"
-                url: "/markets/operations"
-              - text: "Liquidity Facilities"
-                url: "/markets/liquidity-facilities"
-              - text: "Securities Lending"
-                url: "/markets/securities-lending"
-
-  # Bank Notes mega menu with 3 columns
-  bank-notes:
-    columns:
-      - blocks:
-          - url: "/bank-notes/current"
-            title: "Current Notes"
-            image: "/images/mega-menu/bank-notes.jpg"
-            description: "Explore Canada's current bank note series."
+          - url: "/departments/administration"
+            title: "Administration Services"
+            description: "Your central hub for Village operations, payments, and inquiries."
+            image: "/images/mega-menu/administration.jpg"
           - links:
-              - text: "Polymer Series"
-                url: "/bank-notes/polymer"
-              - text: "Commemorative Notes"
-                url: "/bank-notes/commemorative"
-              - text: "View All Notes"
-                url: "/bank-notes/current"
-
-      - blocks:
-          - url: "/bank-notes/security"
-            title: "Security & Authentication"
-            description: "Learn how to verify genuine Canadian bank notes."
-          - subheader: "Security Features"
+              - text: "Contact Administration"
+                url: "/departments/administration#contact"
+              - text: "Office Hours & Location"
+                url: "/departments/administration#hours"
+              - text: "Property Tax Information"
+                url: "/departments/administration/property-tax"
+              - text: "Utility Payments"
+                url: "/departments/administration/utilities"
+          - subheader: "Transparency"
             links:
-              - text: "How to Check Notes"
-                url: "/bank-notes/security-check"
-              - text: "Security Features Guide"
-                url: "/bank-notes/features"
-          - subheader: "Support"
-            links:
-              - text: "Counterfeit Reporting"
-                url: "/bank-notes/counterfeit"
-              - text: "Damaged Notes"
-                url: "/bank-notes/damaged"
-
-      - blocks:
-          - url: "/bank-notes/history"
-            title: "History & Design"
-            description: "Discover the stories behind Canadian currency."
-          - url: "/bank-notes/museum"
-            title: "Currency Museum"
-            description: "Visit our collection of historical bank notes."
-            image: "/images/mega-menu/museum.jpg"
+              - text: "Budget Documents"
+                url: "/departments/administration/budget"
+              - text: "Financial Statements"
+                url: "/departments/administration/financial-statements"
+              - text: "Annual Reports"
+                url: "/departments/administration/reports"
+          - url: "/departments/municipal-services"
+            title: "Municipal Services & Utilities"
+            description: "Infrastructure and essential services keeping Consort running smoothly."
           - links:
-              - text: "Bank Note History"
-                url: "/bank-notes/history-timeline"
-              - text: "Design Process"
-                url: "/bank-notes/design"
-              - text: "Portrait Subjects"
-                url: "/bank-notes/portraits"
+              - text: "Water & Sewer"
+                url: "/departments/municipal-services/water-sewer"
+              - text: "Garbage Collection"
+                url: "/departments/municipal-services/garbage"
+              - text: "Road Maintenance"
+                url: "/departments/municipal-services/roads"
+              - text: "Snow Removal"
+                url: "/departments/municipal-services/snow-removal"
 
-  # Research mega menu with 2 columns
-  research:
+      - blocks:
+          - url: "/departments/recreation"
+            title: "Recreation Services"
+            description: "Programs, events, and facilities for active living."
+            image: "/images/mega-menu/recreation.jpg"
+          - subheader: "Facilities"
+            links:
+              - text: "Consort SportEx"
+                url: "/departments/recreation/sportex"
+              - text: "Ice Arena"
+                url: "/departments/recreation/arena"
+              - text: "Curling Rink"
+                url: "/departments/recreation/curling"
+              - text: "Bowling Alley"
+                url: "/departments/recreation/bowling"
+              - text: "Sports Grounds"
+                url: "/departments/recreation/sports-grounds"
+          - subheader: "Camping & Outdoors"
+            links:
+              - text: "Municipal Campground"
+                url: "/departments/recreation/campground"
+              - text: "Open Sky Getaway"
+                url: "/departments/recreation/open-sky"
+          - links:
+              - text: "Recreation Programs"
+                url: "/departments/recreation/programs"
+              - text: "Facility Rentals"
+                url: "/departments/recreation/rentals"
+          - url: "/departments/protective-services"
+            title: "Protective Services"
+            description: "Keeping our community safe and prepared."
+          - links:
+              - text: "Fire Department"
+                url: "/departments/protective-services/fire"
+              - text: "Emergency Management"
+                url: "/departments/protective-services/emergency"
+              - text: "Bylaw Enforcement"
+                url: "/departments/protective-services/bylaw"
+
+      - blocks:
+          - url: "/departments/community-services"
+            title: "Community Services"
+            description: "Supporting well-being and connection for all ages."
+          - subheader: "Programs & Support"
+            links:
+              - text: "Seniors Programs"
+                url: "/departments/community-services/seniors"
+              - text: "Youth Initiatives"
+                url: "/departments/community-services/youth"
+              - text: "Volunteer Opportunities"
+                url: "/departments/community-services/volunteer"
+              - text: "Social Support Services"
+                url: "/departments/community-services/support"
+          - subheader: "Community Partners"
+            links:
+              - text: "FCSS"
+                url: "/departments/community-services/fcss"
+              - text: "Learning & Community Centre"
+                url: "/departments/community-services/learning-centre"
+          - url: "/departments/economic-development"
+            title: "Economic Development"
+            description: "Supporting business growth and community prosperity."
+            image: "/images/mega-menu/economic-development.jpg"
+          - links:
+              - text: "Return To Rural Initiative"
+                url: "/departments/economic-development/return-to-rural"
+              - text: "Community Profile"
+                url: "/departments/economic-development/community-profile"
+              - text: "Investment Fact Sheet"
+                url: "/departments/economic-development/fact-sheet"
+              - text: "Business Resources"
+                url: "/departments/economic-development/business-resources"
+              - text: "Visitor Information"
+                url: "/departments/economic-development/visitors"
+              - text: "Local History"
+                url: "/departments/economic-development/history"
+
+  # Events mega menu with 1 column
+  events:
     columns:
       - blocks:
-          - url: "/research/publications"
-            title: "Publications"
-            description: "Access our economic research and analysis."
-          - subheader: "Working Papers"
+          - url: "/events/village-calendar"
+            title: "Village Calendar"
+            description: "Official Village events, meetings, and activities."
+            image: "/images/mega-menu/events.jpg"
+          - url: "/events/recreation-calendar"
+            title: "Recreation Calendar"
+            description: "Sports leagues, programs, and facility schedules."
+          - url: "/events/local-groups-calendar"
+            title: "Local Groups Calendar"
+            description: "Community organization events and activities."
+          - subheader: "Stay Informed"
             links:
-              - text: "Staff Working Papers"
-                url: "/research/working-papers"
-              - text: "Staff Discussion Papers"
-                url: "/research/discussion-papers"
-              - text: "Technical Reports"
-                url: "/research/technical"
-          - subheader: "Analysis"
-            links:
-              - text: "Economic Analysis"
-                url: "/research/economic-analysis"
-              - text: "Staff Analytical Notes"
-                url: "/research/analytical-notes"
+              - text: "Subscribe to Updates"
+                url: "/events/subscribe"
+              - text: "Submit Your Event"
+                url: "/events/submit"
 
+  # News & Alerts mega menu with 1 column
+  news:
+    columns:
       - blocks:
-          - url: "/research/resources"
-            title: "Resources"
-            description: "Tools and databases for researchers."
-          - url: "/research/collaboration"
-            title: "Collaborate With Us"
-            description: "Join our research network and attend events."
-            image: "/images/mega-menu/research-collab.jpg"
-          - subheader: "Data & Tools"
+          - url: "/news/latest"
+            title: "Latest News"
+            description: "Recent updates and announcements from the Village."
+          - url: "/news/notices"
+            title: "Public Notices"
+            description: "Official notices, public hearings, and consultations."
+            image: "/images/mega-menu/notices.jpg"
+          - url: "/news/press-releases"
+            title: "Press Releases"
+            description: "Official media releases and statements."
+          - subheader: "Stay Connected"
             links:
-              - text: "Research Databases"
-                url: "/research/databases"
-              - text: "Economic Models"
-                url: "/research/models"
-          - links:
-              - text: "Research Fellows"
-                url: "/research/fellows"
-              - text: "Conferences & Events"
-                url: "/research/events"
+              - text: "RSS Feeds"
+                url: "/news/rss"
+              - text: "Email Notifications"
+                url: "/news/subscribe"
+              - text: "Emergency Alerts"
+                url: "/news/emergency-alerts"

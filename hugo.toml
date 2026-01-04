@@ -1,22 +1,22 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-US'
-title = 'Bank of Canada'
+title = 'Village of Consort'
 theme = 'boc'
 
 [params]
-  description = 'More than a bank. We are the Central Bank of Canada.'
+  description = 'Welcome to the Village of Consort, Alberta - a vibrant community where rural living meets modern opportunity.'
 
   # Utility links displayed in the header (above navigation)
   [[params.utilityLinks]]
     text = "Online Services"
-    url = "/services"
+    url = "/online-services"
 
   [[params.utilityLinks]]
     text = "Careers"
     url = "/careers"
 
   [[params.utilityLinks]]
-    text = "Contact Us"
+    text = "Contact"
     url = "/contact"
 
 [module]

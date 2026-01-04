@@ -1,9 +1,9 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-US'
-title = 'Bank of Canada'
+title = 'Village of Consort'
 
 [params]
-  description = 'More than a bank. We are the Central Bank of Canada.'
+  description = 'Welcome to the Village of Consort, Alberta - a vibrant community where rural living meets modern opportunity.'
 
 [menus]
   # Main Navigation
@@ -12,142 +12,135 @@ title = 'Bank of Canada'
     pageRef = '/'
     weight = 10
 
-  # Monetary Policy with dropdown
+  # Government & Council
   [[menus.main]]
-    name = 'Monetary Policy'
-    pageRef = '/monetary-policy'
-    identifier = 'monetary-policy'
+    name = 'Government & Council'
+    pageRef = '/government'
+    identifier = 'government'
     weight = 20
 
   [[menus.main]]
-    name = 'Policy Interest Rate'
-    parent = 'monetary-policy'
-    pageRef = '/monetary-policy/policy-rate'
+    name = 'Mayor and Council'
+    parent = 'government'
+    pageRef = '/government/mayor-council'
     weight = 1
 
   [[menus.main]]
-    name = 'Inflation'
-    parent = 'monetary-policy'
-    pageRef = '/monetary-policy/inflation'
+    name = 'Council Meetings'
+    parent = 'government'
+    pageRef = '/government/meetings'
     weight = 2
 
   [[menus.main]]
-    name = 'Monetary Policy Framework'
-    parent = 'monetary-policy'
-    pageRef = '/monetary-policy/framework'
+    name = 'Agendas & Minutes'
+    parent = 'government'
+    pageRef = '/government/agendas-minutes'
     weight = 3
 
   [[menus.main]]
-    name = 'Publications'
-    parent = 'monetary-policy'
-    pageRef = '/monetary-policy/publications'
+    name = 'Bylaws & Policies'
+    parent = 'government'
+    pageRef = '/government/bylaws-policies'
     weight = 4
 
-  # Financial System with dropdown
+  # Departments & Services
   [[menus.main]]
-    name = 'Financial System'
-    pageRef = '/financial-system'
-    identifier = 'financial-system'
+    name = 'Departments & Services'
+    pageRef = '/departments'
+    identifier = 'departments'
     weight = 30
 
   [[menus.main]]
-    name = 'Financial System Review'
-    parent = 'financial-system'
-    pageRef = '/financial-system/review'
+    name = 'Department Directory'
+    parent = 'departments'
+    pageRef = '/departments/directory'
     weight = 1
 
   [[menus.main]]
-    name = 'Financial Market Infrastructure'
-    parent = 'financial-system'
-    pageRef = '/financial-system/infrastructure'
+    name = 'Administration Services'
+    parent = 'departments'
+    pageRef = '/departments/administration'
     weight = 2
 
   [[menus.main]]
-    name = 'Financial Stability'
-    parent = 'financial-system'
-    pageRef = '/financial-system/stability'
+    name = 'Municipal Services & Utilities'
+    parent = 'departments'
+    pageRef = '/departments/municipal-services'
     weight = 3
 
-  # Markets with dropdown
   [[menus.main]]
-    name = 'Markets'
-    pageRef = '/markets'
-    identifier = 'markets'
+    name = 'Recreation Services'
+    parent = 'departments'
+    pageRef = '/departments/recreation'
+    weight = 4
+
+  [[menus.main]]
+    name = 'Protective Services'
+    parent = 'departments'
+    pageRef = '/departments/protective-services'
+    weight = 5
+
+  [[menus.main]]
+    name = 'Community Services'
+    parent = 'departments'
+    pageRef = '/departments/community-services'
+    weight = 6
+
+  [[menus.main]]
+    name = 'Economic Development'
+    parent = 'departments'
+    pageRef = '/departments/economic-development'
+    weight = 7
+
+  # Events
+  [[menus.main]]
+    name = 'Events'
+    pageRef = '/events'
+    identifier = 'events'
     weight = 40
 
   [[menus.main]]
-    name = 'Exchange Rates'
-    parent = 'markets'
-    pageRef = '/markets/exchange-rates'
+    name = 'Village Calendar'
+    parent = 'events'
+    pageRef = '/events/village-calendar'
     weight = 1
 
   [[menus.main]]
-    name = 'Interest Rates'
-    parent = 'markets'
-    pageRef = '/markets/interest-rates'
+    name = 'Recreation Calendar'
+    parent = 'events'
+    pageRef = '/events/recreation-calendar'
     weight = 2
 
   [[menus.main]]
-    name = 'Market Operations'
-    parent = 'markets'
-    pageRef = '/markets/operations'
+    name = 'Local Groups Calendar'
+    parent = 'events'
+    pageRef = '/events/local-groups-calendar'
     weight = 3
 
-  # Bank Notes with dropdown
+  # News & Alerts
   [[menus.main]]
-    name = 'Bank Notes'
-    pageRef = '/bank-notes'
-    identifier = 'bank-notes'
+    name = 'News & Alerts'
+    pageRef = '/news'
+    identifier = 'news'
     weight = 50
 
   [[menus.main]]
-    name = 'Current Bank Notes'
-    parent = 'bank-notes'
-    pageRef = '/bank-notes/current'
+    name = 'Latest News'
+    parent = 'news'
+    pageRef = '/news/latest'
     weight = 1
 
   [[menus.main]]
-    name = 'Security Features'
-    parent = 'bank-notes'
-    pageRef = '/bank-notes/security'
+    name = 'Public Notices'
+    parent = 'news'
+    pageRef = '/news/notices'
     weight = 2
 
   [[menus.main]]
-    name = 'Commemorative Notes'
-    parent = 'bank-notes'
-    pageRef = '/bank-notes/commemorative'
+    name = 'Press Releases'
+    parent = 'news'
+    pageRef = '/news/press-releases'
     weight = 3
-
-  # Research with dropdown
-  [[menus.main]]
-    name = 'Research'
-    pageRef = '/research'
-    identifier = 'research'
-    weight = 60
-
-  [[menus.main]]
-    name = 'Staff Working Papers'
-    parent = 'research'
-    pageRef = '/research/working-papers'
-    weight = 1
-
-  [[menus.main]]
-    name = 'Staff Discussion Papers'
-    parent = 'research'
-    pageRef = '/research/discussion-papers'
-    weight = 2
-
-  [[menus.main]]
-    name = 'Economic Analysis'
-    parent = 'research'
-    pageRef = '/research/economic-analysis'
-    weight = 3
-
-  # About
-  [[menus.main]]
-    name = 'About'
-    pageRef = '/about'
-    weight = 70
 
 [module]
   [module.hugoVersion]
