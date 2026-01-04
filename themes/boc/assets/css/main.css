@@ -403,15 +403,17 @@ nav ul ul > li {
 
 /* Link Block */
 .mega-menu-link-block {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .mega-menu-link-block-header {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 0;
-    padding: 0;
+    margin: 0 0 8px 0;
+    padding: 0 12px 8px 12px;
+    border-bottom: 2px solid var(--boc-light-gray);
 }
 
 /* Links within blocks */
@@ -431,14 +433,15 @@ nav ul ul > li {
 .mega-menu-link-block a,
 .mega-menu-column > a {
     display: block;
-    padding: 0;
-    margin: 0;
+    padding: 8px 12px;
+    margin: 2px 0;
     color: var(--text-primary);
     background-color: transparent;
     border-left: 3px solid transparent;
     text-decoration: none;
     font-size: 0.9rem;
     line-height: 1.5;
+    transition: all 0.2s ease;
 }
 
 .mega-menu-link-block a:hover,
@@ -446,7 +449,9 @@ nav ul ul > li {
 .mega-menu-column > a:hover,
 .mega-menu-column > a:focus {
     color: var(--boc-teal);
-    text-decoration: underline;
+    background-color: var(--boc-gray);
+    border-left-color: var(--boc-teal);
+    text-decoration: none;
 }
 
 /* Fallback for old structure (simple list of links) */

@@ -13,7 +13,6 @@ megaMenus:
           - url: "/government/mayor-council"
             title: "Mayor and Council"
             description: "Meet your elected officials and learn about their roles in serving our community."
-            image: "/images/mega-menu/council.jpg"
           # Link list blocks
           - subheader: "Council Information"
             links:
