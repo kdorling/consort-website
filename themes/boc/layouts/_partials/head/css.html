@@ -1,9 +1,16 @@
-{{- with resources.Get "css/main.css" }}
-  {{- if hugo.IsDevelopment }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
-  {{- else }}
-    {{- with . | minify | fingerprint }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
-  {{- end }}
-{{- end }}
+{{- $variables := resources.Get "css/variables.css" -}} {{- $base :=
+resources.Get "css/base.css" -}} {{- $header := resources.Get "css/header.css"
+-}} {{- $layout := resources.Get "css/layout.css" -}} {{- $components :=
+resources.Get "css/components.css" -}} {{- $footer := resources.Get
+"css/footer.css" -}} {{- $responsive := resources.Get "css/responsive.css" -}}
+{{- $css := slice $variables $base $header $layout $components $footer
+$responsive | resources.Concat "css/bundle.css" -}} {{- if hugo.IsDevelopment }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+{{- else }} {{- with $css | minify | fingerprint }}
+<link
+    rel="stylesheet"
+    href="{{ .RelPermalink }}"
+    integrity="{{ .Data.Integrity }}"
+    crossorigin="anonymous"
+/>
+{{- end }} {{- end }}
