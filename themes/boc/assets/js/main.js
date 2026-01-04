@@ -64,16 +64,17 @@
   // Mobile Menu Toggle
   function initMobileMenu() {
     const mobileToggle = document.getElementById("mobile-menu-toggle");
+    const navContainer = document.querySelector(".nav-container");
     const mainNav = document.getElementById("main-nav");
 
-    if (!mobileToggle || !mainNav) return;
+    if (!mobileToggle || !navContainer) return;
 
     mobileToggle.addEventListener("click", function (e) {
       e.stopPropagation();
-      mainNav.classList.toggle("mobile-open");
+      navContainer.classList.toggle("mobile-open");
 
       // Update aria-expanded for accessibility
-      const isExpanded = mainNav.classList.contains("mobile-open");
+      const isExpanded = navContainer.classList.contains("mobile-open");
       mobileToggle.setAttribute("aria-expanded", isExpanded);
 
       // Change icon
@@ -89,8 +90,11 @@
 
     // Close mobile menu when clicking outside
     document.addEventListener("click", function (e) {
-      if (!mainNav.contains(e.target) && !mobileToggle.contains(e.target)) {
-        mainNav.classList.remove("mobile-open");
+      if (
+        !navContainer.contains(e.target) &&
+        !mobileToggle.contains(e.target)
+      ) {
+        navContainer.classList.remove("mobile-open");
         mobileToggle.setAttribute("aria-expanded", "false");
         mobileToggle.textContent = "☰";
         document.body.classList.remove("mobile-menu-open");
@@ -256,12 +260,12 @@
     window.addEventListener("resize", function () {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () {
-        const mainNav = document.getElementById("main-nav");
+        const navContainer = document.querySelector(".nav-container");
         const mobileToggle = document.getElementById("mobile-menu-toggle");
 
         // Reset mobile menu on desktop
-        if (window.innerWidth > 768 && mainNav) {
-          mainNav.classList.remove("mobile-open");
+        if (window.innerWidth > 768 && navContainer) {
+          navContainer.classList.remove("mobile-open");
           document.body.classList.remove("mobile-menu-open");
           if (mobileToggle) {
             mobileToggle.setAttribute("aria-expanded", "false");

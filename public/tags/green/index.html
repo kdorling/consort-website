@@ -20,30 +20,50 @@
 
 <div class="header-container">
     <div class="header-top">
-        <h1 class="site-title">
-            <a
-                href="http://localhost:1313/"
-                style="color: inherit; text-decoration: none"
-            >
-                Bank of Canada
+        <div class="site-title">
+            <a href="http://localhost:1313/">
+                <img
+                    src="/images/consort-logo.png"
+                    alt="Bank of Canada"
+                    class="site-logo"
+                />
             </a>
-        </h1>
+        </div>
 
-        <div class="header-utils">
-            <button class="search-toggle" aria-label="Search">
-                <span aria-hidden="true">🔍</span> Search
-            </button>
-            <button class="lang-toggle" aria-label="Change language">FR</button>
-            <button
-                class="mobile-menu-toggle"
-                aria-label="Toggle menu"
-                id="mobile-menu-toggle"
-            >
-                ☰
-            </button>
+        <div class="header-right">
+            <div class="header-utils">
+                <button class="search-toggle" aria-label="Search">
+                    <span aria-hidden="true">🔍</span> Search
+                </button>
+                <button class="lang-toggle" aria-label="Change language">
+                    FR
+                </button>
+                <button
+                    class="theme-toggle"
+                    aria-label="Toggle dark mode"
+                    id="theme-toggle"
+                >
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button
+                    class="mobile-menu-toggle"
+                    aria-label="Toggle menu"
+                    id="mobile-menu-toggle"
+                >
+                    ☰
+                </button>
+            </div>
+
+            <nav class="utility-links" aria-label="Utility navigation"><a href="/services">Online Services</a>
+                <span class="utility-link-separator" aria-hidden="true">|</span>
+                <a href="/careers">Careers</a>
+                <span class="utility-link-separator" aria-hidden="true">|</span>
+                <a href="/contact">Contact Us</a></nav>
         </div>
     </div>
+</div>
 
+<div class="nav-container">
     
   <nav id="main-nav" aria-label="Main navigation">
     <ul>

@@ -6,6 +6,19 @@ theme = 'boc'
 [params]
   description = 'More than a bank. We are the Central Bank of Canada.'
 
+  # Utility links displayed in the header (above navigation)
+  [[params.utilityLinks]]
+    text = "Online Services"
+    url = "/services"
+
+  [[params.utilityLinks]]
+    text = "Careers"
+    url = "/careers"
+
+  [[params.utilityLinks]]
+    text = "Contact Us"
+    url = "/contact"
+
 [module]
   [module.hugoVersion]
     extended = false

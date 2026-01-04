@@ -2,36 +2,57 @@
 
 <div class="header-container">
     <div class="header-top">
-        <h1 class="site-title">
-            <a
-                href="{{ site.BaseURL }}"
-                style="color: inherit; text-decoration: none"
-            >
-                {{ site.Title }}
+        <div class="site-title">
+            <a href="{{ site.BaseURL }}">
+                <img
+                    src="/images/consort-logo.png"
+                    alt="{{ site.Title }}"
+                    class="site-logo"
+                />
             </a>
-        </h1>
+        </div>
 
-        <div class="header-utils">
-            <button class="search-toggle" aria-label="Search">
-                <span aria-hidden="true">🔍</span> Search
-            </button>
-            <button class="lang-toggle" aria-label="Change language">FR</button>
-            <button
-                class="theme-toggle"
-                aria-label="Toggle dark mode"
-                id="theme-toggle"
-            >
-                <span class="theme-icon">🌙</span>
-            </button>
-            <button
-                class="mobile-menu-toggle"
-                aria-label="Toggle menu"
-                id="mobile-menu-toggle"
-            >
-                ☰
-            </button>
+        <div class="header-right">
+            <div class="header-utils">
+                <button class="search-toggle" aria-label="Search">
+                    <span aria-hidden="true">🔍</span> Search
+                </button>
+                <button class="lang-toggle" aria-label="Change language">
+                    FR
+                </button>
+                <button
+                    class="theme-toggle"
+                    aria-label="Toggle dark mode"
+                    id="theme-toggle"
+                >
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button
+                    class="mobile-menu-toggle"
+                    aria-label="Toggle menu"
+                    id="mobile-menu-toggle"
+                >
+                    ☰
+                </button>
+            </div>
+
+            <nav class="utility-nav" aria-label="Utility navigation">
+                {{- $utilityLinks := site.Params.utilityLinks | default (slice
+                (dict "text" "Online Services" "url" "/services") (dict "text"
+                "Careers" "url" "/careers") (dict "text" "Contact Us" "url"
+                "/contact") ) -}} {{- range $index, $link := $utilityLinks -}}
+                {{- if gt $index 0 }}
+                <span class="utility-nav-separator" aria-hidden="true">|</span>
+                {{ end -}}
+                <a href="{{ $link.url }}" class="utility-nav-link"
+                    >{{ $link.text }}</a
+                >
+                {{- end -}}
+            </nav>
         </div>
     </div>
+</div>
 
+<div class="nav-container">
     {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
 </div>
