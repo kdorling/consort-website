@@ -635,7 +635,7 @@ main {
    ============================================ */
 .page-header {
     margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.25rem;
     border-bottom: 3px solid var(--boc-red);
     position: initial;
     box-shadow: none;
@@ -1031,7 +1031,7 @@ footer {
    ============================================ */
 @media (max-width: 768px) {
     body {
-        padding-top: 80px;
+        padding-top: var(--header-height-mobile);
     }
 
     header {
@@ -1287,6 +1287,10 @@ footer {
     .footer-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
+    }
+
+    .page-header {
+        padding-top: 1rem;
     }
 }
 
