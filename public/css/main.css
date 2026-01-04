@@ -307,9 +307,21 @@ nav ul ul {
     pointer-events: none;
 }
 
+/* Enforce max height on larger screens with scrolling */
+@media (min-width: 769px) {
+    nav ul ul {
+        max-height: 0;
+    }
+
+    nav ul li.dropdown-open > ul {
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
 /* Open state - controlled by JavaScript */
 nav ul li.dropdown-open > ul {
-    max-height: 2000px;
     padding: 40px 0;
     pointer-events: auto;
     transition:
