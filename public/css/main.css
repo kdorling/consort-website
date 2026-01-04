@@ -1285,11 +1285,11 @@ tr:hover {
     }
 }
 
-/* Mobile Styles for Small Phones (375px and below) */
-@media (max-width: 375px) {
+/* Mobile Styles for Small Phones (450px and below) */
+@media (max-width: 450px) {
     body {
         font-size: 14px;
-        padding-top: 110px;
+        padding-top: 130px;
     }
 
     .header-container {
@@ -1298,6 +1298,7 @@ tr:hover {
 
     .header-top {
         padding: 8px 0;
+        flex-wrap: wrap;
     }
 
     .site-logo {
@@ -1305,16 +1306,24 @@ tr:hover {
     }
 
     .header-right {
-        gap: 12px;
+        display: contents;
     }
 
     .header-utils {
         gap: 12px;
+        order: 2;
+        margin-top: 0;
     }
 
     .utility-nav {
         font-size: 0.75rem;
         gap: 6px;
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        padding: 10px 0;
+        border-top: 1px solid var(--border-color);
+        margin-top: 0;
     }
 
     .utility-nav-separator {
@@ -1336,8 +1345,8 @@ tr:hover {
 
     /* Navigation adjustments for small screens */
     .nav-container.mobile-open {
-        top: 110px;
-        height: calc(100vh - 110px);
+        top: 130px;
+        height: calc(100vh - 130px);
     }
 
     nav {
