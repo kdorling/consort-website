@@ -55,3 +55,29 @@ footer {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
 }
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+[data-theme="dark"] footer {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .footer-section h3 {
+    color: #ffffff;
+    border-bottom: 2px solid var(--boc-red);
+}
+
+[data-theme="dark"] .footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .footer-section a:hover {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+}
