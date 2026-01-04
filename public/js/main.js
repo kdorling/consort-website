@@ -122,6 +122,26 @@
         console.log("Language toggle clicked - to be implemented");
       });
     }
+    function initThemeToggle() {
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeIcon = themeToggle?.querySelector(".theme-icon");
+      if (!themeToggle) return;
+      const currentTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", currentTheme);
+      if (themeIcon) {
+        themeIcon.textContent = currentTheme === "dark" ? "\u2600\uFE0F" : "\u{1F319}";
+      }
+      themeToggle.addEventListener("click", function() {
+        const theme = document.documentElement.getAttribute("data-theme");
+        const newTheme = theme === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        if (themeIcon) {
+          themeIcon.textContent = newTheme === "dark" ? "\u2600\uFE0F" : "\u{1F319}";
+        }
+        localStorage.setItem("theme", newTheme);
+        console.log("Theme switched to:", newTheme);
+      });
+    }
     function initSmoothScroll() {
       const skipLink = document.querySelector(".skip-link");
       if (!skipLink) return;
@@ -172,6 +192,7 @@
       initKeyboardNav();
       initSearch();
       initLanguageToggle();
+      initThemeToggle();
       initSmoothScroll();
       initStickyHeader();
       initResizeHandler();

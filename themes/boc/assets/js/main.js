@@ -174,6 +174,44 @@
     });
   }
 
+  // Theme Toggle (Dark/Light Mode)
+  function initThemeToggle() {
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = themeToggle?.querySelector(".theme-icon");
+
+    if (!themeToggle) return;
+
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", currentTheme);
+
+    // Update icon based on current theme
+    if (themeIcon) {
+      themeIcon.textContent = currentTheme === "dark" ? "☀️" : "🌙";
+    }
+
+    themeToggle.addEventListener("click", function () {
+      // Get current theme
+      const theme = document.documentElement.getAttribute("data-theme");
+
+      // Toggle theme
+      const newTheme = theme === "dark" ? "light" : "dark";
+
+      // Update DOM
+      document.documentElement.setAttribute("data-theme", newTheme);
+
+      // Update icon
+      if (themeIcon) {
+        themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+      }
+
+      // Save to localStorage
+      localStorage.setItem("theme", newTheme);
+
+      console.log("Theme switched to:", newTheme);
+    });
+  }
+
   // Smooth Scroll for Skip Link
   function initSmoothScroll() {
     const skipLink = document.querySelector(".skip-link");
@@ -241,6 +279,7 @@
     initKeyboardNav();
     initSearch();
     initLanguageToggle();
+    initThemeToggle();
     initSmoothScroll();
     initStickyHeader();
     initResizeHandler();
