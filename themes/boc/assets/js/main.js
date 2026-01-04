@@ -88,18 +88,8 @@
       }
     });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener("click", function (e) {
-      if (
-        !navContainer.contains(e.target) &&
-        !mobileToggle.contains(e.target)
-      ) {
-        navContainer.classList.remove("mobile-open");
-        mobileToggle.setAttribute("aria-expanded", "false");
-        mobileToggle.textContent = "☰";
-        document.body.classList.remove("mobile-menu-open");
-      }
-    });
+    // Mobile menu can only be closed by clicking the toggle button
+    // (click-outside-to-close functionality removed)
   }
 
   // Keyboard Navigation for Dropdowns

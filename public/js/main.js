@@ -61,14 +61,6 @@
           document.body.classList.remove("mobile-menu-open");
         }
       });
-      document.addEventListener("click", function(e) {
-        if (!navContainer.contains(e.target) && !mobileToggle.contains(e.target)) {
-          navContainer.classList.remove("mobile-open");
-          mobileToggle.setAttribute("aria-expanded", "false");
-          mobileToggle.textContent = "\u2630";
-          document.body.classList.remove("mobile-menu-open");
-        }
-      });
     }
     function initKeyboardNav() {
       const dropdownParents = document.querySelectorAll(".has-dropdown");
