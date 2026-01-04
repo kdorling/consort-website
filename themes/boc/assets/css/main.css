@@ -109,7 +109,7 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 @media (max-width: 768px) {
@@ -118,7 +118,6 @@ header {
         top: 0;
         left: 0;
         right: 0;
-        z-index: 10000;
     }
 }
 
@@ -146,7 +145,7 @@ header {
     flex-direction: column;
     align-items: flex-end;
     gap: 20px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .site-title {
@@ -504,6 +503,115 @@ main {
     margin: 0 auto;
     padding: 40px 20px;
     min-height: calc(100vh - 400px);
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--boc-red);
+    position: relative;
+    z-index: 1;
+}
+
+.page-header h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--boc-teal);
+}
+
+.page-description {
+    font-size: 1.2rem;
+    color: var(--boc-medium-gray);
+    margin: 0.5rem 0;
+}
+
+.page-meta {
+    color: var(--boc-medium-gray);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0;
+}
+
+.page-content {
+    line-height: 1.8;
+}
+
+.page-content h2 {
+    margin-top: 2rem;
+    color: var(--boc-teal);
+}
+
+.page-content h3 {
+    margin-top: 1.5rem;
+    color: var(--boc-dark-gray);
+}
+
+.page-content ul,
+.page-content ol {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.page-content li {
+    margin-bottom: 0.5rem;
+}
+
+.page-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--boc-light-gray);
+}
+
+.page-tags {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--boc-gray);
+    color: var(--boc-teal);
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+    background-color: var(--boc-teal);
+    color: var(--boc-white);
+    text-decoration: none;
+}
+
+.section-intro {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--boc-gray);
+    border-left: 4px solid var(--boc-teal);
+    border-radius: 4px;
+}
+
+.read-more {
+    color: var(--boc-red);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer time {
+    color: var(--boc-medium-gray);
+    font-size: 0.9rem;
 }
 
 /* Hero Section */
