@@ -422,6 +422,13 @@ nav ul ul > li {
     margin: 0;
     padding: 0;
     display: block;
+    max-height: none;
+    overflow: visible;
+    position: static;
+    pointer-events: auto;
+    box-shadow: none;
+    border: none;
+    background: none;
 }
 
 .mega-menu-link-block li {
@@ -457,12 +464,9 @@ nav ul ul > li {
 /* Fallback for old structure (simple list of links) */
 nav ul ul > li:not(.mega-menu-columns) {
     display: inline-block;
-    width: auto;
-    min-width: 220px;
-    max-width: 280px;
+    width: 100%;
     padding: 0;
     box-sizing: border-box;
-    margin: 0 10px;
     vertical-align: top;
 }
 
