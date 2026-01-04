@@ -229,6 +229,8 @@ header {
     display: none;
     font-size: 1.2rem;
     padding: 8px 12px;
+    min-width: 44px;
+    text-align: center;
 }
 
 /* Navigation Styles */
@@ -633,7 +635,7 @@ main {
     color: var(--boc-white);
     padding: 60px 20px;
     text-align: center;
-    margin: -40px -20px 40px -20px;
+    margin: 0 -20px 40px -20px;
 }
 
 .hero h1 {
@@ -1014,8 +1016,12 @@ tr:hover {
         max-height: 0;
         overflow: hidden;
         box-shadow: none;
-        background-color: var(--mobile-dropdown-bg);
-        background-image: none;
+        background-color: var(--dropdown-bg);
+        background-image: linear-gradient(
+            to bottom,
+            var(--dropdown-bg-gradient-start) 0%,
+            var(--dropdown-bg-gradient-end) 100%
+        );
         width: 100%;
         padding: 0;
         margin: 0;
@@ -1043,22 +1049,25 @@ tr:hover {
 
     /* Mobile Column Styles */
     .mega-menu-column {
-        background-color: rgba(0, 0, 0, 0.2);
-        padding: 15px;
-        border-radius: 4px;
         display: block !important;
         opacity: 1 !important;
     }
 
     .mega-menu-column-header {
-        color: var(--boc-white) !important;
-        font-size: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--boc-teal);
+        margin: 0;
+        padding: 0;
         display: block;
     }
 
     .mega-menu-column-description {
-        color: rgba(255, 255, 255, 0.8) !important;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
         display: block;
     }
 
@@ -1074,39 +1083,46 @@ tr:hover {
     }
 
     .mega-menu-column-featured .mega-menu-column-header {
-        color: var(--boc-white);
+        color: var(--boc-teal);
     }
 
     .mega-menu-column-featured .mega-menu-column-description {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--text-secondary);
     }
 
     .mega-menu-link-block-header {
-        color: var(--boc-white) !important;
-        font-size: 0.9rem;
-        margin-top: 10px;
-        display: block;
+        font-size: 0.95rem;
         font-weight: 600;
+        color: var(--text-primary);
+        margin: 0 0 8px 0;
+        padding: 0 12px 8px 12px;
+        border-bottom: 2px solid var(--boc-light-gray);
+        display: block;
     }
 
     /* Mobile mega menu link colors */
     .mega-menu-link-block a,
     .mega-menu-column > a {
-        padding: 12px 15px;
-        color: rgba(255, 255, 255, 0.95) !important;
-        font-size: 0.95rem;
         display: block;
+        padding: 8px 12px;
+        margin: 2px 0;
+        color: var(--text-primary);
+        background-color: transparent;
+        border-left: 3px solid transparent;
         text-decoration: none;
+        font-size: 0.9rem;
         line-height: 1.5;
+        transition: all 0.2s ease;
     }
 
     .mega-menu-link-block a:hover,
     .mega-menu-link-block a:focus,
     .mega-menu-column > a:hover,
     .mega-menu-column > a:focus {
-        color: #ffffff !important;
-        text-decoration: underline;
-        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--boc-teal);
+        background-color: var(--boc-gray);
+        border-left-color: var(--boc-teal);
+        text-decoration: none;
     }
 
     /* Old structure mobile styles */
@@ -1146,17 +1162,17 @@ tr:hover {
         display: flex;
         align-items: center;
         border-left: 3px solid transparent;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid var(--border-color);
         font-size: 0.95rem;
         line-height: 1.5;
         text-decoration: none;
-        color: rgba(255, 255, 255, 0.95);
+        color: var(--text-primary);
     }
 
     nav ul ul > li:not(.mega-menu-columns) > a:hover,
     nav ul ul > li:not(.mega-menu-columns) > a:focus {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #ffffff !important;
+        background-color: var(--bg-secondary);
+        color: var(--boc-teal) !important;
         text-decoration: underline;
     }
 
@@ -1235,7 +1251,7 @@ tr:hover {
 
     .hero {
         padding: 40px 15px;
-        margin: -20px -15px 20px -15px;
+        margin: 0 -15px 20px -15px;
     }
 
     .hero h1 {
