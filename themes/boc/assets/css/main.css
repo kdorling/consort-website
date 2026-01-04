@@ -283,7 +283,6 @@ nav > ul > li {
 
 /* Mega Menu Dropdown Container */
 nav ul ul {
-    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -299,20 +298,27 @@ nav ul ul {
     z-index: 9999;
     border-top: 3px solid var(--boc-red);
     padding: 40px 0;
+    visibility: hidden;
     opacity: 0;
-    transform: translateY(-10px);
+    transform: scaleY(0);
+    transform-origin: top;
     transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+        opacity 0.35s ease-out,
+        transform 0.35s ease-out,
+        visibility 0s linear 0.35s;
     pointer-events: none;
 }
 
 /* Open state - controlled by JavaScript */
 nav ul li.dropdown-open > ul {
-    display: block;
+    visibility: visible;
     opacity: 1;
-    transform: translateY(0);
+    transform: scaleY(1);
     pointer-events: auto;
+    transition:
+        opacity 0.35s ease-out,
+        transform 0.35s ease-out,
+        visibility 0s linear 0s;
 }
 
 /* Mega Menu Inner Container - constrains width */
@@ -419,11 +425,13 @@ nav ul ul > li {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: block;
 }
 
 .mega-menu-link-block li {
     margin: 0;
     padding: 0;
+    display: block;
 }
 
 .mega-menu-link-block a,
@@ -891,7 +899,9 @@ tr:hover {
     /* Mobile Mega Menu Styles */
     nav ul ul {
         position: static;
-        display: none;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
         box-shadow: none;
         background-color: var(--mobile-dropdown-bg);
         background-image: none;
@@ -899,18 +909,25 @@ tr:hover {
         padding: 0;
         margin: 0;
         border-top: none;
-        opacity: 1 !important;
-        transform: none !important;
-        pointer-events: auto !important;
+        opacity: 0;
+        pointer-events: none;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition:
+            opacity 0.35s ease-out,
+            transform 0.35s ease-out,
+            max-height 0.35s ease-out,
+            visibility 0s linear 0.35s;
     }
 
     /* Stack columns vertically on mobile */
     .mega-menu-columns {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         gap: 20px;
         padding: 15px;
         max-width: 100%;
+        opacity: 1 !important;
     }
 
     .mega-menu-columns.cols-1,
@@ -925,16 +942,20 @@ tr:hover {
         background-color: rgba(0, 0, 0, 0.2);
         padding: 15px;
         border-radius: 4px;
+        display: block !important;
+        opacity: 1 !important;
     }
 
     .mega-menu-column-header {
-        color: var(--boc-white);
+        color: var(--boc-white) !important;
         font-size: 1rem;
+        display: block;
     }
 
     .mega-menu-column-description {
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.8) !important;
         font-size: 0.85rem;
+        display: block;
     }
 
     /* Mobile Featured Link */
@@ -957,17 +978,22 @@ tr:hover {
     }
 
     .mega-menu-link-block-header {
-        color: var(--boc-white);
+        color: var(--boc-white) !important;
         font-size: 0.9rem;
         margin-top: 10px;
+        display: block;
+        font-weight: 600;
     }
 
     /* Mobile mega menu link colors */
     .mega-menu-link-block a,
     .mega-menu-column > a {
         padding: 12px 15px;
-        color: rgba(255, 255, 255, 0.95);
+        color: rgba(255, 255, 255, 0.95) !important;
         font-size: 0.95rem;
+        display: block;
+        text-decoration: none;
+        line-height: 1.5;
     }
 
     .mega-menu-link-block a:hover,
@@ -976,6 +1002,7 @@ tr:hover {
     .mega-menu-column > a:focus {
         color: #ffffff !important;
         text-decoration: underline;
+        background-color: rgba(255, 255, 255, 0.1);
     }
 
     /* Old structure mobile styles */
@@ -1002,8 +1029,16 @@ tr:hover {
 
     nav ul li.mobile-open > ul,
     nav ul li.dropdown-open > ul {
-        display: flex !important;
-        visibility: visible !important;
+        visibility: visible;
+        max-height: 2000px;
+        opacity: 1;
+        transform: scaleY(1);
+        pointer-events: auto;
+        transition:
+            opacity 0.35s ease-out,
+            transform 0.35s ease-out,
+            max-height 0.35s ease-out,
+            visibility 0s linear 0s;
     }
 
     nav ul ul > li:not(.mega-menu-columns) > a {
