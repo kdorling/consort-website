@@ -47,10 +47,13 @@
             </h3>
           </div>
           <div class="card-body">
-            {{ with .Summary }}
-              <p>{{ . }}</p>
+            {{ if .Description }}
+              <p>{{ .Description }}</p>
             {{ else }}
-              <p>{{ .Description | default "Read more..." }}</p>
+              {{ $content := .Plain }}
+              {{ $paragraphs := split $content "\n\n" }}
+              {{ $firstPara := index $paragraphs 0 }}
+              <p>{{ $firstPara | truncate 200 }}</p>
             {{ end }}
           </div>
           <div class="card-footer">
