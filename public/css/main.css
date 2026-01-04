@@ -297,28 +297,23 @@ nav ul ul {
     box-shadow: 0 4px 12px var(--shadow-color);
     z-index: 9999;
     border-top: 3px solid var(--boc-red);
-    padding: 40px 0;
-    visibility: hidden;
-    opacity: 0;
-    transform: scaleY(0);
-    transform-origin: top;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
     transition:
-        opacity 0.35s ease-out,
-        transform 0.35s ease-out,
-        visibility 0s linear 0.35s;
+        max-height 0.2s ease-in-out,
+        padding 0.2s ease-in-out;
     pointer-events: none;
 }
 
 /* Open state - controlled by JavaScript */
 nav ul li.dropdown-open > ul {
-    visibility: visible;
-    opacity: 1;
-    transform: scaleY(1);
+    max-height: 2000px;
+    padding: 40px 0;
     pointer-events: auto;
     transition:
-        opacity 0.35s ease-out,
-        transform 0.35s ease-out,
-        visibility 0s linear 0s;
+        max-height 0.35s ease-in-out,
+        padding 0.35s ease-in-out;
 }
 
 /* Mega Menu Inner Container - constrains width */
@@ -899,7 +894,6 @@ tr:hover {
     /* Mobile Mega Menu Styles */
     nav ul ul {
         position: static;
-        visibility: hidden;
         max-height: 0;
         overflow: hidden;
         box-shadow: none;
@@ -909,15 +903,8 @@ tr:hover {
         padding: 0;
         margin: 0;
         border-top: none;
-        opacity: 0;
         pointer-events: none;
-        transform: scaleY(0);
-        transform-origin: top;
-        transition:
-            opacity 0.35s ease-out,
-            transform 0.35s ease-out,
-            max-height 0.35s ease-out,
-            visibility 0s linear 0.35s;
+        transition: max-height 0.25s ease-in-out;
     }
 
     /* Stack columns vertically on mobile */
@@ -1029,16 +1016,9 @@ tr:hover {
 
     nav ul li.mobile-open > ul,
     nav ul li.dropdown-open > ul {
-        visibility: visible;
         max-height: 2000px;
-        opacity: 1;
-        transform: scaleY(1);
         pointer-events: auto;
-        transition:
-            opacity 0.35s ease-out,
-            transform 0.35s ease-out,
-            max-height 0.35s ease-out,
-            visibility 0s linear 0s;
+        transition: max-height 0.25s ease-in-out;
     }
 
     nav ul ul > li:not(.mega-menu-columns) > a {
