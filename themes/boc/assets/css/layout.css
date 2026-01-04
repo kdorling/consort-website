@@ -170,3 +170,26 @@ section h2 {
     border-left: 4px solid var(--boc-teal);
     border-radius: var(--border-radius);
 }
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+[data-theme="dark"] .page-header h1 {
+    color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] .page-content h2 {
+    color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] .page-content h3 {
+    color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] section h2 {
+    color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] .stat-value {
+    color: var(--boc-light-teal);
+}

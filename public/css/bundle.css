@@ -55,9 +55,9 @@
 
 /* Dark Mode Colors */
 [data-theme="dark"] {
-    --boc-teal: #3a3a3a;
-    --boc-dark-teal: #2a2a2a;
-    --boc-light-teal: #4a4a4a;
+    --boc-teal: #394333;
+    --boc-dark-teal: #2a2f26;
+    --boc-light-teal: #657b4f;
     --boc-gray: #2a2a2a;
     --boc-light-gray: #3a3a3a;
     --boc-white: #ffffff;
@@ -201,6 +201,18 @@ li {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: var(--boc-light-teal);
 }
 /* ============================================
    HEADER
@@ -657,6 +669,13 @@ nav ul ul > li:not(.mega-menu-columns) > a:focus {
     color: var(--boc-teal);
     text-decoration: underline;
 }
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+[data-theme="dark"] .mega-menu-column-header {
+    color: var(--boc-light-teal);
+}
 /* ============================================
    MAIN CONTENT
    ============================================ */
@@ -828,6 +847,29 @@ section h2 {
     background-color: var(--boc-gray);
     border-left: 4px solid var(--boc-teal);
     border-radius: var(--border-radius);
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+[data-theme="dark"] .page-header h1 {
+    color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] .page-content h2 {
+    color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] .page-content h3 {
+    color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] section h2 {
+    color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] .stat-value {
+    color: var(--boc-light-teal);
 }
 /* ============================================
    BUTTONS
@@ -1005,6 +1047,13 @@ tr:hover {
 
 .read-more:hover {
     text-decoration: underline;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+[data-theme="dark"] .card-title {
+    color: var(--boc-light-teal);
 }
 /* ============================================
    FOOTER

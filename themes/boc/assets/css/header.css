@@ -453,3 +453,10 @@ nav ul ul > li:not(.mega-menu-columns) > a:focus {
     color: var(--boc-teal);
     text-decoration: underline;
 }
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+[data-theme="dark"] .mega-menu-column-header {
+    color: var(--boc-light-teal);
+}

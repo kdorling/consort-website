@@ -175,3 +175,10 @@ tr:hover {
 .read-more:hover {
     text-decoration: underline;
 }
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+[data-theme="dark"] .card-title {
+    color: var(--boc-light-teal);
+}
