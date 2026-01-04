@@ -157,10 +157,22 @@
     }
     function initStickyHeader() {
       const header = document.querySelector("header");
+      const headerContainer = document.querySelector(".header-container");
+      const navContainer = document.querySelector(".nav-container");
       let lastScroll = 0;
+      const scrollThreshold = 100;
       if (!header) return;
       window.addEventListener("scroll", function() {
         const currentScroll = window.pageYOffset;
+        if (window.innerWidth > 768) {
+          if (currentScroll > scrollThreshold && currentScroll > lastScroll) {
+            header.classList.add("header-scrolled");
+          } else if (currentScroll < scrollThreshold) {
+            header.classList.remove("header-scrolled");
+          }
+        } else {
+          header.classList.remove("header-scrolled");
+        }
         if (currentScroll > 0) {
           header.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.15)";
         } else {

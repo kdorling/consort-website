@@ -110,6 +110,27 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hide header top when scrolled on large screens */
+@media (min-width: 769px) {
+    header.header-scrolled .header-container {
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+        overflow: hidden;
+        transition:
+            max-height 0.3s ease-in-out,
+            opacity 0.3s ease-in-out;
+    }
+
+    header .header-container {
+        max-height: 500px;
+        transition:
+            max-height 0.3s ease-in-out,
+            opacity 0.3s ease-in-out;
+    }
 }
 
 @media (max-width: 768px) {
@@ -130,6 +151,14 @@ header {
 .nav-container {
     width: 100%;
     background-color: var(--boc-teal);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Add shadow to nav when header is hidden */
+@media (min-width: 769px) {
+    header.header-scrolled .nav-container {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .header-top {

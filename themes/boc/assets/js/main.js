@@ -235,12 +235,29 @@
   // Add scroll behavior to header
   function initStickyHeader() {
     const header = document.querySelector("header");
+    const headerContainer = document.querySelector(".header-container");
+    const navContainer = document.querySelector(".nav-container");
     let lastScroll = 0;
+    const scrollThreshold = 100; // Scroll amount before hiding header
 
     if (!header) return;
 
     window.addEventListener("scroll", function () {
       const currentScroll = window.pageYOffset;
+
+      // Only apply on large screens
+      if (window.innerWidth > 768) {
+        if (currentScroll > scrollThreshold && currentScroll > lastScroll) {
+          // Scrolling down past threshold - hide header top, show only nav
+          header.classList.add("header-scrolled");
+        } else if (currentScroll < scrollThreshold) {
+          // Near top - show full header
+          header.classList.remove("header-scrolled");
+        }
+      } else {
+        // Remove class on mobile
+        header.classList.remove("header-scrolled");
+      }
 
       // Add shadow when scrolled
       if (currentScroll > 0) {
