@@ -8,6 +8,7 @@
       const dropdownParents = mainNav.querySelectorAll(".has-dropdown");
       dropdownParents.forEach(function(parent) {
         const link = parent.querySelector("a");
+        link.setAttribute("aria-expanded", "false");
         link.addEventListener("click", function(e) {
           if (window.innerWidth > 768) {
             e.preventDefault();
@@ -16,10 +17,12 @@
                 otherParent.classList.remove("dropdown-open");
               }
             });
-            parent.classList.toggle("dropdown-open");
+            const isOpen = parent.classList.toggle("dropdown-open");
+            link.setAttribute("aria-expanded", isOpen);
           } else {
             e.preventDefault();
-            parent.classList.toggle("mobile-open");
+            const isOpen = parent.classList.toggle("mobile-open");
+            link.setAttribute("aria-expanded", isOpen);
             console.log(
               "Mobile dropdown toggled:",
               parent.classList.contains("mobile-open")
@@ -32,6 +35,8 @@
           dropdownParents.forEach(function(parent) {
             parent.classList.remove("dropdown-open");
             parent.classList.remove("mobile-open");
+            const link = parent.querySelector("a");
+            link.setAttribute("aria-expanded", "false");
           });
         }
       });
@@ -40,6 +45,8 @@
           dropdownParents.forEach(function(parent) {
             parent.classList.remove("dropdown-open");
             parent.classList.remove("mobile-open");
+            const link = parent.querySelector("a");
+            link.setAttribute("aria-expanded", "false");
           });
         }
       });
@@ -59,6 +66,15 @@
           document.body.classList.add("mobile-menu-open");
         } else {
           document.body.classList.remove("mobile-menu-open");
+        }
+      });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape" && navContainer.classList.contains("mobile-open")) {
+          navContainer.classList.remove("mobile-open");
+          mobileToggle.setAttribute("aria-expanded", "false");
+          mobileToggle.textContent = "\u2630";
+          document.body.classList.remove("mobile-menu-open");
+          mobileToggle.focus();
         }
       });
     }

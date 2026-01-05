@@ -109,6 +109,27 @@ li {
     outline-offset: 2px;
 }
 
+/* Improved focus visibility in dark mode */
+[data-theme="dark"] :focus {
+    outline: 2px solid var(--boc-light-red);
+    outline-offset: 2px;
+}
+
+/* Focus-visible for better keyboard-only focus indication */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--boc-red);
+    outline-offset: 2px;
+}
+
+[data-theme="dark"] :focus-visible {
+    outline: 3px solid var(--boc-light-red);
+    outline-offset: 2px;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -131,4 +152,18 @@ li {
 [data-theme="dark"] h5,
 [data-theme="dark"] h6 {
     color: var(--boc-light-teal);
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

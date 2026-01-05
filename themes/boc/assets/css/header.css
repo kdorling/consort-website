@@ -460,3 +460,28 @@ nav ul ul > li:not(.mega-menu-columns) > a:focus {
 [data-theme="dark"] .mega-menu-column-header {
     color: var(--boc-light-teal);
 }
+
+/* ============================================
+   TOUCH TARGET IMPROVEMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    /* Ensure adequate spacing between touch targets */
+    .header-utils {
+        gap: var(--spacing-xs);
+    }
+
+    /* Increase touch targets for mobile */
+    nav > ul > li > a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .mega-menu-link-block a,
+    .mega-menu-column > a,
+    nav ul ul > li:not(.mega-menu-columns) > a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+}

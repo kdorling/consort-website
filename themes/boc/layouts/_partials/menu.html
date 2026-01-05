@@ -56,7 +56,7 @@ Supports three-column mega menu structure with:
         {{- end -}}
       >{{ $name }}</a>
       {{- with .Children }}
-        <ul>
+        <ul aria-label="{{ $name }} submenu">
           {{- /* Check if this dropdown has mega menu data defined */ -}}
           {{- $megaMenuData := false }}
           {{- if $parentIdentifier }}
@@ -80,6 +80,7 @@ Supports three-column mega menu structure with:
             {{- end }}
 
             <li class="{{ $colClass }}">
+              <a href="#" class="sr-only mega-menu-skip">Skip mega menu</a>
               {{- range $megaMenuData.columns }}
                 <div class="mega-menu-column">
                   {{- /* Process all blocks in the column */ -}}
@@ -90,7 +91,7 @@ Supports three-column mega menu structure with:
                       <a href="{{ .url }}" class="mega-menu-column-featured">
                         {{- with .image }}
                           <div class="mega-menu-column-image">
-                            <img src="{{ . }}" alt="{{ $.title | default "" }}" loading="lazy">
+                            <img src="{{ . }}" alt="{{ $.title | default "Featured content" }}" loading="lazy">
                           </div>
                         {{- end }}
 

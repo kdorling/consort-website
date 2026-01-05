@@ -13,6 +13,9 @@
     dropdownParents.forEach(function (parent) {
       const link = parent.querySelector("a");
 
+      // Add aria-expanded attribute for accessibility
+      link.setAttribute("aria-expanded", "false");
+
       // Add click handler for dropdown toggle
       link.addEventListener("click", function (e) {
         // On desktop, prevent default and toggle dropdown
@@ -27,11 +30,13 @@
           });
 
           // Toggle this dropdown
-          parent.classList.toggle("dropdown-open");
+          const isOpen = parent.classList.toggle("dropdown-open");
+          link.setAttribute("aria-expanded", isOpen);
         } else {
           // On mobile, toggle mobile-open class
           e.preventDefault();
-          parent.classList.toggle("mobile-open");
+          const isOpen = parent.classList.toggle("mobile-open");
+          link.setAttribute("aria-expanded", isOpen);
           console.log(
             "Mobile dropdown toggled:",
             parent.classList.contains("mobile-open"),
@@ -46,6 +51,8 @@
         dropdownParents.forEach(function (parent) {
           parent.classList.remove("dropdown-open");
           parent.classList.remove("mobile-open");
+          const link = parent.querySelector("a");
+          link.setAttribute("aria-expanded", "false");
         });
       }
     });
@@ -56,6 +63,8 @@
         dropdownParents.forEach(function (parent) {
           parent.classList.remove("dropdown-open");
           parent.classList.remove("mobile-open");
+          const link = parent.querySelector("a");
+          link.setAttribute("aria-expanded", "false");
         });
       }
     });
@@ -90,6 +99,20 @@
 
     // Mobile menu can only be closed by clicking the toggle button
     // (click-outside-to-close functionality removed)
+
+    // Close mobile menu with Escape key for accessibility
+    document.addEventListener("keydown", function (e) {
+      if (
+        e.key === "Escape" &&
+        navContainer.classList.contains("mobile-open")
+      ) {
+        navContainer.classList.remove("mobile-open");
+        mobileToggle.setAttribute("aria-expanded", "false");
+        mobileToggle.textContent = "☰";
+        document.body.classList.remove("mobile-menu-open");
+        mobileToggle.focus(); // Return focus to toggle button
+      }
+    });
   }
 
   // Keyboard Navigation for Dropdowns
