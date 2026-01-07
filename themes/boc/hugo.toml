@@ -2,6 +2,10 @@ baseURL = 'https://example.org/'
 languageCode = 'en-US'
 title = 'Village of Consort'
 
+[caches]
+    [caches.images]
+        dir = 'cacheDir/images'
+
 [params]
   description = 'Welcome to the Village of Consort, Alberta - a vibrant community where rural living meets modern opportunity.'
 
