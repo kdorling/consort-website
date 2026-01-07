@@ -75,6 +75,9 @@
     const mobileToggle = document.getElementById("mobile-menu-toggle");
     const navContainer = document.querySelector(".nav-container");
     const mainNav = document.getElementById("main-nav");
+    const header = document.querySelector("header");
+    let scrollPosition = 0;
+    let wasHeaderScrolled = false;
 
     if (!mobileToggle || !navContainer) return;
 
@@ -91,9 +94,28 @@
 
       // Toggle body class to prevent scrolling
       if (isExpanded) {
+        // Save current scroll position
+        scrollPosition = window.pageYOffset;
+        // Save header scrolled state
+        wasHeaderScrolled = header.classList.contains("header-scrolled-mobile");
         document.body.classList.add("mobile-menu-open");
+        // Apply negative top to maintain visual position
+        document.body.style.top = `-${scrollPosition}px`;
+        // Preserve header scrolled state
+        if (wasHeaderScrolled) {
+          header.classList.add("header-scrolled-mobile");
+          document.body.classList.add("header-scrolled-mobile");
+        }
       } else {
         document.body.classList.remove("mobile-menu-open");
+        // Restore scroll position
+        document.body.style.top = "";
+        window.scrollTo(0, scrollPosition);
+        // Restore header scrolled state if it was scrolled
+        if (wasHeaderScrolled) {
+          header.classList.add("header-scrolled-mobile");
+          document.body.classList.add("header-scrolled-mobile");
+        }
       }
     });
 
@@ -110,6 +132,14 @@
         mobileToggle.setAttribute("aria-expanded", "false");
         mobileToggle.textContent = "☰";
         document.body.classList.remove("mobile-menu-open");
+        // Restore scroll position
+        document.body.style.top = "";
+        window.scrollTo(0, scrollPosition);
+        // Restore header scrolled state if it was scrolled
+        if (wasHeaderScrolled) {
+          header.classList.add("header-scrolled-mobile");
+          document.body.classList.add("header-scrolled-mobile");
+        }
         mobileToggle.focus(); // Return focus to toggle button
       }
     });
@@ -252,13 +282,19 @@
     const navContainer = document.querySelector(".nav-container");
     let lastScroll = 0;
     const scrollThreshold = 100; // Scroll amount before hiding header
+    const mobileScrollThreshold = 50; // Scroll amount for mobile shrink
 
     if (!header) return;
 
     window.addEventListener("scroll", function () {
+      // Don't change header state when mobile menu is open
+      if (document.body.classList.contains("mobile-menu-open")) {
+        return;
+      }
+
       const currentScroll = window.pageYOffset;
 
-      // Only apply on large screens
+      // Desktop behavior
       if (window.innerWidth > 768) {
         if (currentScroll > scrollThreshold && currentScroll > lastScroll) {
           // Scrolling down past threshold - hide header top, show only nav
@@ -268,8 +304,14 @@
           header.classList.remove("header-scrolled");
         }
       } else {
-        // Remove class on mobile
-        header.classList.remove("header-scrolled");
+        // Mobile behavior - shrink header on scroll
+        if (currentScroll > mobileScrollThreshold) {
+          header.classList.add("header-scrolled-mobile");
+          document.body.classList.add("header-scrolled-mobile");
+        } else {
+          header.classList.remove("header-scrolled-mobile");
+          document.body.classList.remove("header-scrolled-mobile");
+        }
       }
 
       // Add shadow when scrolled

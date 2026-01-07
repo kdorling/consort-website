@@ -55,6 +55,9 @@
       const mobileToggle = document.getElementById("mobile-menu-toggle");
       const navContainer = document.querySelector(".nav-container");
       const mainNav = document.getElementById("main-nav");
+      const header = document.querySelector("header");
+      let scrollPosition = 0;
+      let wasHeaderScrolled = false;
       if (!mobileToggle || !navContainer) return;
       mobileToggle.addEventListener("click", function(e) {
         e.stopPropagation();
@@ -63,9 +66,22 @@
         mobileToggle.setAttribute("aria-expanded", isExpanded);
         mobileToggle.textContent = isExpanded ? "\u2715" : "\u2630";
         if (isExpanded) {
+          scrollPosition = window.pageYOffset;
+          wasHeaderScrolled = header.classList.contains("header-scrolled-mobile");
           document.body.classList.add("mobile-menu-open");
+          document.body.style.top = `-${scrollPosition}px`;
+          if (wasHeaderScrolled) {
+            header.classList.add("header-scrolled-mobile");
+            document.body.classList.add("header-scrolled-mobile");
+          }
         } else {
           document.body.classList.remove("mobile-menu-open");
+          document.body.style.top = "";
+          window.scrollTo(0, scrollPosition);
+          if (wasHeaderScrolled) {
+            header.classList.add("header-scrolled-mobile");
+            document.body.classList.add("header-scrolled-mobile");
+          }
         }
       });
       document.addEventListener("keydown", function(e) {
@@ -74,6 +90,12 @@
           mobileToggle.setAttribute("aria-expanded", "false");
           mobileToggle.textContent = "\u2630";
           document.body.classList.remove("mobile-menu-open");
+          document.body.style.top = "";
+          window.scrollTo(0, scrollPosition);
+          if (wasHeaderScrolled) {
+            header.classList.add("header-scrolled-mobile");
+            document.body.classList.add("header-scrolled-mobile");
+          }
           mobileToggle.focus();
         }
       });
@@ -169,8 +191,12 @@
       const navContainer = document.querySelector(".nav-container");
       let lastScroll = 0;
       const scrollThreshold = 100;
+      const mobileScrollThreshold = 50;
       if (!header) return;
       window.addEventListener("scroll", function() {
+        if (document.body.classList.contains("mobile-menu-open")) {
+          return;
+        }
         const currentScroll = window.pageYOffset;
         if (window.innerWidth > 768) {
           if (currentScroll > scrollThreshold && currentScroll > lastScroll) {
@@ -179,7 +205,13 @@
             header.classList.remove("header-scrolled");
           }
         } else {
-          header.classList.remove("header-scrolled");
+          if (currentScroll > mobileScrollThreshold) {
+            header.classList.add("header-scrolled-mobile");
+            document.body.classList.add("header-scrolled-mobile");
+          } else {
+            header.classList.remove("header-scrolled-mobile");
+            document.body.classList.remove("header-scrolled-mobile");
+          }
         }
         if (currentScroll > 0) {
           header.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.15)";

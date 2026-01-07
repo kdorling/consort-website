@@ -53,6 +53,45 @@
         padding: 10px 0;
         border-top: 1px solid var(--border-color);
         margin-top: 0;
+        transition:
+            opacity 0.3s ease,
+            max-height 0.3s ease;
+    }
+
+    /* Mobile Header Shrink on Scroll */
+    header.header-scrolled-mobile .header-top {
+        padding: 4px 0 !important;
+    }
+
+    header.header-scrolled-mobile .site-logo,
+    header.header-scrolled-mobile .utility-nav,
+    header.header-scrolled-mobile .theme-toggle {
+        display: none !important;
+    }
+
+    header.header-scrolled-mobile .header-utils {
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    header.header-scrolled-mobile .mobile-menu-toggle {
+        opacity: 1 !important;
+    }
+
+    /* Keep header shrunken even when mobile menu is open */
+    body.mobile-menu-open header.header-scrolled-mobile .header-top {
+        padding: 4px 0 !important;
+    }
+
+    body.mobile-menu-open header.header-scrolled-mobile .site-logo,
+    body.mobile-menu-open header.header-scrolled-mobile .utility-nav,
+    body.mobile-menu-open header.header-scrolled-mobile .theme-toggle {
+        display: none !important;
+    }
+
+    /* Adjust body padding for shrunken header */
+    body.header-scrolled-mobile {
+        padding-top: 48px;
     }
 
     /* Mobile Navigation */
@@ -73,8 +112,17 @@
         z-index: 9998;
         background-color: var(--boc-teal);
         box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
-        transition: max-width 0.3s ease-in-out;
+        transition:
+            max-width 0.3s ease-in-out,
+            top 0.3s ease;
         padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+
+    /* Adjust nav-container position when header is scrolled */
+    body.header-scrolled-mobile .nav-container {
+        top: 48px !important;
+        height: calc(100vh - 48px) !important;
+        height: calc(100dvh - 48px) !important;
     }
 
     .nav-container.mobile-open {
@@ -340,6 +388,13 @@
         ); /* Dynamic viewport for mobile browsers */
         width: 100%;
         padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+
+    /* Adjust nav-container position when header is scrolled on small screens */
+    body.header-scrolled-mobile .nav-container {
+        top: 38px !important;
+        height: calc(100vh - 38px) !important;
+        height: calc(100dvh - 38px) !important;
     }
 
     .nav-container.mobile-open {
