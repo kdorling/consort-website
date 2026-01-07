@@ -227,6 +227,7 @@ nav > ul > li > a:focus,
 nav > ul > li.dropdown-open > a {
     background-color: var(--boc-dark-teal);
     border-bottom-color: var(--boc-red);
+    color: var(--boc-light-red);
 }
 
 /* Dropdown Indicator */

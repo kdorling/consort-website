@@ -56,6 +56,27 @@ footer {
     color: rgba(255, 255, 255, 0.7);
 }
 
+/* Footer Content Blocks */
+.footer-content {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-content-block {
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-content-block strong {
+    color: var(--boc-white);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.footer-content-block span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 /* ============================================
    DARK MODE OVERRIDES
    ============================================ */

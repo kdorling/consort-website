@@ -1,0 +1,66 @@
+# Footer Configuration
+# Define the footer sections and links that appear at the bottom of each page
+# Each section can have a title and a list of links
+
+sections:
+  - title: "Quick Contact"
+    content:
+      - type: "text"
+        label: "Village Office Address:"
+        text: |
+          Box 490 4901 50 Avenue
+          Consort, Alberta T0C 1B0
+      - type: "text"
+        label: "Village Office Phone:"
+        text: "+1 (403) 577-3623"
+
+  - title: "Village Dump Hours"
+    content:
+      - type: "text"
+        label: "Summer Hours (May - October)"
+        text: |
+          Tues & Thurs: 1:00pm - 7:00pm
+          Saturday: 9:00am - 3:00pm
+      - type: "text"
+        label: "Winter Hours (November - April)"
+        text: |
+          Tues & Thurs: Noon - 7:00pm
+          Saturday: 8:00am - Noon
+
+  - title: "About"
+    links:
+      - text: "About Us"
+        url: "/about"
+      - text: "Mayor and Council"
+        url: "/government/mayor-council"
+      - text: "Careers"
+        url: "/careers"
+      - text: "Contact Us"
+        url: "/contact"
+
+  - title: "Connect"
+    links:
+      - text: "Facebook"
+        url: "https://facebook.com"
+        external: true
+      - text: "Twitter"
+        url: "https://twitter.com"
+        external: true
+      - text: "Newsletter Signup"
+        url: "/newsletter"
+      - text: "Contact Form"
+        url: "/contact"
+
+# Optional: Bottom footer settings
+bottom:
+  # Copyright text - use {year} for current year and {site} for site title
+  copyright: "Copyright {year} {site}. All rights reserved."
+
+  # Optional additional links that appear in the footer bottom
+  links:
+    - text: "Privacy Policy"
+      url: "/privacy"
+    - text: "Accessibility"
+      url: "/accessibility"
+    - text: "Terms of Use"
+      url: "/terms"

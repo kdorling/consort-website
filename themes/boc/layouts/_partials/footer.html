@@ -1,46 +1,108 @@
 <div class="footer-container">
+    {{- /* Load footer configuration from data file */ -}} {{- $footerData :=
+    site.Data.footer -}} {{- if $footerData.sections -}}
+    <div class="footer-grid">
+        {{- range $footerData.sections -}}
+        <div class="footer-section">
+            {{- with .title -}}
+            <h3>{{ . }}</h3>
+            {{- end -}} {{- /* Render links if present */ -}} {{- with .links
+            -}}
+            <ul>
+                {{- range . -}}
+                <li>
+                    <a
+                        href="{{ .url }}"
+                        {{
+                        if
+                        .external
+                        }}
+                        rel="external"
+                        target="_blank"
+                        {{
+                        end
+                        }}
+                    >
+                        {{ .text }}
+                    </a>
+                </li>
+                {{- end -}}
+            </ul>
+            {{- end -}} {{- /* Render content blocks if present */ -}} {{- with
+            .content -}}
+            <div class="footer-content">
+                {{- range . -}} {{- if eq .type "text" -}}
+                <div class="footer-content-block">
+                    {{- with .label -}}
+                    <strong>{{ . }}</strong><br />
+                    {{- end -}} {{- with .text -}}
+                    <span style="white-space: pre-line">{{ . }}</span>
+                    {{- end -}}
+                </div>
+                {{- end -}} {{- end -}}
+            </div>
+            {{- end -}}
+        </div>
+        {{- end -}}
+    </div>
+    {{- else -}} {{- /* Fallback to default footer if no data file exists */ -}}
     <div class="footer-grid">
         <div class="footer-section">
             <h3>About</h3>
             <ul>
-                <li><a href="/about">About the Bank</a></li>
-                <li><a href="/about/governance">Governance</a></li>
-                <li><a href="/about/careers">Careers</a></li>
-                <li><a href="/about/contact">Contact Us</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/government">Government</a></li>
+                <li><a href="/careers">Careers</a></li>
+                <li><a href="/contact">Contact Us</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
-            <h3>Affiliate sites</h3>
+            <h3>Services</h3>
             <ul>
-                <li><a href="#" rel="external">Museum</a></li>
-                <li><a href="#" rel="external">Publications</a></li>
-                <li><a href="#" rel="external">Educational Resources</a></li>
+                <li><a href="/departments">Departments</a></li>
+                <li><a href="/online-services">Online Services</a></li>
+                <li><a href="/events">Events</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
-            <h3>Legal</h3>
+            <h3>Resources</h3>
             <ul>
-                <li><a href="/legal/privacy">Privacy</a></li>
-                <li><a href="/legal/terms">Terms & Conditions</a></li>
-                <li><a href="/legal/accessibility">Accessibility</a></li>
-                <li><a href="/legal/copyright">Copyright</a></li>
+                <li>
+                    <a href="/government/bylaws-policies">Bylaws & Policies</a>
+                </li>
+                <li><a href="/news">News & Alerts</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
-            <h3>Connect with us</h3>
+            <h3>Connect</h3>
             <ul>
+                <li><a href="#" rel="external">Facebook</a></li>
                 <li><a href="#" rel="external">Twitter</a></li>
-                <li><a href="#" rel="external">LinkedIn</a></li>
-                <li><a href="#" rel="external">YouTube</a></li>
-                <li><a href="#" rel="external">RSS Feeds</a></li>
             </ul>
         </div>
     </div>
+    {{- end -}}
 
     <div class="footer-bottom">
+        {{- if $footerData.bottom -}} {{- /* Custom copyright text */ -}} {{-
+        with $footerData.bottom.copyright -}}
+        <p>
+            {{- $copyright := . -}} {{- $copyright = replace $copyright "{year}"
+            (string now.Year) -}} {{- $copyright = replace $copyright "{site}"
+            site.Title -}} {{- $copyright | safeHTML -}}
+        </p>
+        {{- end -}} {{- /* Optional bottom links */ -}} {{- with
+        $footerData.bottom.links -}}
+        <nav aria-label="Footer legal links" style="margin-top: 0.5rem">
+            {{- range $index, $link := . -}} {{- if gt $index 0 }} | {{ end -}}
+            <a href="{{ .url }}" style="font-size: 0.9rem">{{ .text }}</a>
+            {{- end -}}
+        </nav>
+        {{- end -}} {{- else -}} {{- /* Default copyright */ -}}
         <p>Copyright {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
+        {{- end -}}
     </div>
 </div>
