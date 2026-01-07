@@ -6,6 +6,39 @@ theme = 'boc'
 [params]
   description = 'Welcome to the Village of Consort, Alberta - a vibrant community where rural living meets modern opportunity.'
 
+  # Quick Stats (optional - uncomment and customize to display on homepage)
+  # [[params.stats]]
+  #   label = "Population"
+  #   value = "900+"
+  #   date = "2024 Census"
+  #
+  # [[params.stats]]
+  #   label = "Established"
+  #   value = "1912"
+  #
+  # [[params.stats]]
+  #   label = "Area"
+  #   value = "2.5 km²"
+  #
+  # [[params.stats]]
+  #   label = "Departments"
+  #   value = "8"
+
+  # Call to Action Section (optional - uncomment and customize)
+  # [params.callToAction]
+  #   title = "Get Involved"
+  #   text = "There are many ways to connect with our community. Attend council meetings, volunteer for events, or explore our programs."
+  #
+  #   [[params.callToAction.buttons]]
+  #     text = "View Events Calendar"
+  #     url = "/events"
+  #     class = "btn-primary"
+  #
+  #   [[params.callToAction.buttons]]
+  #     text = "Contact Us"
+  #     url = "/contact"
+  #     class = "btn-secondary"
+
   # Logo configuration
   [params.logo]
     # Desktop logos (default)

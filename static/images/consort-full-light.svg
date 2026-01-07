@@ -31,9 +31,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="2.4000001"
-     inkscape:cx="43.749999"
-     inkscape:cy="5.8333332"
+     inkscape:zoom="4.8000002"
+     inkscape:cx="89.999996"
+     inkscape:cy="47.916665"
      inkscape:window-width="1286"
      inkscape:window-height="953"
      inkscape:window-x="500"
@@ -54,12 +54,6 @@
      id="layer-MC0"
      inkscape:groupmode="layer"
      inkscape:label="Layer 2">
-    <circle
-       style="fill:#ffffff;stroke:none;stroke-width:4.19962"
-       id="path46"
-       cx="109.45395"
-       cy="26.15329"
-       r="15.27829" />
     <path
        id="path1"
        d="m 0,0 c 2.72,-0.988 5.184,-2.51 7.265,-4.44 3.01,4.874 7.916,8.453 13.689,9.709 C 20.208,6.304 19.297,7.211 18.258,7.952 13.67,6.542 9.651,3.834 6.628,0.256 4.864,1.463 2.936,2.447 0.885,3.169 0.448,2.177 0.145,1.113 0,0"

@@ -977,13 +977,16 @@ section h2 {
 }
 
 .card {
-    background: var(--boc-white);
-    border: 1px solid var(--boc-light-gray);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     overflow: hidden;
     transition:
         transform var(--transition-speed) ease,
         box-shadow var(--transition-speed) ease;
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -1005,6 +1008,8 @@ section h2 {
 
 .card-body {
     padding: var(--spacing-md);
+    flex: 1;
+    color: var(--text-primary);
 }
 
 .card-footer {
@@ -1112,8 +1117,35 @@ tr:hover {
 /* ============================================
    DARK MODE OVERRIDES
    ============================================ */
+[data-theme="dark"] .card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .card:hover {
+    box-shadow: 0 6px var(--spacing-md) rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .card-header {
+    background-color: var(--bg-tertiary);
+    border-bottom: 3px solid var(--boc-red);
+}
+
 [data-theme="dark"] .card-title {
     color: var(--boc-light-teal);
+}
+
+[data-theme="dark"] .card-body {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .card-footer {
+    background-color: var(--bg-tertiary);
+    border-top: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .card-footer time {
+    color: var(--text-secondary);
 }
 /* ============================================
    FOOTER

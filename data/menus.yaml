@@ -11,7 +11,7 @@ megaMenus:
       - blocks:
           # Featured card block
           - url: "/government/mayor-council"
-            title: "Mayor and Council"
+            title: "Mayor and Council Information"
             description: "Meet your elected officials and learn about their roles in serving our community."
           # Link list blocks
           - subheader: "Council Information"
@@ -58,152 +58,65 @@ megaMenus:
   departments:
     columns:
       - blocks:
-          - url: "/departments/administration"
+          - url: "departments/administration"
             title: "Administration Services"
-            description: "Your central hub for Village operations, payments, and inquiries."
-            image: "/images/mega-menu/administration.jpg"
-          - links:
-              - text: "Contact Administration"
-                url: "/departments/administration#contact"
-              - text: "Office Hours & Location"
-                url: "/departments/administration#hours"
-              - text: "Property Tax Information"
-                url: "/departments/administration/property-tax"
-              - text: "Utility Payments"
-                url: "/departments/administration/utilities"
-          - subheader: "Transparency"
-            links:
-              - text: "Budget Documents"
-                url: "/departments/administration/budget"
-              - text: "Financial Statements"
-                url: "/departments/administration/financial-statements"
-              - text: "Annual Reports"
-                url: "/departments/administration/reports"
-          - url: "/departments/municipal-services"
+            description: "Your primary contact point for Village information and services."
+            image: "images/consort-full-light.svg"
+
+          - url: "departments/municipal-services"
             title: "Municipal Services & Utilities"
             description: "Infrastructure and essential services keeping Consort running smoothly."
-          - links:
-              - text: "Water & Sewer"
-                url: "/departments/municipal-services/water-sewer"
-              - text: "Garbage Collection"
-                url: "/departments/municipal-services/garbage"
-              - text: "Road Maintenance"
-                url: "/departments/municipal-services/roads"
-              - text: "Snow Removal"
-                url: "/departments/municipal-services/snow-removal"
+            image: "images/public-services.svg"
 
       - blocks:
-          - url: "/departments/recreation"
+          - url: "departments/recreation"
             title: "Recreation Services"
             description: "Programs, events, and facilities for active living."
-            image: "/images/mega-menu/recreation.jpg"
-          - subheader: "Facilities"
-            links:
-              - text: "Consort SportEx"
-                url: "/departments/recreation/sportex"
-              - text: "Ice Arena"
-                url: "/departments/recreation/arena"
-              - text: "Curling Rink"
-                url: "/departments/recreation/curling"
-              - text: "Bowling Alley"
-                url: "/departments/recreation/bowling"
-              - text: "Sports Grounds"
-                url: "/departments/recreation/sports-grounds"
-          - subheader: "Camping & Outdoors"
-            links:
-              - text: "Municipal Campground"
-                url: "/departments/recreation/campground"
-              - text: "Open Sky Getaway"
-                url: "/departments/recreation/open-sky"
-          - links:
-              - text: "Recreation Programs"
-                url: "/departments/recreation/programs"
-              - text: "Facility Rentals"
-                url: "/departments/recreation/rentals"
-          - url: "/departments/protective-services"
+            image: "images/recreation-services.svg"
+
+          - url: "departments/protective-services"
             title: "Protective Services"
             description: "Keeping our community safe and prepared."
-          - links:
-              - text: "Fire Department"
-                url: "/departments/protective-services/fire"
-              - text: "Emergency Management"
-                url: "/departments/protective-services/emergency"
-              - text: "Bylaw Enforcement"
-                url: "/departments/protective-services/bylaw"
+            image: "images/enforcement-services.svg"
 
       - blocks:
-          - url: "/departments/community-services"
+          - url: "departments/economic-development-services"
+            title: "Economic Development Services"
+            description: "Supporting local businesses, attracting new investment, and helping Consort grow."
+            image: "images/economic-development-services.svg"
+
+          - url: "departments/community-services"
             title: "Community Services"
             description: "Supporting well-being and connection for all ages."
-          - subheader: "Programs & Support"
-            links:
-              - text: "Seniors Programs"
-                url: "/departments/community-services/seniors"
-              - text: "Youth Initiatives"
-                url: "/departments/community-services/youth"
-              - text: "Volunteer Opportunities"
-                url: "/departments/community-services/volunteer"
-              - text: "Social Support Services"
-                url: "/departments/community-services/support"
-          - subheader: "Community Partners"
-            links:
-              - text: "FCSS"
-                url: "/departments/community-services/fcss"
-              - text: "Learning & Community Centre"
-                url: "/departments/community-services/learning-centre"
-          - url: "/departments/economic-development"
-            title: "Economic Development"
-            description: "Supporting business growth and community prosperity."
-            image: "/images/mega-menu/economic-development.jpg"
-          - links:
-              - text: "Return To Rural Initiative"
-                url: "/departments/economic-development/return-to-rural"
-              - text: "Community Profile"
-                url: "/departments/economic-development/community-profile"
-              - text: "Investment Fact Sheet"
-                url: "/departments/economic-development/fact-sheet"
-              - text: "Business Resources"
-                url: "/departments/economic-development/business-resources"
-              - text: "Visitor Information"
-                url: "/departments/economic-development/visitors"
-              - text: "Local History"
-                url: "/departments/economic-development/history"
 
   # Events mega menu with 1 column
   events:
     columns:
       - blocks:
-          - url: "/events/village-calendar"
+          - url: "events/village-calendar"
             title: "Village Calendar"
             description: "Official Village events, meetings, and activities."
-            image: "/images/mega-menu/events.jpg"
-          - url: "/events/recreation-calendar"
+            image: "images/calendar.png"
+      - blocks:
+          - url: "events/recreation-calendar"
             title: "Recreation Calendar"
-            description: "Sports leagues, programs, and facility schedules."
-          - url: "/events/local-groups-calendar"
+            description: "Sports programs and facility schedules."
+            image: "images/recreation.png"
+      - blocks:
+          - url: "events/local-groups-calendar"
             title: "Local Groups Calendar"
             description: "Community organization events and activities."
-          - subheader: "Stay Informed"
-            links:
-              - text: "Subscribe to Updates"
-                url: "/events/subscribe"
-              - text: "Submit Your Event"
-                url: "/events/submit"
+            image: "images/community.jpg"
 
   # News & Alerts mega menu with 1 column
   news:
     columns:
       - blocks:
-          - url: "/news/latest"
-            title: "Latest News"
-            description: "Recent updates and announcements from the Village."
-          - url: "/news/notices"
-            title: "Public Notices"
-            description: "Official notices, public hearings, and consultations."
-            image: "/images/mega-menu/notices.jpg"
-          - url: "/news/press-releases"
-            title: "Press Releases"
-            description: "Official media releases and statements."
+          - url: "news/latest"
+            title: "News"
+            description: "News, public notices, and press releases"
+            image: "images/news.png"
+      - blocks:
           - subheader: "Stay Connected"
             links:
               - text: "RSS Feeds"

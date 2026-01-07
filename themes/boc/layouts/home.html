@@ -1,91 +1,46 @@
 {{ define "main" }}
-<div id="main-content">
-  {{ with .Content }}
-    {{ . }}
-  {{ end }}
+<!-- Hero Section -->
+<!--<div class="hero">
+    <h1>{{ site.Title }}</h1>
+    {{ with site.Params.description }}
+    <p>{{ . }}</p>
+    {{ end }}
+</div>-->
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <h1>More than a bank. We are the Central Bank of Canada.</h1>
-    <p>Our primary responsibility is to preserve the value of your money by keeping inflation low, stable and predictable.</p>
-  </div>
-
-  <!-- Stats/Highlights Section -->
-  <div class="stats">
-    <div class="stat-card">
-      <div class="stat-label">Policy Interest Rate</div>
-      <div class="stat-value">2.25%</div>
-      <div class="stat-date">Dec 10, 2025</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Total CPI Inflation</div>
-      <div class="stat-value">2.2%</div>
-      <div class="stat-date">Nov 2025</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">CPI-trim</div>
-      <div class="stat-value">2.8%</div>
-      <div class="stat-date">Nov 2025</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">CPI-median</div>
-      <div class="stat-value">2.8%</div>
-      <div class="stat-date">Nov 2025</div>
-    </div>
-  </div>
-
-  <!-- Recent Pages/Posts Section -->
-  {{ if site.RegularPages }}
-  <section>
-    <h2>Latest Updates</h2>
+<!-- Recently Updated Pages -->
+{{ $recentPages := first 3 (sort site.RegularPages ".Lastmod" "desc") }}
+{{ if gt (len $recentPages) 0 }}
+<section>
+    <h2>Recently Updated</h2>
     <div class="card-grid">
-      {{ range first 6 site.RegularPages }}
+        {{ range $recentPages }}
         <article class="card">
-          <div class="card-header">
-            <h3 class="card-title">
-              <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-            </h3>
-          </div>
-          <div class="card-body">
-            {{ if .Description }}
-              <p>{{ .Description }}</p>
-            {{ else }}
-              {{ $content := .Plain }}
-              {{ $paragraphs := split $content "\n\n" }}
-              {{ $firstPara := index $paragraphs 0 }}
-              <p>{{ $firstPara | truncate 200 }}</p>
-            {{ end }}
-          </div>
-          <div class="card-footer">
-            {{ with .Date }}
-              <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>
-            {{ end }}
-          </div>
+            <div class="card-header">
+                <h3 class="card-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+            </div>
+            <div class="card-body">
+                {{ with .Plain }}
+                {{ $firstPara := index (split . "\n\n") 0 }}
+                <p>{{ $firstPara | truncate 200 }}</p>
+                {{ end }}
+            </div>
+            <div class="card-footer">
+                <time datetime="{{ .Lastmod.Format "2006-01-02" }}">
+                    Updated: {{ .Lastmod.Format "January 2, 2006" }}
+                </time>
+                <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
+            </div>
         </article>
-      {{ end }}
+        {{ end }}
     </div>
-  </section>
-  {{ end }}
+</section>
 
-  <!-- Important Notice Section -->
-  <section>
-    <div class="alert alert-warning">
-      <h3>Don't be fooled!</h3>
-      <p>We are seeing an increasing number of investment scams and deceptive articles mentioning the Bank online on social media. We never give financial advice, offer investment products to individuals or ask for your personal details. <a href="/scams">Find out more about recognizing and reporting scams.</a></p>
-    </div>
-  </section>
+<!-- Main Content -->
+{{ with .Content }}
+<div class="page-content">{{ . }}</div>
+{{ end }}
 
-  <!-- Additional Content Sections -->
-  <section>
-    <h2>What does the Bank of Canada do?</h2>
-    <p>Our primary responsibility is to preserve the value of your money by keeping inflation low, stable and predictable. We also:</p>
-    <ul>
-      <li>Design, issue and distribute Canada's bank notes</li>
-      <li>Promote the safety, soundness and efficiency of Canada's financial system</li>
-      <li>Provide funds management services and be the fiscal agent for the Government of Canada</li>
-    </ul>
-    <a href="/about" class="btn btn-primary">Learn More About Us</a>
-  </section>
-
-</div>
+{{ end }}
 {{ end }}
