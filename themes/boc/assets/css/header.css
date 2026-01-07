@@ -9,6 +9,8 @@ header {
     top: 0;
     z-index: 1000;
     transition: transform var(--transition-speed) ease-in-out;
+    /* Prevent layout shift during scroll transitions */
+    min-height: 0;
 }
 
 .header-container {
@@ -160,6 +162,17 @@ header {
 
 /* Scrolled Header State - Large Screens Only */
 @media (min-width: 769px) {
+    /* Use fixed positioning to prevent layout shifts */
+    header {
+        position: fixed;
+        width: 100%;
+    }
+
+    /* Add padding to body to compensate for fixed header */
+    body {
+        padding-top: var(--header-height-desktop);
+    }
+
     header.header-scrolled .header-container {
         max-height: 0;
         opacity: 0;

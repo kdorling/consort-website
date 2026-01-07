@@ -281,26 +281,32 @@
     const headerContainer = document.querySelector(".header-container");
     const navContainer = document.querySelector(".nav-container");
     let lastScroll = 0;
+    let lastProcessedScroll = 0; // Track last processed position
     const scrollThreshold = 100; // Scroll amount before hiding header
+    const scrollRestoreThreshold = 80; // Scroll amount to restore header (hysteresis)
     const mobileScrollThreshold = 50; // Scroll amount for mobile shrink
+    const scrollTolerance = 5; // Minimum scroll change to trigger update (prevents jitter)
+    let ticking = false; // For requestAnimationFrame throttling
 
     if (!header) return;
 
-    window.addEventListener("scroll", function () {
-      // Don't change header state when mobile menu is open
-      if (document.body.classList.contains("mobile-menu-open")) {
+    function updateHeader(currentScroll) {
+      // Only update if scroll position has meaningfully changed
+      if (Math.abs(currentScroll - lastProcessedScroll) < scrollTolerance) {
+        ticking = false;
         return;
       }
 
-      const currentScroll = window.pageYOffset;
-
       // Desktop behavior
       if (window.innerWidth > 768) {
-        if (currentScroll > scrollThreshold && currentScroll > lastScroll) {
-          // Scrolling down past threshold - hide header top, show only nav
+        // Use hysteresis to prevent jitter near threshold
+        const isScrolled = header.classList.contains("header-scrolled");
+
+        if (!isScrolled && currentScroll > scrollThreshold) {
+          // Hide header when scrolling past threshold
           header.classList.add("header-scrolled");
-        } else if (currentScroll < scrollThreshold) {
-          // Near top - show full header
+        } else if (isScrolled && currentScroll < scrollRestoreThreshold) {
+          // Restore header when scrolling back above restore threshold
           header.classList.remove("header-scrolled");
         }
       } else {
@@ -322,7 +328,30 @@
       }
 
       lastScroll = currentScroll;
-    });
+      lastProcessedScroll = currentScroll;
+      ticking = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        // Don't change header state when mobile menu is open
+        if (document.body.classList.contains("mobile-menu-open")) {
+          return;
+        }
+
+        const currentScroll = window.pageYOffset;
+
+        // Only update once per animation frame to prevent jitter
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            updateHeader(currentScroll);
+          });
+          ticking = true;
+        }
+      },
+      { passive: true },
+    ); // Passive listener for better scroll performance
   }
 
   // Handle window resize

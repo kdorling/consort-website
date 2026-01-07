@@ -191,17 +191,16 @@
       const navContainer = document.querySelector(".nav-container");
       let lastScroll = 0;
       const scrollThreshold = 100;
+      const scrollRestoreThreshold = 80;
       const mobileScrollThreshold = 50;
+      let ticking = false;
       if (!header) return;
-      window.addEventListener("scroll", function() {
-        if (document.body.classList.contains("mobile-menu-open")) {
-          return;
-        }
-        const currentScroll = window.pageYOffset;
+      function updateHeader(currentScroll) {
         if (window.innerWidth > 768) {
-          if (currentScroll > scrollThreshold && currentScroll > lastScroll) {
+          const isScrolled = header.classList.contains("header-scrolled");
+          if (!isScrolled && currentScroll > scrollThreshold) {
             header.classList.add("header-scrolled");
-          } else if (currentScroll < scrollThreshold) {
+          } else if (isScrolled && currentScroll < scrollRestoreThreshold) {
             header.classList.remove("header-scrolled");
           }
         } else {
@@ -219,7 +218,24 @@
           header.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
         }
         lastScroll = currentScroll;
-      });
+        ticking = false;
+      }
+      window.addEventListener(
+        "scroll",
+        function() {
+          if (document.body.classList.contains("mobile-menu-open")) {
+            return;
+          }
+          const currentScroll = window.pageYOffset;
+          if (!ticking) {
+            window.requestAnimationFrame(function() {
+              updateHeader(currentScroll);
+            });
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
     }
     function initResizeHandler() {
       let resizeTimer;
