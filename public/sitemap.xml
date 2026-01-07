@@ -2,84 +2,84 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.org/departments/administration/</loc>
+    <loc>http://localhost:49902/departments/administration/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/government/bylaws-policies/</loc>
+    <loc>http://localhost:49902/government/bylaws-policies/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/careers/</loc>
+    <loc>http://localhost:49902/careers/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/departments/community-services/</loc>
+    <loc>http://localhost:49902/departments/community-services/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/contact/</loc>
+    <loc>http://localhost:49902/contact/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/government/meetings/</loc>
+    <loc>http://localhost:49902/government/meetings/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/departments/</loc>
+    <loc>http://localhost:49902/departments/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/departments/economic-development/</loc>
+    <loc>http://localhost:49902/departments/economic-development/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/events/</loc>
+    <loc>http://localhost:49902/events/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/government/</loc>
+    <loc>http://localhost:49902/government/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/</loc>
+    <loc>http://localhost:49902/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/government/mayor-council/</loc>
+    <loc>http://localhost:49902/government/mayor-council/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/government/agendas-minutes/</loc>
+    <loc>http://localhost:49902/government/agendas-minutes/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/departments/municipal-services/</loc>
+    <loc>http://localhost:49902/departments/municipal-services/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/news/</loc>
+    <loc>http://localhost:49902/news/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/online-services/</loc>
+    <loc>http://localhost:49902/online-services/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/departments/protective-services/</loc>
+    <loc>http://localhost:49902/departments/protective-services/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/departments/recreation/</loc>
+    <loc>http://localhost:49902/departments/recreation/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/blue/</loc>
+    <loc>http://localhost:49902/tags/blue/</loc>
     <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/green/</loc>
+    <loc>http://localhost:49902/tags/green/</loc>
     <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://example.org/posts/post-3/</loc>
+    <loc>http://localhost:49902/posts/post-3/</loc>
     <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/red/</loc>
+    <loc>http://localhost:49902/tags/red/</loc>
     <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/</loc>
+    <loc>http://localhost:49902/tags/</loc>
     <lastmod>2023-03-15T11:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://example.org/posts/post-2/</loc>
+    <loc>http://localhost:49902/posts/post-2/</loc>
     <lastmod>2023-02-15T10:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://example.org/posts/post-1/</loc>
+    <loc>http://localhost:49902/posts/post-1/</loc>
     <lastmod>2023-01-15T09:00:00-07:00</lastmod>
   </url><url>
-    <loc>https://example.org/posts/</loc>
+    <loc>http://localhost:49902/posts/</loc>
     <lastmod>2023-01-01T08:30:00-07:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/</loc>
+    <loc>http://localhost:49902/categories/</loc>
   </url>
 </urlset>

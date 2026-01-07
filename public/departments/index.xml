@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Departments &amp; Services on Village of Consort</title>
-    <link>https://example.org/departments/</link>
+    <link>http://localhost:49902/departments/</link>
     <description>Recent content in Departments &amp; Services on Village of Consort</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.org/departments/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:49902/departments/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Administration Services</title>
-      <link>https://example.org/departments/administration/</link>
+      <link>http://localhost:49902/departments/administration/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.org/departments/administration/</guid>
+      <guid>http://localhost:49902/departments/administration/</guid>
       <description>&lt;p&gt;The Administration Services team works out of the Village Office and serves as the central hub for Village operations. We&amp;rsquo;re your primary contact point for property tax and utility payments, customer service inquiries, and general information about Village services. Our staff also support Council, manage records and finances, and help coordinate community initiatives. Whether you&amp;rsquo;re paying a bill, asking a question, or looking to connect with your local government, we&amp;rsquo;re here to help—with a friendly smile and a commitment to excellent service.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Community Services</title>
-      <link>https://example.org/departments/community-services/</link>
+      <link>http://localhost:49902/departments/community-services/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.org/departments/community-services/</guid>
+      <guid>http://localhost:49902/departments/community-services/</guid>
       <description>&lt;p&gt;The Community Services department supports the well-being and vibrancy of Consort by working alongside local organizations to deliver programs and services for residents of all ages. We help coordinate and promote seniors&amp;rsquo; programs, youth initiatives, volunteer opportunities, and social support services offered throughout the community. Whether you&amp;rsquo;re looking to get involved, find support, or connect with others, Community Services is here to help build a caring and inclusive village.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-we-do&#34;&gt;What We Do&lt;/h2&gt;&#xA;&lt;p&gt;Community Services works in partnership with local organizations and agencies to:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Economic Development</title>
-      <link>https://example.org/departments/economic-development/</link>
+      <link>http://localhost:49902/departments/economic-development/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.org/departments/economic-development/</guid>
+      <guid>http://localhost:49902/departments/economic-development/</guid>
       <description>&lt;p&gt;Consort Economic Development is focused on supporting local businesses, attracting new investment, and helping Consort grow in a sustainable and community-minded way. We work to create opportunities for entrepreneurs, promote tourism, and strengthen partnerships that benefit the local economy. Whether you&amp;rsquo;re starting a business, exploring development options, or looking to invest in our region, we&amp;rsquo;re here to help you succeed in Consort.&lt;/p&gt;&#xA;&lt;h2 id=&#34;contact-information&#34;&gt;Contact Information&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Email&lt;/strong&gt;: &lt;a href=&#34;mailto:ecdev@consort.ca&#34;&gt;ecdev@consort.ca&lt;/a&gt;&lt;br&gt;&#xA;&lt;strong&gt;Phone&lt;/strong&gt;: [Phone Number]&lt;br&gt;&#xA;&lt;strong&gt;Office&lt;/strong&gt;: Village Office, [Address], Consort, AB [Postal Code]&lt;br&gt;&#xA;&lt;strong&gt;Hours&lt;/strong&gt;: Weekdays 8:00 AM to 4:30 PM&lt;/p&gt;</description>
     </item>
     <item>
       <title>Municipal Services &amp; Utilities</title>
-      <link>https://example.org/departments/municipal-services/</link>
+      <link>http://localhost:49902/departments/municipal-services/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.org/departments/municipal-services/</guid>
+      <guid>http://localhost:49902/departments/municipal-services/</guid>
       <description>&lt;p&gt;The Municipal Services &amp;amp; Utilities department plays a vital role in maintaining the infrastructure and essential services that keep the Village of Consort safe, clean, and connected. Our team manages sidewalks, water and sewer systems, garbage collection, and road maintenance—including snow removal, street sweeping, line painting, and pothole repairs. We&amp;rsquo;re committed to delivering reliable, responsive service to our residents and take pride in caring for the spaces we all share.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Protective Services</title>
-      <link>https://example.org/departments/protective-services/</link>
+      <link>http://localhost:49902/departments/protective-services/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.org/departments/protective-services/</guid>
+      <guid>http://localhost:49902/departments/protective-services/</guid>
       <description>&lt;p&gt;The Protective Services department helps keep the Village of Consort safe, prepared, and well-protected. This includes our dedicated Fire Department, which provides emergency response and fire prevention services, as well as our Emergency Management team, which coordinates preparedness planning and response efforts for natural or man-made events. Protective Services also oversees Bylaw Enforcement, working to ensure community standards are upheld with fairness and respect. Together, these services help create a safe and welcoming environment for all residents.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Recreation Services</title>
-      <link>https://example.org/departments/recreation/</link>
+      <link>http://localhost:49902/departments/recreation/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.org/departments/recreation/</guid>
+      <guid>http://localhost:49902/departments/recreation/</guid>
       <description>&lt;p&gt;The Recreation Services department brings energy and connection to our community through programs, events, and well-maintained facilities. We manage the Consort SportEx—home to the community hall, ice arena, curling rink, and bowling alley—as well as the Sports Grounds, which feature five ball diamonds, a bunnock facility, and a seasonal concession. Recreation Services is also responsible for both of the Village&amp;rsquo;s campgrounds: the Consort Municipal Campground and the Open Sky Getaway. Whether you&amp;rsquo;re looking to stay active, host an event, or enjoy the outdoors, we&amp;rsquo;re here to help make it happen.&lt;/p&gt;</description>
     </item>
   </channel>

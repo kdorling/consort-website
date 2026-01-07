@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Careers &amp; Employment on Village of Consort</title>
-    <link>https://example.org/careers/</link>
+    <link>http://localhost:49902/careers/</link>
     <description>Recent content in Careers &amp; Employment on Village of Consort</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="https://example.org/careers/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:49902/careers/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
