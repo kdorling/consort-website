@@ -45,6 +45,9 @@
     --transition-speed: 0.3s;
     --header-height-mobile: 160px;
     --header-height-small: 130px;
+    --header-height-scrolled: 48px;
+    --header-height-scrolled-small: 38px;
+    --header-padding-scrolled: 4px;
 
     /* Typography */
     --font-size-base: 16px;

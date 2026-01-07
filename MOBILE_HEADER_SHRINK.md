@@ -70,12 +70,16 @@ transition: opacity 0.3s ease, max-height 0.3s ease;
 
 ## Height Values
 
-| State | Header Height |
-|-------|--------------|
-| Default | ~140px (var: `--header-height-mobile`) |
-| Scrolled | ~60px |
-| Sidebar Position Default | `top: 140px` |
-| Sidebar Position Scrolled | `top: 60px` |
+| State | Header Height | CSS Variable |
+|-------|--------------|--------------|
+| Default Mobile | ~160px | `--header-height-mobile` |
+| Default Small Mobile | ~130px | `--header-height-small` |
+| Scrolled (Mobile) | 48px | `--header-height-scrolled` |
+| Scrolled (Small Mobile) | 38px | `--header-height-scrolled-small` |
+| Scrolled Padding | 4px | `--header-padding-scrolled` |
+| Sidebar Position Default | `top: var(--header-height-mobile)` | |
+| Sidebar Position Scrolled | `top: var(--header-height-scrolled)` | |
+| Sidebar Position Scrolled (Small) | `top: var(--header-height-scrolled-small)` | |
 
 ## User Experience Benefits
 
@@ -125,14 +129,18 @@ Edit `themes/boc/assets/js/main.js`:
 const mobileScrollThreshold = 50; // Change this value
 ```
 
-### Adjust Shrunken Height
+### Adjust Shrunken Header Size
 
-Edit `themes/boc/assets/css/responsive.css`:
+Edit `themes/boc/assets/css/variables.css`:
 ```css
-body.header-scrolled-mobile .nav-container {
-    top: 60px !important; /* Change to desired height */
+:root {
+    --header-height-scrolled: 48px; /* Change shrunken header height (mobile) */
+    --header-height-scrolled-small: 38px; /* Change shrunken header height (small screens) */
+    --header-padding-scrolled: 4px; /* Change header top/bottom padding */
 }
 ```
+
+All references to these values will automatically update throughout the stylesheet.
 
 ### Change Transition Speed
 
@@ -220,9 +228,16 @@ Comment out or remove the mobile scroll behavior in `main.js`:
 1. **JavaScript**: `themes/boc/assets/js/main.js`
    - Added mobile scroll threshold
    - Added/removed classes on scroll
+   - Preserves scroll position when menu opens
 
-2. **CSS**: `themes/boc/assets/css/responsive.css`
+2. **CSS Variables**: `themes/boc/assets/css/variables.css`
+   - Added `--header-height-scrolled` (48px for mobile ≤768px)
+   - Added `--header-height-scrolled-small` (38px for small screens ≤450px)
+   - Added `--header-padding-scrolled` (4px)
+
+3. **CSS**: `themes/boc/assets/css/responsive.css`
    - Added `.header-scrolled-mobile` styles
+   - Uses CSS variables for dimensions
    - Adjusted nav-container positioning
    - Added transition properties
 

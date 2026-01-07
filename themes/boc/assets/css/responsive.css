@@ -60,7 +60,7 @@
 
     /* Mobile Header Shrink on Scroll */
     header.header-scrolled-mobile .header-top {
-        padding: 4px 0 !important;
+        padding: var(--header-padding-scrolled) 0 !important;
     }
 
     header.header-scrolled-mobile .site-logo,
@@ -80,7 +80,7 @@
 
     /* Keep header shrunken even when mobile menu is open */
     body.mobile-menu-open header.header-scrolled-mobile .header-top {
-        padding: 4px 0 !important;
+        padding: var(--header-padding-scrolled) 0 !important;
     }
 
     body.mobile-menu-open header.header-scrolled-mobile .site-logo,
@@ -91,7 +91,7 @@
 
     /* Adjust body padding for shrunken header */
     body.header-scrolled-mobile {
-        padding-top: 48px;
+        padding-top: var(--header-height-scrolled);
     }
 
     /* Mobile Navigation */
@@ -120,9 +120,9 @@
 
     /* Adjust nav-container position when header is scrolled */
     body.header-scrolled-mobile .nav-container {
-        top: 48px !important;
-        height: calc(100vh - 48px) !important;
-        height: calc(100dvh - 48px) !important;
+        top: var(--header-height-scrolled) !important;
+        height: calc(100vh - var(--header-height-scrolled)) !important;
+        height: calc(100dvh - var(--header-height-scrolled)) !important;
     }
 
     .nav-container.mobile-open {
@@ -340,6 +340,11 @@
         padding-top: var(--header-height-small);
     }
 
+    /* Adjust body padding for shrunken header on small screens */
+    body.header-scrolled-mobile {
+        padding-top: var(--header-height-scrolled-small);
+    }
+
     .header-container {
         padding: 0 var(--spacing-sm);
     }
@@ -392,9 +397,9 @@
 
     /* Adjust nav-container position when header is scrolled on small screens */
     body.header-scrolled-mobile .nav-container {
-        top: 38px !important;
-        height: calc(100vh - 38px) !important;
-        height: calc(100dvh - 38px) !important;
+        top: var(--header-height-scrolled-small) !important;
+        height: calc(100vh - var(--header-height-scrolled-small)) !important;
+        height: calc(100dvh - var(--header-height-scrolled-small)) !important;
     }
 
     .nav-container.mobile-open {
